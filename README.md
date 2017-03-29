@@ -12,7 +12,7 @@ vue-i18n loader for custom blocks
 
 ## :rocket: Usage
 
-the below `App.vue` have `i18n` custom block:
+the below example that`App.vue` have `i18n` custom block:
 ```html
 <i18n>
 {
