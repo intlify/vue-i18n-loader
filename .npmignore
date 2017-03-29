@@ -1,0 +1,6 @@
+.*
+*.log
+*.swp
+*.yml
+coverage
+test

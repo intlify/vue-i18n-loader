@@ -1,0 +1,11 @@
+{
+  "presets": ["es2015"],
+  "env": {
+    "development": {
+      "sourceMaps": "inline"
+    },
+    "test": {
+      "sourceMaps": "inline"
+    }
+  }
+}
