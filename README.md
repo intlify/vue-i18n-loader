@@ -1,6 +1,6 @@
 # :globe_with_meridians: vue-i18n-loader
 
-[![CircleCI](https://circleci.com/gh/kazupon/vue-i18n-loader/tree/master?style=svg)](https://circleci.com/gh/kazupon/vue-i18n-loader/tree/master)
+[![CircleCI](https://circleci.com/gh/kazupon/vue-i18n-loader.svg?style=svg)](https://circleci.com/gh/kazupon/vue-i18n-loader)
 [![codecov](https://codecov.io/gh/kazupon/vue-i18n-loader/branch/master/graph/badge.svg)](https://codecov.io/gh/kazupon/vue-i18n-loader)
 [![npm](https://img.shields.io/npm/v/vue-i18n-loader.svg)](https://www.npmjs.com/package/vue-i18n-loader)
 
