@@ -6,6 +6,11 @@
     "name": "kazuya kawaguchi",
     "email": "kawakazu80@gmail.com"
   },
+  "ava": {
+    "require": [
+      "babel-core/register"
+    ]
+  },
   "bugs": {
     "url": "https://github.com/kazupon/vue-i18n-loader/issues"
   },
@@ -21,41 +26,36 @@
     "eslint-plugin-vue": "^2.0.1",
     "nyc": "^10.2.0"
   },
+  "engines": {
+    "node": ">= 4.0"
+  },
   "files": [
     "lib",
     "src"
   ],
   "homepage": "https://github.com/kazupon/vue-i18n-loader#readme",
-  "main": "lib/index.js",
   "keywords": [
-    "vue",
-    "webpack",
+    "i18n",
     "loader",
-    "i18n"
+    "vue",
+    "webpack"
   ],
   "license": "MIT",
-  "engines": {
-    "node": ">= 4.0"
-  },
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kazupon/vue-i18n-loader.git"
   },
   "scripts": {
     "build": "BABEL_ENV=production babel ./src --out-dir ./lib",
-    "watch": "BABEL_ENV=development babel ./src --out-dir ./lib --watch",
-    "changelog": "conventional-changelog -i CHANGELOG.md -s -n ./config/convention.js",
-    "release": "conventional-github-releaser -n ./config/convention.js",
+    "changelog": "conventional-changelog -i CHANGELOG.md -s -n ./node_modules/git-commit-message-convention/convention.js",
     "clean": "rm -rf ./coverage && rm -rf ./lib/*.js*",
     "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov",
     "lint": "eslint ./src ./test",
+    "release": "conventional-github-releaser -n ./node_modules/git-commit-message-convention/convention.js",
     "test": "npm run lint && npm run test:cover",
     "test:cover": "BABEL_ENV=test ./node_modules/.bin/nyc report --reporter=html ava",
-    "test:unit": "BABEL_ENV=test ava"
-  },
-  "ava": {
-    "require": [
-      "babel-core/register"
-    ]
+    "test:unit": "BABEL_ENV=test ava",
+    "watch": "BABEL_ENV=development babel ./src --out-dir ./lib --watch"
   }
 }
