@@ -13,6 +13,8 @@ vue-i18n loader for custom blocks
 ## :rocket: Usage
 
 the below example that`App.vue` have `i18n` custom block:
+
+### Custom Blocks
 ```html
 <i18n>
 {
@@ -37,6 +39,8 @@ export default {
 </script>
 ```
 
+### JavaScript
+
 ```javascript
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
@@ -60,6 +64,8 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 ```
+
+### Webpack Config 
 
 configure webpack config for `vue-loader` (v11.3 later):
 
