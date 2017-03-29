@@ -1,4 +1,4 @@
-# vue-i18n-loader
+# :globe_with_meridians: vue-i18n-loader
 
 [![CircleCI](https://circleci.com/gh/kazupon/vue-i18n-loader/tree/dev?style=svg)](https://circleci.com/gh/kazupon/vue-i18n-loader/tree/dev)
 [![codecov](https://codecov.io/gh/kazupon/vue-i18n-loader/branch/dev/graph/badge.svg)](https://codecov.io/gh/kazupon/vue-i18n-loader)
