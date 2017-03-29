@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/kazupon/vue-i18n-loader.svg?style=svg)](https://circleci.com/gh/kazupon/vue-i18n-loader)
 [![codecov](https://codecov.io/gh/kazupon/vue-i18n-loader/branch/master/graph/badge.svg)](https://codecov.io/gh/kazupon/vue-i18n-loader)
-[![npm](https://img.shields.io/npm/v/vue-i18n-loader.svg)](https://www.npmjs.com/package/vue-i18n-loader)
+[![npm](https://img.shields.io/npm/v/@kazupon/vue-i18n-loader.svg)](https://www.npmjs.com/package/@kazupon/vue-i18n-loader)
 
 vue-i18n loader for custom blocks
 
