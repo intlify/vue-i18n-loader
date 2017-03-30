@@ -8,13 +8,13 @@ vue-i18n loader for custom blocks
 
 ## :cd: Installation
 
-    $ npm i --save-dev vue-i18n-loader
+    $ npm i --save-dev @kazupon/vue-i18n-loader
 
 ## :rocket: Usage
 
 the below example that`App.vue` have `i18n` custom block:
 
-### Custom Blocks
+### Custom Blocks (Single File Components)
 ```html
 <i18n>
 {
