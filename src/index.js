@@ -7,7 +7,7 @@ export default function (content) {
       value = JSON.stringify(value)
         .replace(/\u2028/g, '\\u2028')
         .replace(/\u2029/g, '\\u2029')
-      const code = `module.exports = function (Component) { Component.options.__i18n = '${value}' }`
+      const code = `module.exports = function (Component) { Component.options.__i18n = '${value.replace(/\u0027/g, '\\u0027')}' }`
       this.callback(null, code)
     } catch (err) {
       this.emitError(err.message)
