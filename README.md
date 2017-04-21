@@ -27,7 +27,7 @@ the below example that`App.vue` have `i18n` custom block:
 }
 </i18n>
 
-<tempalte>
+<template>
   <p>{{ $t('hello') }}</p>
 </template>
 
