@@ -7,6 +7,7 @@ function Loader (content, version) {
 }
 Loader.prototype = Object.create(Loader.prototype)
 Loader.prototype.constructor = Loader
+Loader.prototype.cacheable = function () {}
 Loader.prototype.callback = function (err, content) {
   this._callback = { err, content }
 }
@@ -17,8 +18,10 @@ Loader.prototype.emitError = function (message) {
 function assert (t, content) {
   const loader = new Loader(content, 2)
   t.deepEqual(
-    loader._callback.content,
-    `module.exports = function (Component) { Component.options.__i18n = '{\"en\":{\"hello\":\"hello world!\"}}' }`
+    loader._callback.content, `module.exports = function (Component) {
+  Component.options.__i18n = Component.options.__i18n || []
+  Component.options.__i18n.push('{\"en\":{\"hello\":\"hello world!\"}}')
+}\n`
   )
 }
 

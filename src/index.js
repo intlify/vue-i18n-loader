@@ -1,14 +1,8 @@
 export default function (content) {
   if (this.version && this.version >= 2) {
     try {
-      let value = typeof content === 'string'
-        ? JSON.parse(content)
-        : content
-      value = JSON.stringify(value)
-        .replace(/\u2028/g, '\\u2028')
-        .replace(/\u2029/g, '\\u2029')
-      const code = `module.exports = function (Component) { Component.options.__i18n = '${value.replace(/\u0027/g, '\\u0027')}' }`
-      this.callback(null, code)
+      this.cacheable()
+      this.callback(null, generateCode(content))
     } catch (err) {
       this.emitError(err.message)
       this.callback(err)
@@ -18,4 +12,21 @@ export default function (content) {
     this.emitError(message)
     this.callback(new Error(message))
   }
+}
+
+function generateCode (content) {
+  let code = ''
+
+  let value = typeof content === 'string'
+    ? JSON.parse(content)
+    : content
+  value = JSON.stringify(value)
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029')
+
+  code += `module.exports = function (Component) {
+  Component.options.__i18n = Component.options.__i18n || []
+  Component.options.__i18n.push('${value.replace(/\u0027/g, '\\u0027')}')
+}\n`
+  return code
 }
