@@ -1,8 +1,8 @@
 export default function (content) {
   if (this.version && this.version >= 2) {
     try {
-      this.cacheable()
-      this.callback(null, generateCode(content))
+      this.cacheable && this.cacheable()
+      this.callback(null, `module.exports = ${generateCode(content)}`)
     } catch (err) {
       this.emitError(err.message)
       this.callback(err)
@@ -24,7 +24,7 @@ function generateCode (content) {
     .replace(/\u2028/g, '\\u2028')
     .replace(/\u2029/g, '\\u2029')
 
-  code += `module.exports = function (Component) {
+  code += `function (Component) {
   Component.options.__i18n = Component.options.__i18n || []
   Component.options.__i18n.push('${value.replace(/\u0027/g, '\\u0027')}')
 }\n`
