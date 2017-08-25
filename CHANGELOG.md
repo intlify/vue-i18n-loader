@@ -1,3 +1,13 @@
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/kazupon/vue-i18n-loader/compare/v0.2.0...v0.2.1) (2017-08-25)
+
+
+### :zap: Improvements
+
+* To support double quote, tab, newline characters in value ([#8](https://github.com/kazupon/vue-i18n-loader/issues/8)) by [@cslee](https://github.com/cslee) ([5d51ad0](https://github.com/kazupon/vue-i18n-loader/commit/5d51ad0))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/kazupon/vue-i18n-loader/compare/v0.1.1...v0.2.0) (2017-07-30)
 
