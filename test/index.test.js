@@ -25,6 +25,16 @@ function assert (t, content) {
   )
 }
 
+function assertSpecial (t, content) {
+  const loader = new Loader(content, 2)
+  t.deepEqual(
+    loader._callback.content, `module.exports = function (Component) {
+  Component.options.__i18n = Component.options.__i18n || []
+  Component.options.__i18n.push('{\"en\":{\"hello\":\"hello\\\\ngreat\\\\t\\\\\"world\\\\\"\"}}')
+}\n`
+  )
+}
+
 test('string', t => {
   const json = JSON.stringify({
     en: {
@@ -43,6 +53,26 @@ test('object', t => {
   }
 
   assert(t, json)
+})
+
+test('string with special characters', t => {
+  const json = JSON.stringify({
+    en: {
+      'hello': 'hello\ngreat\t"world"'
+    }
+  })
+
+  assertSpecial(t, json)
+})
+
+test('object with special characters', t => {
+  const json = {
+    en: {
+      'hello': 'hello\ngreat\t"world"'
+    }
+  }
+
+  assertSpecial(t, json)
 })
 
 test('version 2 less', t => {
