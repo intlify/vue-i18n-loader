@@ -28,6 +28,7 @@ function generateCode (content) {
   code += `function (Component) {
   Component.options.__i18n = Component.options.__i18n || []
   Component.options.__i18n.push('${value.replace(/\u0027/g, '\\u0027')}')
+  delete Component.options._Ctor
 }\n`
   return code
 }
