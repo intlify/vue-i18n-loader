@@ -1,3 +1,13 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/kazupon/vue-i18n-loader/compare/v0.2.1...v0.3.0) (2018-03-04)
+
+
+### :star: New Features
+
+* added hmr ([#14](https://github.com/kazupon/vue-i18n-loader/issues/14), closes [#7](https://github.com/kazupon/vue-i18n-loader/issues/7)) by [@StephanGerbeth](https://github.com/StephanGerbeth) ([c04964c](https://github.com/kazupon/vue-i18n-loader/commit/c04964c)), closes [#7](https://github.com/kazupon/vue-i18n-loader/issues/7)
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/kazupon/vue-i18n-loader/compare/v0.2.0...v0.2.1) (2017-08-25)
 
