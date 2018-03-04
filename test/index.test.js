@@ -21,6 +21,7 @@ function assert (t, content) {
     loader._callback.content, `module.exports = function (Component) {
   Component.options.__i18n = Component.options.__i18n || []
   Component.options.__i18n.push('{\"en\":{\"hello\":\"hello world!\"}}')
+  delete Component.options._Ctor
 }\n`
   )
 }
@@ -31,6 +32,7 @@ function assertSpecial (t, content) {
     loader._callback.content, `module.exports = function (Component) {
   Component.options.__i18n = Component.options.__i18n || []
   Component.options.__i18n.push('{\"en\":{\"hello\":\"hello\\\\ngreat\\\\t\\\\\"world\\\\\"\"}}')
+  delete Component.options._Ctor
 }\n`
   )
 }
