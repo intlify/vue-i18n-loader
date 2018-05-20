@@ -4,7 +4,6 @@
 
 <p align="center">
   <a href="https://circleci.com/gh/kazupon/vue-i18n-loader"><img src="https://circleci.com/gh/kazupon/vue-i18n-loader.svg?style=svg" alt="Build Status"></a>
-</p>
   <a href="https://codecov.io/gh/kazupon/vue-i18n-loader"><img src="https://codecov.io/gh/kazupon/vue-i18n-loader/branch/dev/graph/badge.svg" alt="codecov"></a>
   <a href="https://www.npmjs.com/package/@kazupon/vue-i18n-loader"><img src="https://img.shields.io/npm/v/@kazupon/vue-i18n-loader.svg" alt="npm"></a>
 </p>
