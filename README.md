@@ -1,8 +1,13 @@
-# :globe_with_meridians: vue-i18n-loader
+<h1 align="center">vue-i18n-loader</h1>
 
-[![CircleCI](https://circleci.com/gh/kazupon/vue-i18n-loader.svg?style=svg)](https://circleci.com/gh/kazupon/vue-i18n-loader)
-[![codecov](https://codecov.io/gh/kazupon/vue-i18n-loader/branch/dev/graph/badge.svg)](https://codecov.io/gh/kazupon/vue-i18n-loader)
-[![npm](https://img.shields.io/npm/v/@kazupon/vue-i18n-loader.svg)](https://www.npmjs.com/package/@kazupon/vue-i18n-loader)
+<p align="center"><img width="373px" height="168px" src="./assets/vue-i18n-loader.png" alt="Vue I18n Loader logo"></p>
+
+<p align="center">
+  <a href="https://circleci.com/gh/kazupon/vue-i18n-loader"><img src="https://circleci.com/gh/kazupon/vue-i18n-loader.svg?style=svg" alt="Build Status"></a>
+</p>
+  <a href="https://codecov.io/gh/kazupon/vue-i18n-loader"><img src="https://codecov.io/gh/kazupon/vue-i18n-loader/branch/dev/graph/badge.svg" alt="codecov"></a>
+  <a href="https://www.npmjs.com/package/@kazupon/vue-i18n-loader"><img src="https://img.shields.io/npm/v/@kazupon/vue-i18n-loader.svg" alt="npm"></a>
+</p>
 
 vue-i18n loader for custom blocks
 
@@ -67,9 +72,26 @@ new Vue({
 
 ### Webpack Config 
 
-configure webpack config for `vue-loader` (v11.3 later):
+`vue-loader` (v15 later):
 
 ```javascript
+// for vue.config.js (Vue CLI)
+module.exports = {
+  chainWebpack: config => {
+    config.module
+      .rule('i18n')
+      .resourceQuery(/blockType=i18n/)
+      .type('javascript/auto')
+      .use('i18n')
+      .loader('@kazupon/vue-i18n-loader')
+  }
+}
+```
+
+`vue-loader` (~v14.x):
+
+```javascript
+// for webpack config file
 module.exports = {
   module: {
     rules: [{
