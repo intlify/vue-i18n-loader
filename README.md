@@ -1,6 +1,6 @@
-<h1 align="center">vue-i18n-loader</h1>
-
 <p align="center"><img width="373px" height="168px" src="./assets/vue-i18n-loader.png" alt="Vue I18n Loader logo"></p>
+
+<h1 align="center">vue-i18n-loader</h1>
 
 <p align="center">
   <a href="https://circleci.com/gh/kazupon/vue-i18n-loader"><img src="https://circleci.com/gh/kazupon/vue-i18n-loader.svg?style=svg" alt="Build Status"></a>
@@ -8,7 +8,9 @@
   <a href="https://www.npmjs.com/package/@kazupon/vue-i18n-loader"><img src="https://img.shields.io/npm/v/@kazupon/vue-i18n-loader.svg" alt="npm"></a>
 </p>
 
-vue-i18n loader for custom blocks
+<p align="center">vue-i18n loader for custom blocks</p>
+
+<br/>
 
 ## :cd: Installation
 
