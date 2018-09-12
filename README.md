@@ -73,7 +73,7 @@ new Vue({
 
 ### Webpack Config 
 
-`vue-loader` (v15 later):
+`vue-loader` (v15 or later):
 
 ```javascript
 // for vue.config.js (Vue CLI)
@@ -85,6 +85,22 @@ module.exports = {
       .type('javascript/auto')
       .use('i18n')
       .loader('@kazupon/vue-i18n-loader')
+  }
+}
+```
+
+`vue-loader` (v15 or later):
+
+```javascript
+// for webpack.config.js (Without Vue CLI)
+module.exports = {
+  module: {
+    rules: [
+      {
+        resourceQuery: /blockType=i18n/,
+        loader: '@kazupon/vue-i18n-loader',
+      },
+    ]
   }
 }
 ```
