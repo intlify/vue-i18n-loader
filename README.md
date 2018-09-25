@@ -21,7 +21,7 @@
 the below example that`App.vue` have `i18n` custom block:
 
 ### Custom Blocks (Single File Components)
-```html
+```vue
 <i18n>
 {
   "en": {
