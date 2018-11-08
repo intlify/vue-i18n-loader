@@ -45,6 +45,23 @@ export default {
 </script>
 ```
 
+you also can:
+
+```vue
+<i18n src="./myLang.json"></i18n>
+```
+
+```json
+{
+  "en": {
+    "hello": "hello world!"
+  },
+  "ja": {
+    "hello": "こんにちは、世界!"
+  }
+}
+```
+
 ### JavaScript
 
 ```javascript
