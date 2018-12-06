@@ -6,6 +6,7 @@
   <a href="https://circleci.com/gh/kazupon/vue-i18n-loader"><img src="https://circleci.com/gh/kazupon/vue-i18n-loader.svg?style=svg" alt="Build Status"></a>
   <a href="https://codecov.io/gh/kazupon/vue-i18n-loader"><img src="https://codecov.io/gh/kazupon/vue-i18n-loader/branch/dev/graph/badge.svg" alt="codecov"></a>
   <a href="https://www.npmjs.com/package/@kazupon/vue-i18n-loader"><img src="https://img.shields.io/npm/v/@kazupon/vue-i18n-loader.svg" alt="npm"></a>
+  <a href="https://devtoken.rocks/package/@kazupon/vue-i18n-loader"><img src="https://badge.devtoken.rocks/@kazupon/vue-i18n-loader" alt="@kazupon/vue-i18n-loader Dev Token"/></a>
 </p>
 
 <p align="center">vue-i18n loader for custom blocks</p>
@@ -88,7 +89,7 @@ new Vue({
 }).$mount('#app')
 ```
 
-### Webpack Config 
+### Webpack Config
 
 `vue-loader` (v15 or later):
 
