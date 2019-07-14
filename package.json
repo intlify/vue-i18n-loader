@@ -8,28 +8,30 @@
   },
   "ava": {
     "require": [
-      "babel-core/register"
+      "@babel/register"
     ]
   },
   "bugs": {
     "url": "https://github.com/kazupon/vue-i18n-loader/issues"
   },
   "devDependencies": {
-    "ava": "^0.18.2",
-    "babel-cli": "^6.24.0",
-    "babel-eslint": "^7.2.1",
-    "babel-preset-es2015": "^6.22.0",
-    "conventional-changelog-cli": "^1.2.0",
-    "conventional-github-releaser": "^1.1.3",
-    "cross-env": "^5.0.5",
-    "eslint": "^3.18.0",
-    "eslint-config-vue": "^2.0.2",
-    "eslint-plugin-vue": "^2.0.1",
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/register": "^7.4.4",
+    "ava": "^1.0.0",
+    "babel-eslint": "^10.0.2",
+    "babel-preset-env": "^1.7.0",
+    "conventional-changelog-cli": "^2.0.12",
+    "conventional-github-releaser": "^3.1.2",
+    "cross-env": "^5.2.0",
+    "eslint": "^6.0.0",
+    "eslint-plugin-vue-libs": "^4.0.0",
     "git-commit-message-convention": "git://github.com/kazupon/git-commit-message-convention.git",
-    "nyc": "^10.2.0"
+    "nyc": "^13.3.0",
+    "opener": "^1.5.1"
   },
   "engines": {
-    "node": ">= 4.0"
+    "node": ">= 8"
   },
   "files": [
     "lib",
@@ -52,11 +54,12 @@
     "build": "cross-env BABEL_ENV=production babel ./src --out-dir ./lib",
     "changelog": "conventional-changelog -i CHANGELOG.md -s -n ./node_modules/git-commit-message-convention/convention.js",
     "clean": "rm -rf ./coverage && rm -rf ./lib/*.js*",
-    "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov",
+    "ci:coverage": "nyc report --reporter=text-lcov > coverage.lcov",
+    "coverage": "nyc report --reporter lcov && opener coverage/lcov-report/index.html",
     "lint": "eslint ./src ./test",
     "release": "conventional-github-releaser -n ./node_modules/git-commit-message-convention/convention.js",
     "test": "npm run lint && npm run test:cover",
-    "test:cover": "cross-env BABEL_ENV=test ./node_modules/.bin/nyc report --reporter=html ava",
+    "test:cover": "cross-env BABEL_ENV=test nyc ava",
     "test:unit": "cross-env BABEL_ENV=test ava",
     "watch": "cross-env BABEL_ENV=development babel ./src --out-dir ./lib --watch"
   }
