@@ -2,6 +2,8 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
+orbs:
+  codecov: codecov/codecov@1.0.5
 version: 2
 jobs:
   build:
@@ -38,4 +40,7 @@ jobs:
       # run tests!
       - run: yarn lint
       - run: yarn test:unit
-      - run: yarn ci:coverage && bash <(curl -s https://codecov.io/bash)
+      - run: yarn ci:coverage
+
+      - codecov/upload:
+          file: ./coverage.lcov
