@@ -1,7 +1,6 @@
 coverage
 coverage.lcov
 node_modules
-.nyc_output
 .DS_Store
 *.log
 *.swp
