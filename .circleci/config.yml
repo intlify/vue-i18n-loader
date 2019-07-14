@@ -40,7 +40,7 @@ jobs:
 
       # run tests!
       - run: yarn lint
-      - run: yarn test:unit
+      - run: yarn test
       - run: yarn ci:coverage
 
       - codecov/upload:
