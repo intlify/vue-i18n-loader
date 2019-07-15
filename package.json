@@ -6,20 +6,14 @@
     "name": "kazuya kawaguchi",
     "email": "kawakazu80@gmail.com"
   },
-  "ava": {
-    "require": [
-      "@babel/register"
-    ]
-  },
   "bugs": {
     "url": "https://github.com/kazupon/vue-i18n-loader/issues"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.5.4",
-    "@babel/register": "^7.4.4",
-    "ava": "^1.1.0",
     "babel-eslint": "^10.0.2",
+    "babel-jest": "^24.8.0",
     "babel-preset-env": "^1.7.0",
     "conventional-changelog-cli": "^2.0.12",
     "conventional-github-releaser": "^3.1.2",
@@ -27,8 +21,13 @@
     "eslint": "^6.0.0",
     "eslint-plugin-vue-libs": "^4.0.0",
     "git-commit-message-convention": "git://github.com/kazupon/git-commit-message-convention.git",
-    "nyc": "^13.3.0",
-    "opener": "^1.5.1"
+    "jest": "^24.8.0",
+    "jsdom": "^15.1.1",
+    "memory-fs": "^0.4.1",
+    "opener": "^1.5.1",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.35.3"
   },
   "engines": {
     "node": ">= 8"
@@ -53,14 +52,13 @@
   "scripts": {
     "build": "cross-env BABEL_ENV=production babel ./src --out-dir ./lib",
     "changelog": "conventional-changelog -i CHANGELOG.md -s -n ./node_modules/git-commit-message-convention/convention.js",
-    "ci:coverage": "nyc report --reporter=text-lcov > coverage.lcov",
     "clean": "rm -rf ./coverage && rm -rf ./lib/*.js*",
-    "coverage": "nyc report --reporter lcov && opener coverage/lcov-report/index.html",
+    "coverage": "opener coverage/lcov-report/index.html",
     "lint": "eslint ./src ./test",
     "release": "conventional-github-releaser -n ./node_modules/git-commit-message-convention/convention.js",
     "test": "npm run lint && npm run test:cover",
-    "test:cover": "cross-env BABEL_ENV=test nyc ava",
-    "test:unit": "cross-env BABEL_ENV=test ava",
+    "test:cover": "npm run test:unit -- --coverage",
+    "test:unit": "cross-env BABEL_ENV=test jest --env node",
     "watch": "cross-env BABEL_ENV=development babel ./src --out-dir ./lib --watch"
   }
 }
