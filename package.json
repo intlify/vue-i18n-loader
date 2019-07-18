@@ -10,14 +10,16 @@
     "url": "https://github.com/kazupon/vue-i18n-loader/issues"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.0",
-    "@babel/core": "^7.5.4",
-    "babel-eslint": "^10.0.2",
-    "babel-jest": "^24.8.0",
-    "babel-preset-env": "^1.7.0",
+    "@types/jest": "^24.0.15",
+    "@types/jsdom": "^12.2.4",
+    "@types/memory-fs": "^0.3.2",
+    "@types/node": "^12.6.8",
+    "@types/webpack": "^4.4.35",
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
+    "@typescript-eslint/parser": "^1.12.0",
+    "@typescript-eslint/typescript-estree": "^1.12.0",
     "conventional-changelog-cli": "^2.0.12",
     "conventional-github-releaser": "^3.1.2",
-    "cross-env": "^5.2.0",
     "eslint": "^6.0.0",
     "eslint-plugin-vue-libs": "^4.0.0",
     "git-commit-message-convention": "git://github.com/kazupon/git-commit-message-convention.git",
@@ -25,6 +27,8 @@
     "jsdom": "^15.1.1",
     "memory-fs": "^0.4.1",
     "opener": "^1.5.1",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3",
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.35.3"
@@ -50,15 +54,15 @@
     "url": "git+https://github.com/kazupon/vue-i18n-loader.git"
   },
   "scripts": {
-    "build": "cross-env BABEL_ENV=production babel ./src --out-dir ./lib",
+    "build": "tsc -p .",
     "changelog": "conventional-changelog -i CHANGELOG.md -s -n ./node_modules/git-commit-message-convention/convention.js",
     "clean": "rm -rf ./coverage && rm -rf ./lib/*.js*",
     "coverage": "opener coverage/lcov-report/index.html",
-    "lint": "eslint ./src ./test",
+    "lint": "eslint ./src ./test --ext .ts",
     "release": "conventional-github-releaser -n ./node_modules/git-commit-message-convention/convention.js",
     "test": "npm run lint && npm run test:cover",
     "test:cover": "npm run test:unit -- --coverage",
-    "test:unit": "cross-env BABEL_ENV=test jest --env node",
-    "watch": "cross-env BABEL_ENV=development babel ./src --out-dir ./lib --watch"
+    "test:unit": "jest --env node",
+    "watch": "tsc -p . --watch"
   }
 }

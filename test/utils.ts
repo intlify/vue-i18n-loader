@@ -1,10 +1,23 @@
 import path from 'path'
 import webpack from 'webpack'
 import memoryfs from 'memory-fs'
-import { JSDOM, VirtualConsole } from 'jsdom'
-import VueLoaderPlugin from 'vue-loader/lib/plugin'
+import { JSDOM, VirtualConsole, DOMWindow } from 'jsdom'
+import { VueLoaderPlugin } from 'vue-loader'
 
-export function bundle (fixture, options = {}) {
+type BundleResolve = {
+  code: string,
+  stats: webpack.Stats
+}
+
+type BundleResolveResolve = BundleResolve & {
+  jsdomError: any,
+  instance: any,
+  window: DOMWindow,
+  module: any,
+  exports: any
+}
+
+export function bundle (fixture: string): Promise<BundleResolve> {
   const compiler = webpack({
     mode: 'development',
     devtool: false,
@@ -25,7 +38,7 @@ export function bundle (fixture, options = {}) {
       }, {
         resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
-        loader: path.resolve(__dirname, '../src/index.js')
+        loader: path.resolve(__dirname, '../src/index.ts')
       }]
     },
     plugins: [
@@ -38,17 +51,18 @@ export function bundle (fixture, options = {}) {
 
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
-      if (err) reject(err)
-      if (stats.hasErrors()) reject(new Error(stats.toJson().errors))
+      if (err) { return reject(err) }
+      if (stats.hasErrors()) { return reject(new Error(stats.toJson().errors.join(' | '))) }
       resolve({ code: mfs.readFileSync('/bundle.js').toString(), stats })
     })
   })
 }
 
-export async function bundleAndRun (fixture, options = {}) {
-  const { code, stats } = await bundle(fixture, options)
+export async function bundleAndRun (fixture: string): Promise<BundleResolveResolve> {
+  const { code, stats } = await bundle(fixture)
 
-  let dom, jsdomError
+  let dom: JSDOM | null = null
+  let jsdomError
   try {
     dom = new JSDOM(`<!DOCTYPE html><html><head></head><body></body></html>`, {
       runScripts: 'outside-only',
@@ -60,11 +74,15 @@ export async function bundleAndRun (fixture, options = {}) {
     jsdomError = e
   }
 
+  if (!dom) {
+    return Promise.reject(new Error('Cannot assigned JSDOM instance'))
+  }
+
   const { window } = dom
   const { module, exports } = window
   const instance = {}
   if (module && module.beforeCreate) {
-    module.beforeCreate.forEach(hook => hook.call(instance))
+    module.beforeCreate.forEach((hook: Function) => hook.call(instance))
   }
 
   return Promise.resolve({ window, module, exports, instance, code, jsdomError, stats })

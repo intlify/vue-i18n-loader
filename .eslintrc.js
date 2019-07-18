@@ -9,10 +9,16 @@ module.exports = {
   extends: [
     'plugin:vue-libs/recommended'
   ],
-  plugins: [],
+  plugins: [
+    '@typescript-eslint'
+  ],
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    ecmaVersion: 2015
+    parser: '@typescript-eslint/parser',
+    sourceType: 'module'
   },
   rules: {
+    'no-unused-vars': 'off', // HACK: due to override with @typescript-eslint/no-unused-vars
+    '@typescript-eslint/no-unused-vars': [2, { 'vars': 'all', 'args': 'none' }]
   }
 }
