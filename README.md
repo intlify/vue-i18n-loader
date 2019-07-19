@@ -69,7 +69,7 @@ you also can:
 
 ### Locale definition
 
-You can define locale messages for each locale in single-file components:
+You can define locale messages for each locale with `locale` attr in single-file components:
 
 ```vue
 <i18n locale="en">
