@@ -12,6 +12,25 @@ Array [
 ]
 `;
 
+exports[`locale attr 1`] = `
+Array [
+  "{\\"ja\\":{\\"hello\\":\\"こんにちは、世界！\\"}}",
+]
+`;
+
+exports[`locale attr and basic 1`] = `
+Array [
+  "{\\"en\\":{\\"hello\\":\\"hello world!\\"}}",
+  "{\\"ja\\":{\\"hello\\":\\"こんにちは、世界！\\"}}",
+]
+`;
+
+exports[`locale attr and import 1`] = `
+Array [
+  "{\\"en\\":{\\"hello\\":\\"hello world!\\"}}",
+]
+`;
+
 exports[`multiple 1`] = `
 Array [
   "{\\"en\\":{\\"hello\\":\\"hello world!\\"}}",
