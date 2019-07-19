@@ -2,7 +2,6 @@ import webpack from 'webpack'
 import { ParsedUrlQuery, parse } from 'querystring'
 
 const loader: webpack.loader.Loader = function (source: string | Buffer): void {
-
   if (this.version && Number(this.version) >= 2) {
     try {
       this.cacheable && this.cacheable()
