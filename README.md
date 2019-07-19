@@ -21,19 +21,9 @@
 
 the below example that`App.vue` have `i18n` custom block:
 
-### Custom Blocks (Single File Components)
-```vue
-<i18n>
-{
-  "en": {
-    "hello": "hello world!"
-  },
-  "ja": {
-    "hello": "こんにちは、世界!"
-  }
-}
-</i18n>
+### Basic
 
+```vue
 <template>
   <p>{{ $t('hello') }}</p>
 </template>
@@ -44,7 +34,20 @@ export default {
   // ...
 }
 </script>
+
+<i18n>
+{
+  "en": {
+    "hello": "hello world!"
+  },
+  "ja": {
+    "hello": "こんにちは、世界!"
+  }
+}
+</i18n>
 ```
+
+### Source importing
 
 you also can:
 
@@ -52,7 +55,8 @@ you also can:
 <i18n src="./myLang.json"></i18n>
 ```
 
-```json
+```json5
+// ./myLnag.json
 {
   "en": {
     "hello": "hello world!"
@@ -62,6 +66,27 @@ you also can:
   }
 }
 ```
+
+### Locale definition
+
+You can define locale messages for each locale in single-file components:
+
+```vue
+<i18n locale="en">
+{
+  "hello": "hello world!"
+}
+</i18n>
+
+<i18n locale="ja">
+{
+  "hello": "こんにちは、世界!"
+}
+</i18n>
+```
+
+The above defines two locales, which are merged at target single-file components.
+
 
 ### JavaScript
 
