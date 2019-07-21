@@ -1,11 +1,13 @@
 import webpack from 'webpack'
 import { ParsedUrlQuery, parse } from 'querystring'
+import { RawSourceMap } from 'source-map'
 
-const loader: webpack.loader.Loader = function (source: string | Buffer): void {
+const loader: webpack.loader.Loader = function (
+  source: string | Buffer, sourceMap: RawSourceMap | undefined): void {
   if (this.version && Number(this.version) >= 2) {
     try {
       this.cacheable && this.cacheable()
-      this.callback(null, `module.exports = ${generateCode(source, parse(this.resourceQuery))}`)
+      this.callback(null, `module.exports = ${generateCode(source, parse(this.resourceQuery))}`, sourceMap)
     } catch (err) {
       this.emitError(err.message)
       this.callback(err)
