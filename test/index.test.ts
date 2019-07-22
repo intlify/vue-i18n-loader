@@ -34,3 +34,13 @@ test('locale attr and import', async () => {
   const { module } = await bundleAndRun('locale-import.vue')
   expect(module.__i18n).toMatchSnapshot()
 })
+
+test('yaml', async () => {
+  const { module } = await bundleAndRun('yaml.vue')
+  expect(module.__i18n).toMatchSnapshot()
+})
+
+test('json5', async () => {
+  const { module } = await bundleAndRun('json5.vue')
+  expect(module.__i18n).toMatchSnapshot()
+})

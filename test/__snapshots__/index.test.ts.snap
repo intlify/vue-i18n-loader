@@ -12,6 +12,12 @@ Array [
 ]
 `;
 
+exports[`json5 1`] = `
+Array [
+  "{\\"en\\":{\\"hello\\":\\"hello world!\\"}}",
+]
+`;
+
 exports[`locale attr 1`] = `
 Array [
   "{\\"ja\\":{\\"hello\\":\\"こんにちは、世界！\\"}}",
@@ -41,5 +47,12 @@ Array [
 exports[`special characters 1`] = `
 Array [
   "{\\"en\\":{\\"hello\\":\\"hello\\\\ngreat\\\\t\\\\\\"world\\\\\\"\\"}}",
+]
+`;
+
+exports[`yaml 1`] = `
+Array [
+  "{\\"en\\":{\\"hello\\":\\"hello world!\\"}}",
+  "{\\"ja\\":{\\"hello\\":\\"こんにちは、世界！\\"}}",
 ]
 `;

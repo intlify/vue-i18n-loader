@@ -1,6 +1,8 @@
 import webpack from 'webpack'
 import { ParsedUrlQuery, parse } from 'querystring'
 import { RawSourceMap } from 'source-map'
+import JSON5 from 'json5'
+import yaml from 'js-yaml'
 
 const loader: webpack.loader.Loader = function (
   source: string | Buffer, sourceMap: RawSourceMap | undefined): void {
@@ -20,14 +22,8 @@ const loader: webpack.loader.Loader = function (
 }
 
 function generateCode (source: string | Buffer, query: ParsedUrlQuery): string {
-  let code = ''
-
-  let value = typeof source === 'string'
-    ? JSON.parse(source)
-    : Buffer.isBuffer(source)
-      ? JSON.parse(source.toString())
-      : null
-  if (value === null) { throw new Error('invalid source!') }
+  const data = convert(source, query.lang as string)
+  let value = JSON.parse(data)
 
   if (query.locale && typeof query.locale === 'string') {
     value = Object.assign({}, { [query.locale]: value })
@@ -38,12 +34,28 @@ function generateCode (source: string | Buffer, query: ParsedUrlQuery): string {
     .replace(/\u2029/g, '\\u2029')
     .replace(/\\/g, '\\\\')
 
+  let code = ''
   code += `function (Component) {
   Component.options.__i18n = Component.options.__i18n || []
   Component.options.__i18n.push('${value.replace(/\u0027/g, '\\u0027')}')
   delete Component.options._Ctor
 }\n`
   return code
+}
+
+function convert (source: string | Buffer, lang: string): string {
+  const value = Buffer.isBuffer(source) ? source.toString() : source
+
+  switch (lang) {
+    case 'yaml':
+    case 'yml':
+      const data = yaml.safeLoad(value)
+      return JSON.stringify(data, undefined, '\t')
+    case 'json5':
+      return JSON.stringify(JSON5.parse(value))
+    default:
+      return value
+  }
 }
 
 export default loader

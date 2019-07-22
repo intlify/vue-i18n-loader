@@ -1,5 +1,6 @@
 import path from 'path'
 import webpack from 'webpack'
+import merge from 'webpack-merge'
 import memoryfs from 'memory-fs'
 import { JSDOM, VirtualConsole, DOMWindow } from 'jsdom'
 import { VueLoaderPlugin } from 'vue-loader'
@@ -17,8 +18,8 @@ type BundleResolveResolve = BundleResolve & {
   exports: any
 }
 
-export function bundle (fixture: string): Promise<BundleResolve> {
-  const compiler = webpack({
+export function bundle (fixture: string, options = {}): Promise<BundleResolve> {
+  const baseConfig: webpack.Configuration = {
     mode: 'development',
     devtool: false,
     entry: path.resolve(__dirname, './fixtures/entry.js'),
@@ -38,13 +39,18 @@ export function bundle (fixture: string): Promise<BundleResolve> {
       }, {
         resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
-        loader: path.resolve(__dirname, '../src/index.ts')
+        use: [
+          path.resolve(__dirname, '../src/index.ts')
+        ]
       }]
     },
     plugins: [
       new VueLoaderPlugin()
     ]
-  })
+  }
+
+  const config = merge({}, baseConfig, options)
+  const compiler = webpack(config)
 
   const mfs = new memoryfs() // eslint-disable-line
   compiler.outputFileSystem = mfs
@@ -58,8 +64,8 @@ export function bundle (fixture: string): Promise<BundleResolve> {
   })
 }
 
-export async function bundleAndRun (fixture: string): Promise<BundleResolveResolve> {
-  const { code, stats } = await bundle(fixture)
+export async function bundleAndRun (fixture: string, config = {}): Promise<BundleResolveResolve> {
+  const { code, stats } = await bundle(fixture, config)
 
   let dom: JSDOM | null = null
   let jsdomError
