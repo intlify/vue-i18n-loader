@@ -1,3 +1,14 @@
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/kazupon/vue-i18n-loader/compare/v0.3.0...v0.4.0) (2019-07-22)
+
+
+### :star: New Features
+
+* support lang attribute ([36c62a5](https://github.com/kazupon/vue-i18n-loader/commit/36c62a5)), closes [#52](https://github.com/kazupon/vue-i18n-loader/issues/52)
+* support locale attr for i18n custom blocks ([be2bcc2](https://github.com/kazupon/vue-i18n-loader/commit/be2bcc2)), closes [#11](https://github.com/kazupon/vue-i18n-loader/issues/11)
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/kazupon/vue-i18n-loader/compare/v0.2.1...v0.3.0) (2018-03-04)
 
