@@ -47,6 +47,8 @@ export default {
 </i18n>
 ```
 
+The locale messages defined at  `i18n` custom blocks are **json format default**.
+
 ### Source importing
 
 you also can:
@@ -87,6 +89,38 @@ You can define locale messages for each locale with `locale` attr in single-file
 
 The above defines two locales, which are merged at target single-file components.
 
+
+### Locale Messages formatting
+
+Besides json format, You can be used by specifying the following format in the `lang` attribute:
+
+- yaml
+- json5
+
+example yaml foramt:
+
+```vue
+<i18n locale="en" lang="yaml">
+  hello: "hello world!"
+</i18n>
+
+<i18n locale="ja" lang="yml">
+  hello: "こんにちは、世界！"
+</i18n>
+```
+
+example json5 format:
+
+```vue
+<i18n lang="json5">
+{
+  "en": {
+    // comments
+    "hello": "hello world!"
+  }
+}
+</i18n>
+```
 
 ### JavaScript
 
