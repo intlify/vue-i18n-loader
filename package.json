@@ -36,6 +36,7 @@
     "opener": "^1.5.1",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.3",
+    "typescript-eslint-language-service": "^1.0.1",
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.35.3",
