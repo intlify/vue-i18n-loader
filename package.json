@@ -43,7 +43,7 @@
     "webpack-merge": "^4.2.1"
   },
   "engines": {
-    "node": ">= 8"
+    "node": ">= 10"
   },
   "files": [
     "lib",
