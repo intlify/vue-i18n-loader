@@ -9,6 +9,20 @@
   "bugs": {
     "url": "https://github.com/kazupon/vue-i18n-loader/issues"
   },
+  "changelog": {
+    "labels": {
+      "Type: Feature": ":star: Features",
+      "Type: Bug": ":bug: Bug Fixes",
+      "Type: Security": ":lock: Security Fixes",
+      "Type: Performance": ":chart_with_upwards_trend: Performance Fixes",
+      "Type: Improvement": ":zap: Improvement Features",
+      "Type: Breaking": ":boom: Breaking Change",
+      "Type: Deprecated": ":warning: Deprecated Features",
+      "Type: I18n": ":globe_with_meridians: Internationalization",
+      "Type: A11y": ":wheelchair: Accessibility",
+      "Type: Documentation": ":pencil: Documentation"
+    }
+  },
   "dependencies": {
     "js-yaml": "^3.13.1",
     "json5": "^2.1.1"
@@ -25,15 +39,14 @@
     "@typescript-eslint/eslint-plugin": "^2.14.0",
     "@typescript-eslint/parser": "^2.14.0",
     "@typescript-eslint/typescript-estree": "^2.14.0",
-    "conventional-changelog-cli": "^2.0.12",
-    "conventional-github-releaser": "^3.1.2",
     "eslint": "^6.8.0",
     "eslint-plugin-vue-libs": "^4.0.0",
-    "git-commit-message-convention": "git://github.com/kazupon/git-commit-message-convention.git",
     "jest": "^24.9.0",
     "jsdom": "^15.2.1",
+    "lerna-changelog": "^1.0.0",
     "memory-fs": "^0.5.0",
     "opener": "^1.5.1",
+    "shipjs": "^0.13.1",
     "ts-jest": "^24.2.0",
     "typescript": "^3.7.4",
     "typescript-eslint-language-service": "^2.0.3",
@@ -64,11 +77,11 @@
   },
   "scripts": {
     "build": "tsc -p .",
-    "changelog": "conventional-changelog -i CHANGELOG.md -s -n ./node_modules/git-commit-message-convention/convention.js",
     "clean": "rm -rf ./coverage && rm -rf ./lib/*.js*",
     "coverage": "opener coverage/lcov-report/index.html",
     "lint": "eslint ./src ./test --ext .ts",
-    "release": "conventional-github-releaser -n ./node_modules/git-commit-message-convention/convention.js",
+    "release:prepare": "shipjs prepare",
+    "release:trigger": "shipjs trigger",
     "test": "npm run lint && npm run test:cover",
     "test:cover": "npm run test:unit -- --coverage",
     "test:unit": "jest --env node",
