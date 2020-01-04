@@ -203,10 +203,10 @@ module.exports = {
 ```
 
 ## :scroll: Changelog
-Details changes for each release are documented in the [CHANGELOG.md](https://github.com/kazupon/vue-i18n-loader/blob/dev/CHANGELOG.md).
+Details changes for each release are documented in the [CHANGELOG.md](https://github.com/kazupon/vue-i18n-loader/blob/master/CHANGELOG.md).
 
 ## :muscle: Contribution
-Please make sure to read the [Contributing Guide](https://github.com/kazupon/vue-i18n-loader/blob/dev/CONTRIBUTING.md) before making a pull request.
+Please make sure to read the [Contributing Guide](https://github.com/kazupon/vue-i18n-loader/blob/master/.github/CONTRIBUTING.md) before making a pull request.
 
 ## :copyright: License
 
