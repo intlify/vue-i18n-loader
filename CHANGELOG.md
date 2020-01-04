@@ -1,3 +1,13 @@
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/kazupon/vue-i18n-loader/compare/v0.4.1...v0.5.0) (2020-01-04)
+
+
+### :boom: Breaking changes
+
+* deprecated node.js 8.x ([9680b46](https://github.com/kazupon/vue-i18n-loader/commit/9680b46))
+
+
+
 <a name="0.4.1"></a>
 ## [0.4.1](https://github.com/kazupon/vue-i18n-loader/compare/v0.3.0...v0.4.1) (2019-07-31)
 
