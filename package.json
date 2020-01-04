@@ -59,8 +59,7 @@
     "node": ">= 10"
   },
   "files": [
-    "lib",
-    "src"
+    "lib"
   ],
   "homepage": "https://github.com/kazupon/vue-i18n-loader#readme",
   "keywords": [

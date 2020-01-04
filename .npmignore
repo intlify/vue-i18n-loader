@@ -2,6 +2,7 @@
 *.log
 *.swp
 *.yml
+lib
 coverage
 __snapshots__
 test
