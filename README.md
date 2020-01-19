@@ -13,6 +13,13 @@
 
 <br/>
 
+## :loudspeaker: Notice
+vue-i18n-loader will soon be transferred to [intlify organaization](https://github.com/intlify). After that, it will be developed and maintained on intlify.
+
+The `@kazupon/vue-i18n-loader` that has been released on npm will be released as `@intlify/vue-i18n-loader` in near future.
+
+Intlify is a new i18n project kickoff by @kazupon. 😉 
+
 ## :cd: Installation
 
     $ npm i --save-dev @kazupon/vue-i18n-loader
