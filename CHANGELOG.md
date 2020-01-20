@@ -1,3 +1,12 @@
+
+## v0.6.0 (2020-01-20)
+
+#### :boom: Breaking Change
+* [#69](https://github.com/intlify/vue-i18n-loader/pull/69) change to new repo ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/kazupon/vue-i18n-loader/compare/v0.4.1...v0.5.0) (2020-01-04)
 
