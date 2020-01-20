@@ -3,10 +3,10 @@
 <h1 align="center">vue-i18n-loader</h1>
 
 <p align="center">
-  <a href="https://circleci.com/gh/kazupon/vue-i18n-loader"><img src="https://circleci.com/gh/kazupon/vue-i18n-loader.svg?style=svg" alt="Build Status"></a>
-  <a href="https://codecov.io/gh/kazupon/vue-i18n-loader"><img src="https://codecov.io/gh/kazupon/vue-i18n-loader/branch/dev/graph/badge.svg" alt="codecov"></a>
-  <a href="https://www.npmjs.com/package/@kazupon/vue-i18n-loader"><img src="https://img.shields.io/npm/v/@kazupon/vue-i18n-loader.svg" alt="npm"></a>
-  <a href="https://devtoken.rocks/package/@kazupon/vue-i18n-loader"><img src="https://badge.devtoken.rocks/@kazupon/vue-i18n-loader" alt="@kazupon/vue-i18n-loader Dev Token"/></a>
+  <a href="https://circleci.com/gh/intlify/vue-i18n-loader"><img src="https://circleci.com/gh/intlify/vue-i18n-loader.svg?style=svg" alt="Build Status"></a>
+  <a href="https://codecov.io/gh/intlify/vue-i18n-loader"><img src="https://codecov.io/gh/intlify/vue-i18n-loader/branch/dev/graph/badge.svg" alt="codecov"></a>
+  <a href="https://www.npmjs.com/package/@intlify/vue-i18n-loader"><img src="https://img.shields.io/npm/v/@intlify/vue-i18n-loader.svg" alt="npm"></a>
+  <a href="https://devtoken.rocks/package/@intlify/vue-i18n-loader"><img src="https://badge.devtoken.rocks/@intlify/vue-i18n-loader" alt="@intlify/vue-i18n-loader Dev Token"/></a>
 </p>
 
 <p align="center">vue-i18n loader for custom blocks</p>
@@ -22,7 +22,7 @@ Intlify is a new i18n project kickoff by @kazupon. 😉
 
 ## :cd: Installation
 
-    $ npm i --save-dev @kazupon/vue-i18n-loader
+    $ npm i --save-dev @intlify/vue-i18n-loader
 
 ## :rocket: Usage
 
@@ -168,7 +168,7 @@ module.exports = {
       .resourceQuery(/blockType=i18n/)
       .type('javascript/auto')
       .use('i18n')
-      .loader('@kazupon/vue-i18n-loader')
+      .loader('@intlify/vue-i18n-loader')
   }
 }
 ```
@@ -183,7 +183,7 @@ module.exports = {
       {
         resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
-        loader: '@kazupon/vue-i18n-loader',
+        loader: '@intlify/vue-i18n-loader',
       },
     ]
   }
@@ -201,7 +201,7 @@ module.exports = {
       loader: 'vue',
       options: {
         loaders: {
-          i18n: '@kazupon/vue-i18n-loader'
+          i18n: '@intlify/vue-i18n-loader'
         }
       }
     }]
@@ -210,10 +210,10 @@ module.exports = {
 ```
 
 ## :scroll: Changelog
-Details changes for each release are documented in the [CHANGELOG.md](https://github.com/kazupon/vue-i18n-loader/blob/master/CHANGELOG.md).
+Details changes for each release are documented in the [CHANGELOG.md](https://github.com/intlify/vue-i18n-loader/blob/master/CHANGELOG.md).
 
 ## :muscle: Contribution
-Please make sure to read the [Contributing Guide](https://github.com/kazupon/vue-i18n-loader/blob/master/.github/CONTRIBUTING.md) before making a pull request.
+Please make sure to read the [Contributing Guide](https://github.com/intlify/vue-i18n-loader/blob/master/.github/CONTRIBUTING.md) before making a pull request.
 
 ## :copyright: License
 

@@ -35,12 +35,12 @@
   - Add appropriate test coverage if applicable.
 
 ### Work Step Example
-- Fork the repository from [kazupon/vue-i18n-loader](https://github.com/kazupon/vue-i18n-loader) !
+- Fork the repository from [intlify/vue-i18n-loader](https://github.com/intlify/vue-i18n-loader) !
 - Create your topic branch from `master`: `git branch my-new-topic origin/master`
 - Add codes and pass tests !
 - Commit your changes: `git commit -am 'Add some topic'`
 - Push to the branch: `git push origin my-new-topic`
-- Submit a pull request to `master` branch of `kazupon/vue-i18n-loader` repository !
+- Submit a pull request to `master` branch of `intlify/vue-i18n-loader` repository !
 
 ## Development Setup
 
