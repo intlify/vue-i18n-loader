@@ -47,7 +47,7 @@
     "memory-fs": "^0.5.0",
     "opener": "^1.5.1",
     "shipjs": "^0.14.0",
-    "ts-jest": "^24.2.0",
+    "ts-jest": "^25.0.0",
     "typescript": "^3.7.4",
     "typescript-eslint-language-service": "^2.0.3",
     "vue-loader": "^15.7.0",
