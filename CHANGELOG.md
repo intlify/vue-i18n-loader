@@ -1,4 +1,13 @@
 
+## v0.6.1 (2020-01-26)
+
+#### :bug: Bug Fixes
+* [#74](https://github.com/intlify/vue-i18n-loader/pull/74) fix missing module ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v0.6.0 (2020-01-20)
 
 #### :boom: Breaking Change
