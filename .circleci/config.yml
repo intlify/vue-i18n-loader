@@ -7,7 +7,7 @@ executors:
   default:
     docker:
       # specify the version you desire here
-      - image: circleci/node:10.18.1
+      - image: circleci/node:10.19.0
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
