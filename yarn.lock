@@ -3413,10 +3413,10 @@ ini@^1.3.2:
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
   integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
 
-inquirer@7.0.6:
-  version "7.0.6"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-7.0.6.tgz#ee4ff0ea7ecda5324656fe665878790f66df7d0c"
-  integrity sha512-7SVO4h+QIdMq6XcqIqrNte3gS5MzCCKZdsq9DO4PJziBFNYzP3PGFbDjgadDb//MCahzgjCxvQ/O2wa7kx9o4w==
+inquirer@7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-7.1.0.tgz#1298a01859883e17c7264b82870ae1034f92dd29"
+  integrity sha512-5fJMWEmikSYu0nv/flMc475MhGbB7TSPd/2IpFV4I4rMklboCH2rQjYY5kKiYGHqUF9gvaambupcJFFG9dvReg==
   dependencies:
     ansi-escapes "^4.2.1"
     chalk "^3.0.0"
@@ -6142,10 +6142,10 @@ shellwords@^0.1.1:
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
 
-shipjs-lib@0.17.0:
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/shipjs-lib/-/shipjs-lib-0.17.0.tgz#d679a74bb15da204428a42749ccc956219f3945d"
-  integrity sha512-L5fWc+kTISWsNLBPV4miWNvBD8DiGpWflNCHU/GsvAEIau7henH2SzN2WGA6YsirmsTsK8SZaEjOzK0ncrDhbQ==
+shipjs-lib@0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/shipjs-lib/-/shipjs-lib-0.18.0.tgz#df6282395179621e06dc67b40bdd8ccb5cefca21"
+  integrity sha512-X2rtkLeOlTjZjfZC3NHAYXC5JaMTWnJFMwTNC+T5NJFdHMnNrLuR7ZVXS3mh//ku/1AU7AOka8UuhfH8UBsYBg==
   dependencies:
     deepmerge "^4.2.2"
     dotenv "^8.1.0"
@@ -6153,10 +6153,10 @@ shipjs-lib@0.17.0:
     semver "6.3.0"
     shelljs "0.8.3"
 
-shipjs@^0.17.0:
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/shipjs/-/shipjs-0.17.0.tgz#7de59dcc3e1dabc7b2d6b246f74406df8f59c9dd"
-  integrity sha512-9F2uSGiWOo6U9GBWVhnuD8tpbxTwodpQdPCbejNJ7l8a54aBpZjyh2bP3rxdd3u4SzEMRHZik61/llkjjqwwww==
+shipjs@^0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/shipjs/-/shipjs-0.18.0.tgz#c05fc30558f5d315b8e1a2482775e1f0260dcf6c"
+  integrity sha512-Rs07yBSygKvvLiRQQA4hqZHEySibuAOiP30UGLraBY0/XevD66XjCZliyVwck6zSBRUromy+4BIQ191n2unJkA==
   dependencies:
     "@babel/runtime" "^7.6.3"
     "@octokit/rest" "^17.0.0"
@@ -6170,14 +6170,14 @@ shipjs@^0.17.0:
     ejs "^3.0.0"
     esm "3.2.25"
     globby "^10.0.1"
-    inquirer "7.0.6"
+    inquirer "7.1.0"
     mime-types "^2.1.25"
     mkdirp "^1.0.0"
     open "^7.0.0"
     prettier "^1.18.2"
     serialize-javascript "^3.0.0"
     shell-quote "^1.7.2"
-    shipjs-lib "0.17.0"
+    shipjs-lib "0.18.0"
     temp-write "4.0.0"
     tempfile "^3.0.0"
 
