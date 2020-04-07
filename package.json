@@ -46,6 +46,7 @@
     "lerna-changelog": "^1.0.0",
     "memory-fs": "^0.5.0",
     "opener": "^1.5.1",
+    "prettier": "^2.0.4",
     "shipjs": "^0.18.0",
     "ts-jest": "^25.0.0",
     "typescript": "^3.7.4",
@@ -81,8 +82,10 @@
     "lint": "eslint ./src ./test --ext .ts",
     "release:prepare": "shipjs prepare",
     "release:trigger": "shipjs trigger",
-    "test": "npm run lint && npm run test:cover",
-    "test:cover": "npm run test:unit -- --coverage",
+    "format": "prettier --config .prettierrc --ignore-path .prettierignore '**/*.{js,json,html}'",
+    "format:fix": "yarn format --write",
+    "test": "yarn lint && yarn test:cover",
+    "test:cover": "yarn test:unit --coverage",
     "test:unit": "jest --env node",
     "watch": "tsc -p . --watch"
   }
