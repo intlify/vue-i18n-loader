@@ -41,15 +41,16 @@
     "@typescript-eslint/typescript-estree": "^2.14.0",
     "eslint": "^6.8.0",
     "eslint-plugin-vue-libs": "^4.0.0",
-    "jest": "^25.0.0",
+    "jest": "^25.2.4",
+    "jest-watch-typeahead": "^0.5.0",
     "jsdom": "^16.0.0",
     "lerna-changelog": "^1.0.0",
     "memory-fs": "^0.5.0",
     "opener": "^1.5.1",
     "prettier": "^2.0.4",
     "shipjs": "^0.18.0",
-    "ts-jest": "^25.0.0",
-    "typescript": "^3.7.4",
+    "ts-jest": "^25.3.0",
+    "typescript": "^3.8.3",
     "typescript-eslint-language-service": "^2.0.3",
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.11",
@@ -77,6 +78,7 @@
   },
   "scripts": {
     "build": "tsc -p .",
+    "build:watch": "tsc -p . --watch",
     "clean": "rm -rf ./coverage && rm -rf ./lib/*.js*",
     "coverage": "opener coverage/lcov-report/index.html",
     "lint": "eslint ./src ./test --ext .ts",
@@ -87,6 +89,6 @@
     "test": "yarn lint && yarn test:cover",
     "test:cover": "yarn test:unit --coverage",
     "test:unit": "jest --env node",
-    "watch": "tsc -p . --watch"
+    "test:watch": "jest --env node --watch"
   }
 }
