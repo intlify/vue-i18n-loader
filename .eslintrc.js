@@ -6,7 +6,13 @@ module.exports = {
     node: true,
     jest: true
   },
-  extends: ['plugin:vue-libs/recommended'],
+  extends: [
+    'plugin:vue-libs/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended'
+  ],
   plugins: ['@typescript-eslint'],
   parser: 'vue-eslint-parser',
   parserOptions: {
@@ -14,7 +20,9 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    'no-unused-vars': 'off', // HACK: due to override with @typescript-eslint/no-unused-vars
-    '@typescript-eslint/no-unused-vars': [2, { vars: 'all', args: 'none' }]
+    'object-curly-spacing': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/member-delimiter-style': 'off',
+    '@typescript-eslint/no-use-before-define': 'off'
   }
 }

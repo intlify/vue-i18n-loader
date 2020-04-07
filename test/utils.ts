@@ -6,19 +6,19 @@ import { JSDOM, VirtualConsole, DOMWindow } from 'jsdom'
 import { VueLoaderPlugin } from 'vue-loader'
 
 type BundleResolve = {
-  code: string,
+  code: string
   stats: webpack.Stats
 }
 
 type BundleResolveResolve = BundleResolve & {
-  jsdomError: any,
-  instance: any,
-  window: DOMWindow,
-  module: any,
-  exports: any
+  jsdomError: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  instance: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  window: DOMWindow
+  module: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  exports: any // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-export function bundle (fixture: string, options = {}): Promise<BundleResolve> {
+export function bundle(fixture: string, options = {}): Promise<BundleResolve> {
   const baseConfig: webpack.Configuration = {
     mode: 'development',
     devtool: false,
@@ -33,20 +33,19 @@ export function bundle (fixture: string, options = {}): Promise<BundleResolve> {
       filename: 'bundle.js'
     },
     module: {
-      rules: [{
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      }, {
-        resourceQuery: /blockType=i18n/,
-        type: 'javascript/auto',
-        use: [
-          path.resolve(__dirname, '../src/index.ts')
-        ]
-      }]
+      rules: [
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader'
+        },
+        {
+          resourceQuery: /blockType=i18n/,
+          type: 'javascript/auto',
+          use: [path.resolve(__dirname, '../src/index.ts')]
+        }
+      ]
     },
-    plugins: [
-      new VueLoaderPlugin()
-    ]
+    plugins: [new VueLoaderPlugin()]
   }
 
   const config = merge({}, baseConfig, options)
@@ -57,14 +56,21 @@ export function bundle (fixture: string, options = {}): Promise<BundleResolve> {
 
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
-      if (err) { return reject(err) }
-      if (stats.hasErrors()) { return reject(new Error(stats.toJson().errors.join(' | '))) }
+      if (err) {
+        return reject(err)
+      }
+      if (stats.hasErrors()) {
+        return reject(new Error(stats.toJson().errors.join(' | ')))
+      }
       resolve({ code: mfs.readFileSync('/bundle.js').toString(), stats })
     })
   })
 }
 
-export async function bundleAndRun (fixture: string, config = {}): Promise<BundleResolveResolve> {
+export async function bundleAndRun(
+  fixture: string,
+  config = {}
+): Promise<BundleResolveResolve> {
   const { code, stats } = await bundle(fixture, config)
 
   let dom: JSDOM | null = null
@@ -91,5 +97,13 @@ export async function bundleAndRun (fixture: string, config = {}): Promise<Bundl
     module.beforeCreate.forEach((hook: Function) => hook.call(instance))
   }
 
-  return Promise.resolve({ window, module, exports, instance, code, jsdomError, stats })
+  return Promise.resolve({
+    window,
+    module,
+    exports,
+    instance,
+    code,
+    jsdomError,
+    stats
+  })
 }

@@ -5,11 +5,17 @@ import JSON5 from 'json5'
 import yaml from 'js-yaml'
 
 const loader: webpack.loader.Loader = function (
-  source: string | Buffer, sourceMap: RawSourceMap | undefined): void {
+  source: string | Buffer,
+  sourceMap: RawSourceMap | undefined
+): void {
   if (this.version && Number(this.version) >= 2) {
     try {
       this.cacheable && this.cacheable()
-      this.callback(null, `module.exports = ${generateCode(source, parse(this.resourceQuery))}`, sourceMap)
+      this.callback(
+        null,
+        `module.exports = ${generateCode(source, parse(this.resourceQuery))}`,
+        sourceMap
+      )
     } catch (err) {
       this.emitError(err.message)
       this.callback(err)
@@ -21,7 +27,7 @@ const loader: webpack.loader.Loader = function (
   }
 }
 
-function generateCode (source: string | Buffer, query: ParsedUrlQuery): string {
+function generateCode(source: string | Buffer, query: ParsedUrlQuery): string {
   const data = convert(source, query.lang as string)
   let value = JSON.parse(data)
 
@@ -43,7 +49,7 @@ function generateCode (source: string | Buffer, query: ParsedUrlQuery): string {
   return code
 }
 
-function convert (source: string | Buffer, lang: string): string {
+function convert(source: string | Buffer, lang: string): string {
   const value = Buffer.isBuffer(source) ? source.toString() : source
 
   switch (lang) {
