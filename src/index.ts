@@ -13,7 +13,7 @@ const loader: webpack.loader.Loader = function (
       this.cacheable && this.cacheable()
       this.callback(
         null,
-        `module.exports = ${generateCode(source, parse(this.resourceQuery))}`,
+        `export default ${generateCode(source, parse(this.resourceQuery))}`,
         sourceMap
       )
     } catch (err) {
@@ -42,9 +42,8 @@ function generateCode(source: string | Buffer, query: ParsedUrlQuery): string {
 
   let code = ''
   code += `function (Component) {
-  Component.options.__i18n = Component.options.__i18n || []
-  Component.options.__i18n.push('${value.replace(/\u0027/g, '\\u0027')}')
-  delete Component.options._Ctor
+  Component.__i18n = Component.__i18n || []
+  Component.__i18n.push('${value.replace(/\u0027/g, '\\u0027')}')
 }\n`
   return code
 }
