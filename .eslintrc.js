@@ -6,12 +6,8 @@ module.exports = {
     node: true,
     jest: true
   },
-  extends: [
-    'plugin:vue-libs/recommended'
-  ],
-  plugins: [
-    '@typescript-eslint'
-  ],
+  extends: ['plugin:vue-libs/recommended'],
+  plugins: ['@typescript-eslint'],
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
@@ -19,6 +15,6 @@ module.exports = {
   },
   rules: {
     'no-unused-vars': 'off', // HACK: due to override with @typescript-eslint/no-unused-vars
-    '@typescript-eslint/no-unused-vars': [2, { 'vars': 'all', 'args': 'none' }]
+    '@typescript-eslint/no-unused-vars': [2, { vars: 'all', args: 'none' }]
   }
 }
