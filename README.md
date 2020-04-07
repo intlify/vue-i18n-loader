@@ -3,8 +3,7 @@
 <h1 align="center">@intlify/vue-i18n-loader</h1>
 
 <p align="center">
-  <a href="https://circleci.com/gh/intlify/vue-i18n-loader"><img src="https://circleci.com/gh/intlify/vue-i18n-loader.svg?style=svg" alt="Build Status"></a>
-  <a href="https://codecov.io/gh/intlify/vue-i18n-loader"><img src="https://codecov.io/gh/intlify/vue-i18n-loader/branch/dev/graph/badge.svg" alt="codecov"></a>
+  <a href="https://github.com/intlify/vue-i18n-loader/actions?query=workflow%3ATest"><img src="https://github.com/intlify/vue-i18n-loader/workflows/Test/badge.svg" alt="Build Status"></a>
   <a href="https://www.npmjs.com/package/@intlify/vue-i18n-loader"><img src="https://img.shields.io/npm/v/@intlify/vue-i18n-loader.svg" alt="npm"></a>
   <a href="https://devtoken.rocks/package/@intlify/vue-i18n-loader"><img src="https://badge.devtoken.rocks/@intlify/vue-i18n-loader" alt="@intlify/vue-i18n-loader Dev Token"/></a>
 </p>
