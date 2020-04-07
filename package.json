@@ -1,7 +1,7 @@
 {
   "name": "@intlify/vue-i18n-loader",
   "description": "vue-i18n loader for custom blocks",
-  "version": "0.6.1",
+  "version": "1.0.0",
   "author": {
     "name": "kazuya kawaguchi",
     "email": "kawakazu80@gmail.com"

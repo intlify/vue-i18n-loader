@@ -1,4 +1,13 @@
 
+## v1.0.0 (2020-04-07)
+
+#### :pencil: Documentation
+* [#88](https://github.com/intlify/vue-i18n-loader/pull/88) add example ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v0.6.1 (2020-01-26)
 
 #### :bug: Bug Fixes
