@@ -1,9 +1,9 @@
 {
-    "eslint.validate": [
-        "javascript",
-        {"language": "typescript", "autoFix": true}
-    ],
-    "eslint.packageManager": "yarn",
-    "eslint.enable": true,
-    "typescript.tsdk": "node_modules/typescript/lib"
+  "eslint.validate": [
+    "javascript",
+    { "language": "typescript", "autoFix": true }
+  ],
+  "eslint.packageManager": "yarn",
+  "eslint.enable": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
