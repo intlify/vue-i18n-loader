@@ -1,3 +1,11 @@
+## v2.0.0-alpha.0  (2020-04-08)
+
+### :boom: Breaking changes
+* Support for vue-loader@next
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 
 ## v1.0.0 (2020-04-07)
 
@@ -105,6 +113,6 @@
 <a name="0.1.0"></a>
 # 0.1.0 (2017-03-29)
 
-### :hatched_chick: 
+### :hatched_chick:
 
 * First Release
