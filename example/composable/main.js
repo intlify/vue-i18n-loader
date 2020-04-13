@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
-import { createI18nComposer } from 'vue-i18n'
+import { createI18n } from 'vue-i18n'
 import App from './App.vue'
 
-const i18n = createI18nComposer({
+const i18n = createI18n({
   locale: 'ja',
   messages: {}
 })

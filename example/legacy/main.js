@@ -3,6 +3,7 @@ import { createI18n } from 'vue-i18n'
 import App from './App.vue'
 
 const i18n = createI18n({
+  legacy: true,
   locale: 'ja',
   messages: {}
 })
