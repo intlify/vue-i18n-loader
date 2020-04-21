@@ -29,7 +29,7 @@ the below example that`App.vue` have `i18n` custom block:
 
 <script>
 export default {
-  name: 'app',
+  name: 'app'
   // ...
 }
 </script>
@@ -46,7 +46,7 @@ export default {
 </i18n>
 ```
 
-The locale messages defined at  `i18n` custom blocks are **json format default**.
+The locale messages defined at `i18n` custom blocks are **json format default**.
 
 ### Source importing
 
@@ -59,11 +59,11 @@ you also can:
 ```json5
 // ./myLnag.json
 {
-  "en": {
-    "hello": "hello world!"
+  en: {
+    hello: 'hello world!'
   },
-  "ja": {
-    "hello": "こんにちは、世界!"
+  ja: {
+    hello: 'こんにちは、世界!'
   }
 }
 ```
@@ -88,13 +88,13 @@ You can define locale messages for each locale with `locale` attr in single-file
 
 The above defines two locales, which are merged at target single-file components.
 
-
 ### Locale Messages formatting
 
 Besides json format, You can be used by specifying the following format in the `lang` attribute:
 
 - yaml
 - json5
+- toml
 
 example yaml foramt:
 
@@ -118,6 +118,18 @@ example json5 format:
     "hello": "hello world!"
   }
 }
+</i18n>
+```
+
+example toml foramt:
+
+```vue
+<i18n locale="en" lang="toml">
+  hello = "hello world!"
+</i18n>
+
+<i18n locale="ja" lang="toml">
+  hello = "こんにちは、世界！"
 </i18n>
 ```
 
@@ -175,8 +187,8 @@ module.exports = {
       {
         resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
-        loader: '@intlify/vue-i18n-loader',
-      },
+        loader: '@intlify/vue-i18n-loader'
+      }
     ]
   }
 }
@@ -188,23 +200,27 @@ module.exports = {
 // for webpack config file
 module.exports = {
   module: {
-    rules: [{
-      test: /\.vue$/,
-      loader: 'vue',
-      options: {
-        loaders: {
-          i18n: '@intlify/vue-i18n-loader'
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue',
+        options: {
+          loaders: {
+            i18n: '@intlify/vue-i18n-loader'
+          }
         }
       }
-    }]
+    ]
   }
 }
 ```
 
 ## :scroll: Changelog
+
 Details changes for each release are documented in the [CHANGELOG.md](https://github.com/intlify/vue-i18n-loader/blob/master/CHANGELOG.md).
 
 ## :muscle: Contribution
+
 Please make sure to read the [Contributing Guide](https://github.com/intlify/vue-i18n-loader/blob/master/.github/CONTRIBUTING.md) before making a pull request.
 
 ## :copyright: License
