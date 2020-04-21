@@ -29,7 +29,7 @@ the below example that`App.vue` have `i18n` custom block:
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
   // ...
 }
 </script>
@@ -59,11 +59,11 @@ you also can:
 ```json5
 // ./myLnag.json
 {
-  en: {
-    hello: 'hello world!'
+  "en": {
+    "hello": "hello world!"
   },
-  ja: {
-    hello: 'こんにちは、世界!'
+  "ja": {
+    "hello": "こんにちは、世界!"
   }
 }
 ```
