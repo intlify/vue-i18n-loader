@@ -187,8 +187,8 @@ module.exports = {
       {
         resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
-        loader: '@intlify/vue-i18n-loader'
-      }
+        loader: '@intlify/vue-i18n-loader',
+      },
     ]
   }
 }
@@ -200,17 +200,15 @@ module.exports = {
 // for webpack config file
 module.exports = {
   module: {
-    rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue',
-        options: {
-          loaders: {
-            i18n: '@intlify/vue-i18n-loader'
-          }
+    rules: [{
+      test: /\.vue$/,
+      loader: 'vue',
+      options: {
+        loaders: {
+          i18n: '@intlify/vue-i18n-loader'
         }
       }
-    ]
+    }]
   }
 }
 ```
