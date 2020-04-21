@@ -3,6 +3,7 @@ import { ParsedUrlQuery, parse } from 'querystring'
 import { RawSourceMap } from 'source-map'
 import JSON5 from 'json5'
 import yaml from 'js-yaml'
+import toml from 'toml'
 
 const loader: webpack.loader.Loader = function (
   source: string | Buffer,
@@ -58,6 +59,8 @@ function convert(source: string | Buffer, lang: string): string {
       return JSON.stringify(data, undefined, '\t')
     case 'json5':
       return JSON.stringify(JSON5.parse(value))
+    case 'toml':
+      return JSON.stringify(toml.parse(value))
     default:
       return value
   }

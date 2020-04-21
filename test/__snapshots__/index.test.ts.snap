@@ -50,6 +50,13 @@ Array [
 ]
 `;
 
+exports[`toml 1`] = `
+Array [
+  "{\\"en\\":{\\"hello\\":\\"hello world!\\"}}",
+  "{\\"ja\\":{\\"hello\\":\\"こんにちは、世界！\\"}}",
+]
+`;
+
 exports[`yaml 1`] = `
 Array [
   "{\\"en\\":{\\"hello\\":\\"hello world!\\"}}",

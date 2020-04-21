@@ -44,3 +44,8 @@ test('json5', async () => {
   const { module } = await bundleAndRun('json5.vue')
   expect(module.__i18n).toMatchSnapshot()
 })
+
+test('toml', async () => {
+  const { module } = await bundleAndRun('toml.vue')
+  expect(module.__i18n).toMatchSnapshot()
+})
