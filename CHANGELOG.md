@@ -1,3 +1,12 @@
+
+## v2.0.0-alpha.1 (2020-05-02)
+
+#### :star: Features
+* [#93](https://github.com/intlify/vue-i18n-loader/pull/93) feat: i18n custom block pre-compilation bundling ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v2.0.0-alpha.0  (2020-04-08)
 
 ### :boom: Breaking changes
