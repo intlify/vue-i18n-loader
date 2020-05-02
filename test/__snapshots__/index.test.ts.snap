@@ -46,7 +46,8 @@ Array [
 
 exports[`special characters 1`] = `
 Array [
-  "{\\"en\\":{\\"hello\\":\\"hello\\\\ngreat\\\\t\\\\\\"world\\\\\\"\\"}}",
+  "{\\"en\\":{\\"hello\\":\\"hello
+great	\\"world\\"\\"}}",
 ]
 `;
 

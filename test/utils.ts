@@ -41,14 +41,19 @@ export function bundle(fixture: string, options = {}): Promise<BundleResolve> {
         {
           resourceQuery: /blockType=i18n/,
           type: 'javascript/auto',
-          use: [path.resolve(__dirname, '../src/index.ts')]
+          use: [
+            {
+              loader: path.resolve(__dirname, '../src/index.ts'),
+              options
+            }
+          ]
         }
       ]
     },
     plugins: [new VueLoaderPlugin()]
   }
 
-  const config = merge({}, baseConfig, options)
+  const config = merge({}, baseConfig)
   const compiler = webpack(config)
 
   const mfs = new memoryfs() // eslint-disable-line
