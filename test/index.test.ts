@@ -1,4 +1,6 @@
 import { bundleAndRun } from './utils'
+import { MessageFunction, baseCompile } from 'vue-i18n'
+import prettier from 'prettier'
 
 test('basic', async () => {
   const { module } = await bundleAndRun('basic.vue')
@@ -43,4 +45,20 @@ test('yaml', async () => {
 test('json5', async () => {
   const { module } = await bundleAndRun('json5.vue')
   expect(module.__i18n).toMatchSnapshot()
+})
+
+test('pre compile', async () => {
+  const options: prettier.Options = { parser: 'babel' }
+  const { module } = await bundleAndRun('compile.vue', {
+    preCompile: true
+  })
+  const { functions } = module.__i18n()
+  for (const [key, value] of Object.entries(functions)) {
+    const msg = value as MessageFunction
+    const data = JSON.parse(key)
+    const result = baseCompile(data.s, { mode: 'arrow' })
+    expect(prettier.format(msg.toString(), options)).toMatch(
+      prettier.format(result.code, options)
+    )
+  }
 })
