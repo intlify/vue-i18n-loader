@@ -28,6 +28,7 @@
     "js-yaml": "^3.13.1",
     "json5": "^2.1.1",
     "loader-utils": "^2.0.0",
+    "prettier": "^2.0.5",
     "vue-i18n": "^9.0.0-alpha.7"
   },
   "devDependencies": {
@@ -58,7 +59,6 @@
     "lerna-changelog": "^1.0.0",
     "memory-fs": "^0.5.0",
     "opener": "^1.5.1",
-    "prettier": "^2.0.5",
     "puppeteer": "^2.1.1",
     "shipjs": "^0.18.0",
     "ts-jest": "^25.3.0",
