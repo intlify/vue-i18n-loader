@@ -1,4 +1,13 @@
 
+## v2.0.0-alpha.2 (2020-05-02)
+
+#### :bug: Bug Fixes
+* [#95](https://github.com/intlify/vue-i18n-loader/pull/95) fix: move prettier to deps from devDeps ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v2.0.0-alpha.1 (2020-05-02)
 
 #### :star: Features
