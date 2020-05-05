@@ -54,7 +54,7 @@
     "eslint-plugin-vue-libs": "^4.0.0",
     "jest": "^25.2.4",
     "jest-puppeteer": "^4.4.0",
-    "jest-watch-typeahead": "^0.5.0",
+    "jest-watch-typeahead": "^0.6.0",
     "jsdom": "^16.0.0",
     "lerna-changelog": "^1.0.0",
     "memory-fs": "^0.5.0",
