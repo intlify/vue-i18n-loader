@@ -10,27 +10,60 @@
 
 <p align="center">vue-i18n loader for custom blocks</p>
 
+**NOTE:** :warning: This `next` branch is development branch for Vue 3! The stable version is now in [`master`](https://github.com/intlify/vue-i18n-loader/tree/master) branch!
+
+## Status: Alpha ![Test](https://github.com/intlify/vue-i18n-loader/workflows/Test/badge.svg)
+
 <br/>
+
+## :star: Features
+- `i18n` custom block
+  - i18n resource definition
+  - i18n resource importing
+  - Locale of i18n resource definition
+  - i18n resource formatting
+- i18n resource optimaization
+
 
 ## :cd: Installation
 
-    $ npm i --save-dev @intlify/vue-i18n-loader
+### NPM
 
-## :rocket: Usage
+```sh
+$ npm i --save-dev @intlify/vue-i18n-extensions@alpha
+```
+
+### YARN
+
+```sh
+$ yarn add -D @intlify/vue-i18n-extensions@alpha
+```
+
+## :rocket: `i18n` custom block
 
 the below example that`App.vue` have `i18n` custom block:
 
-### Basic
+### i18n resource definition
 
 ```vue
 <template>
-  <p>{{ $t('hello') }}</p>
+  <p>{{ t('hello') }}</p>
 </template>
 
 <script>
+import { useI18n } from 'vue-i18n'
+
 export default {
   name: 'app',
-  // ...
+  setup() {
+    // Somthing todo ...
+    return {
+      ...,
+      ...useI18n({
+        // ...
+      })
+    }
+  }
 }
 </script>
 
@@ -46,11 +79,11 @@ export default {
 </i18n>
 ```
 
-The locale messages defined at  `i18n` custom blocks are **json format default**.
+The locale messages defined at `i18n` custom blocks are **json format default**.
 
-### Source importing
+### i18n resource importing
 
-you also can:
+you also can use `src` attribute:
 
 ```vue
 <i18n src="./myLang.json"></i18n>
@@ -68,9 +101,9 @@ you also can:
 }
 ```
 
-### Locale definition
+### Locale of i18n resource definition
 
-You can define locale messages for each locale with `locale` attr in single-file components:
+You can define locale messages for each locale with `locale` attribute in single-file components:
 
 ```vue
 <i18n locale="en">
@@ -89,7 +122,7 @@ You can define locale messages for each locale with `locale` attr in single-file
 The above defines two locales, which are merged at target single-file components.
 
 
-### Locale Messages formatting
+### i18n resource formatting
 
 Besides json format, You can be used by specifying the following format in the `lang` attribute:
 
@@ -124,14 +157,13 @@ example json5 format:
 ### JavaScript
 
 ```javascript
-import Vue from 'vue'
-import VueI18n from 'vue-i18n'
+import { createApp } from 'vue'
+import { createI18n } from 'vue-i18n'
 import App from './App.vue'
 
-Vue.use(VueI18n)
-
-const i18n = new VueI18n({
-  locale: 'en',
+// setup i18n instance with globaly
+const i18n = createI18n({
+  locale: 'ja',
   messages: {
     en: {
       // ...
@@ -141,62 +173,58 @@ const i18n = new VueI18n({
     }
   }
 })
-new Vue({
-  i18n,
-  render: h => h(App)
-}).$mount('#app')
+
+const app = createApp(App)
+
+app.use(i18n)
+app.mount('#app')
 ```
 
 ### Webpack Config
 
-`vue-loader` (v15 or later):
+`vue-loader` (`next` version):
 
 ```javascript
-// for vue.config.js (Vue CLI)
-module.exports = {
-  chainWebpack: config => {
-    config.module
-      .rule('i18n')
-      .resourceQuery(/blockType=i18n/)
-      .type('javascript/auto')
-      .use('i18n')
-      .loader('@intlify/vue-i18n-loader')
-  }
-}
-```
-
-`vue-loader` (v15 or later):
-
-```javascript
-// for webpack.config.js (Without Vue CLI)
 module.exports = {
   module: {
     rules: [
+      // ...
       {
         resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
-        loader: '@intlify/vue-i18n-loader',
+        loader: '@intlify/vue-i18n-loader'
       },
+      // ...
     ]
   }
 }
 ```
 
-`vue-loader` (~v14.x):
+## :rocket: i18n resource optimazation
+
+You can optimize your localization performance with pre-compiling the i18n resources.
+
+You need to specify the `preCompile: true` option in your webpack config as below:
 
 ```javascript
-// for webpack config file
 module.exports = {
   module: {
-    rules: [{
-      test: /\.vue$/,
-      loader: 'vue',
-      options: {
-        loaders: {
-          i18n: '@intlify/vue-i18n-loader'
-        }
-      }
-    }]
+    rules: [
+      // ...
+      {
+        resourceQuery: /blockType=i18n/,
+        type: 'javascript/auto',
+        use: [
+          {
+            loader: '@intlify/vue-i18n-loader',
+            options: {
+              preCompile: true // you need to specify at here!
+            }
+          }
+        ]
+      },
+      // ...
+    ]
   }
 }
 ```
