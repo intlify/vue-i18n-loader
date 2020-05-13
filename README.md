@@ -200,7 +200,7 @@ module.exports = {
 }
 ```
 
-## :rocket: i18n resource optimazation
+## :rocket: i18n resource optimization
 
 You can optimize your localization performance with pre-compiling the i18n resources.
 
