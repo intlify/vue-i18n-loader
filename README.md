@@ -30,13 +30,13 @@
 ### NPM
 
 ```sh
-$ npm i --save-dev @intlify/vue-i18n-extensions@alpha
+$ npm i --save-dev @intlify/vue-i18n-loader@alpha
 ```
 
 ### YARN
 
 ```sh
-$ yarn add -D @intlify/vue-i18n-extensions@alpha
+$ yarn add -D @intlify/vue-i18n-loader@alpha
 ```
 
 ## :rocket: `i18n` custom block
