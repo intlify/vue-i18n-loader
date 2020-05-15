@@ -61,7 +61,7 @@
     "opener": "^1.5.1",
     "puppeteer": "^2.1.1",
     "shipjs": "^0.19.0",
-    "ts-jest": "^25.3.0",
+    "ts-jest": "^26.0.0",
     "typescript": "^3.8.3",
     "typescript-eslint-language-service": "^2.0.3",
     "vue": "^3.0.0-beta.6",
