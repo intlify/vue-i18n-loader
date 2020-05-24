@@ -99,6 +99,7 @@ export async function bundleAndRun(
   const { module, exports } = window
   const instance = {}
   if (module && module.beforeCreate) {
+    // eslint-disable-next-line @typescript-eslint/ban-types
     module.beforeCreate.forEach((hook: Function) => hook.call(instance))
   }
 
