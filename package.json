@@ -29,7 +29,7 @@
     "json5": "^2.1.1",
     "loader-utils": "^2.0.0",
     "prettier": "^2.0.5",
-    "vue-i18n": "^9.0.0-alpha.8"
+    "vue-i18n": "^9.0.0-alpha.9"
   },
   "devDependencies": {
     "@types/flat": "^5.0.0",
