@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@types/flat": "^5.0.0",
-    "@types/jest": "^25.0.0",
+    "@types/jest": "^26.0.0",
     "@types/js-yaml": "^3.12.1",
     "@types/jsdom": "^16.0.0",
     "@types/json5": "^0.0.30",
