@@ -64,7 +64,7 @@
     "shipjs": "^0.19.0",
     "ts-jest": "^26.0.0",
     "typescript": "^3.9.5",
-    "typescript-eslint-language-service": "^2.0.3",
+    "typescript-eslint-language-service": "^3.0.0",
     "vue": "^3.0.0-beta.15",
     "vue-loader": "^16.0.0-beta.3",
     "webpack": "^4.43.0",
