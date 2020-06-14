@@ -1,4 +1,13 @@
 
+## v2.0.0-alpha.3 (2020-06-14)
+
+#### :boom: Breaking Change
+* [#109](https://github.com/intlify/vue-i18n-loader/pull/109) breaking: i18n resource to object from string ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v2.0.0-alpha.2 (2020-05-02)
 
 #### :bug: Bug Fixes
