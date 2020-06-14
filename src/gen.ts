@@ -21,12 +21,7 @@ export function generateCode(
   query: ParsedUrlQuery,
   options: VueI18nLoaderOptions
 ): string {
-  const data = convert(source, query.lang as string)
-  let value = JSON.parse(data)
-
-  if (query.locale && typeof query.locale === 'string') {
-    value = Object.assign({}, { [query.locale]: value })
-  }
+  const value = merge(parse(source, query), query)
 
   let code = ''
   const preCompile = !!options.preCompile
@@ -37,28 +32,41 @@ export function generateCode(
   Component.__i18n = Component.__i18n || _getResource
 }\n`
   } else {
-    value = friendlyJSONstringify(value)
     code += `export default function (Component) {
   Component.__i18n = Component.__i18n || []
-  Component.__i18n.push('${value}')
+  Component.__i18n.push(${stringify(value)})
 }\n`
   }
 
   return prettier.format(code, { parser: 'babel' })
 }
 
-function convert(source: string | Buffer, lang: string): string {
-  const value = Buffer.isBuffer(source) ? source.toString() : source
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function stringify(data: any): string {
+  return friendlyJSONstringify(data)
+}
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function merge(data: any, query: ParsedUrlQuery): any {
+  if (query.locale && typeof query.locale === 'string') {
+    return Object.assign({}, { [query.locale]: data })
+  } else {
+    return data
+  }
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function parse(source: string | Buffer, query: ParsedUrlQuery): any {
+  const value = Buffer.isBuffer(source) ? source.toString() : source
+  const { lang } = query
   switch (lang) {
     case 'yaml':
     case 'yml':
-      const data = yaml.safeLoad(value)
-      return JSON.stringify(data, undefined, '\t')
+      return yaml.safeLoad(value)
     case 'json5':
-      return JSON.stringify(JSON5.parse(value))
+      return JSON5.parse(value)
     default:
-      return value
+      return JSON.parse(value)
   }
 }
 
