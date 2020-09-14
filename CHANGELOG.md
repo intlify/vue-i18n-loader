@@ -1,4 +1,6 @@
+## v2.0.0-beta.1 (2020-09-14)
 
+Nothing (due to be released vue-i18n-next@v9 beta)
 
 
 ## v2.0.0-alpha.3 (2020-06-14)
