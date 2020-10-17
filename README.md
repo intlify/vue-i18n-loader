@@ -90,7 +90,7 @@ you also can use `src` attribute:
 ```
 
 ```json5
-// ./myLnag.json
+// ./myLang.json
 {
   "en": {
     "hello": "hello world!"
