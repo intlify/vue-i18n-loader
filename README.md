@@ -5,14 +5,13 @@
 <p align="center">
   <a href="https://github.com/intlify/vue-i18n-loader/actions?query=workflow%3ATest"><img src="https://github.com/intlify/vue-i18n-loader/workflows/Test/badge.svg" alt="Build Status"></a>
   <a href="https://www.npmjs.com/package/@intlify/vue-i18n-loader"><img src="https://img.shields.io/npm/v/@intlify/vue-i18n-loader.svg" alt="npm"></a>
-  <a href="https://devtoken.rocks/package/@intlify/vue-i18n-loader"><img src="https://badge.devtoken.rocks/@intlify/vue-i18n-loader" alt="@intlify/vue-i18n-loader Dev Token"/></a>
 </p>
 
 <p align="center">vue-i18n loader for custom blocks</p>
 
 **NOTE:** :warning: This `next` branch is development branch for Vue 3! The stable version is now in [`master`](https://github.com/intlify/vue-i18n-loader/tree/master) branch!
 
-## Status: Alpha ![Test](https://github.com/intlify/vue-i18n-loader/workflows/Test/badge.svg)
+## Status: Beta ![Test](https://github.com/intlify/vue-i18n-loader/workflows/Test/badge.svg)
 
 <br/>
 
@@ -30,13 +29,13 @@
 ### NPM
 
 ```sh
-$ npm i --save-dev @intlify/vue-i18n-loader@alpha
+$ npm i --save-dev @intlify/vue-i18n-loader@next
 ```
 
 ### YARN
 
 ```sh
-$ yarn add -D @intlify/vue-i18n-loader@alpha
+$ yarn add -D @intlify/vue-i18n-loader@next
 ```
 
 ## :rocket: `i18n` custom block
