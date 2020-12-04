@@ -1,3 +1,13 @@
+
+## v2.0.0-beta.2 (2020-12-04)
+
+#### :star: Features
+* [#138](https://github.com/intlify/vue-i18n-loader/pull/138) feat: global attribute ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 2
+- Ousmane NDIAYE ([@ousmaneNdiaye](https://github.com/ousmaneNdiaye))
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v2.0.0-beta.1 (2020-09-14)
 
 Nothing (due to be released vue-i18n-next@v9 beta)
