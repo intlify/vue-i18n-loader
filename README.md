@@ -20,6 +20,7 @@
   - i18n resource definition
   - i18n resource importing
   - Locale of i18n resource definition
+  - Locale of i18n resource definition for global scope
   - i18n resource formatting
 - i18n resource optimaization
 
@@ -55,11 +56,17 @@ import { useI18n } from 'vue-i18n'
 export default {
   name: 'app',
   setup() {
+    const { t, locale } = useI18n({
+      // ...
+    })
+
     // Somthing todo ...
+
     return {
-      ...,
-      ...useI18n({
-        // ...
+      // ...
+      t,
+      locale,
+      // ...
       })
     }
   }
