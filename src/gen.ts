@@ -27,14 +27,21 @@ export function generateCode(
   const preCompile = !!options.preCompile
 
   if (preCompile) {
-    code += generateCompiledCode(value as LocaleMessages)
-    code += `export default function (Component) {
+    if (query.global) {
+      console.warn(
+        '[vue-i18n-loader] cannot support global scope for pre-compilation'
+      )
+    } else {
+      code += generateCompiledCode(value as LocaleMessages)
+      code += `export default function (Component) {
   Component.__i18n = Component.__i18n || _getResource
 }\n`
+    }
   } else {
+    const variableName = query.global ? '__i18nGlobal' : '__i18n'
     code += `export default function (Component) {
-  Component.__i18n = Component.__i18n || []
-  Component.__i18n.push(${stringify(value)})
+  Component.${variableName} = Component.${variableName} || []
+  Component.${variableName}.push(${stringify(value)})
 }\n`
   }
 

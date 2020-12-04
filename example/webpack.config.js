@@ -5,7 +5,8 @@ module.exports = {
   mode: 'development',
   entry: {
     composable: path.resolve(__dirname, './composable/main.js'),
-    legacy: path.resolve(__dirname, './legacy/main.js')
+    legacy: path.resolve(__dirname, './legacy/main.js'),
+    global: path.resolve(__dirname, './global/main.js')
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -42,7 +43,7 @@ module.exports = {
           {
             loader: path.resolve(__dirname, '../lib/index.js'),
             options: {
-              preCompile: true
+              // preCompile: true
             }
           }
         ]
