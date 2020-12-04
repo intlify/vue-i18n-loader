@@ -15,9 +15,10 @@ import { useI18n } from 'vue-i18n'
 export default {
   name: 'App',
   setup() {
-    return useI18n({
+    const { t, locale } = useI18n({
       locale: 'ja'
     })
+    return { t, locale }
   }
 }
 </script>
