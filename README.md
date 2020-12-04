@@ -120,6 +120,19 @@ You can define locale messages for each locale with `locale` attribute in single
 
 The above defines two locales, which are merged at target single-file components.
 
+### Locale of i18n resource definition for global scope
+
+You can define locale messages for global scope with `global` attribute:
+
+```vue
+<i18n global>
+{
+  "en": {
+    "hello": "hello world!"
+  }
+}
+</i18n>
+```
 
 ### i18n resource formatting
 

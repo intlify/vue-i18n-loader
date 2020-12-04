@@ -10,6 +10,36 @@ Array [
 ]
 `;
 
+exports[`global 1`] = `
+Array [
+  Object {
+    "en": Object {
+      "hello": "hello global!",
+    },
+  },
+]
+`;
+
+exports[`global and local 1`] = `
+Array [
+  Object {
+    "ja": Object {
+      "hello": "hello local!",
+    },
+  },
+]
+`;
+
+exports[`global and local 2`] = `
+Array [
+  Object {
+    "en": Object {
+      "hello": "hello global!",
+    },
+  },
+]
+`;
+
 exports[`import 1`] = `
 Array [
   Object {

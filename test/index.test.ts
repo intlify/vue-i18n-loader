@@ -62,3 +62,15 @@ test('pre compile', async () => {
     )
   }
 })
+
+test('global', async () => {
+  const { module } = await bundleAndRun('global.vue')
+  expect(module.__i18n).toBeUndefined()
+  expect(module.__i18nGlobal).toMatchSnapshot()
+})
+
+test('global and local', async () => {
+  const { module } = await bundleAndRun('global-mix.vue')
+  expect(module.__i18n).toMatchSnapshot()
+  expect(module.__i18nGlobal).toMatchSnapshot()
+})
