@@ -78,9 +78,11 @@ function generateNode(generator: CodeGenerator, node: JSONProgram): void {
         case 'JSONProperty':
           if (
             node.value.type === 'JSONLiteral' &&
-            (node.key.type === 'JSONLiteral' || node.key.type === 'JSONIdentifier')
+            (node.key.type === 'JSONLiteral' ||
+              node.key.type === 'JSONIdentifier')
           ) {
-            const name = node.key.type === 'JSONLiteral' ? node.key.value : node.key.name
+            const name =
+              node.key.type === 'JSONLiteral' ? node.key.value : node.key.name
             if (isString(node.value.value)) {
               generator.push(`${JSON.stringify(name)}: `)
               generator.push(
@@ -98,15 +100,19 @@ function generateNode(generator: CodeGenerator, node: JSONProgram): void {
                   node
                 )
               } else {
-                generator.push(`${JSON.stringify(name)}: ${JSON.stringify(node.value.value)}`)
+                generator.push(
+                  `${JSON.stringify(name)}: ${JSON.stringify(node.value.value)}`
+                )
               }
             }
           } else if (
             (node.value.type === 'JSONObjectExpression' ||
               node.value.type === 'JSONArrayExpression') &&
-            (node.key.type === 'JSONLiteral' || node.key.type === 'JSONIdentifier')
+            (node.key.type === 'JSONLiteral' ||
+              node.key.type === 'JSONIdentifier')
           ) {
-            const name = node.key.type === 'JSONLiteral' ? node.key.value : node.key.name
+            const name =
+              node.key.type === 'JSONLiteral' ? node.key.value : node.key.name
             generator.push(`${JSON.stringify(name)}: `)
           }
           const lastIndex = propsCountStack.length - 1
