@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateMessageFunction development 1`] = `"(() => { const fn = () => \\"hello\\"; fn.source = \\"hello\\"; return fn; })()"`;
+
+exports[`generateMessageFunction production 1`] = `"() => \\"hello\\""`;

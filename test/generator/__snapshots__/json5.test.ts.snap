@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`json5: code 1`] = `
+"export default {
+  \\"hi\\": (() => { const fn = () => \\"hi there!\\"; fn.source = \\"hi there!\\"; return fn; })(),
+  \\"nested\\": {
+    \\"hello\\": (() => { const fn = () => \\"hello world!\\"; fn.source = \\"hello world!\\"; return fn; })(),
+    \\"more\\": {
+      \\"plural\\": (() => { const fn = () => \\"@.caml:{'no apples'} | {0} apple | {n} apples\\"; fn.source = \\"@.caml:{'no apples'} | {0} apple | {n} apples\\"; return fn; })()
+    },
+    \\"list\\": (() => { const fn = () => \\"hi, {0} !\\"; fn.source = \\"hi, {0} !\\"; return fn; })()
+  },
+  \\"こんにちは\\": (() => { const fn = () => \\"こんにちは！\\"; fn.source = \\"こんにちは！\\"; return fn; })(),
+  \\"single-quote\\": (() => { const fn = () => \\"I don't know!\\"; fn.source = \\"I don't know!\\"; return fn; })(),
+  \\"emoji\\": (() => { const fn = () => \\"😺\\"; fn.source = \\"😺\\"; return fn; })(),
+  \\"unicode\\": (() => { const fn = () => \\"A\\"; fn.source = \\"A\\"; return fn; })(),
+  \\"unicode-escape\\": (() => { const fn = () => \\"\\\\\\\\u0041\\"; fn.source = \\"\\\\\\\\u0041\\"; return fn; })(),
+  \\"backslash-single-quote\\": (() => { const fn = () => \\"\\\\\\\\'\\"; fn.source = \\"\\\\\\\\'\\"; return fn; })(),
+  \\"backslash-backslash\\": (() => { const fn = () => \\"\\\\\\\\\\\\\\\\\\"; fn.source = \\"\\\\\\\\\\\\\\\\\\"; return fn; })(),
+  \\"errors\\": [
+    (() => { const fn = () => \\"ERROR1001\\"; fn.source = \\"ERROR1001\\"; return fn; })(),
+    (() => { const fn = () => \\"ERROR1002\\"; fn.source = \\"ERROR1002\\"; return fn; })()
+  ],
+  \\"complex\\": {
+    \\"warnings\\": [
+      (() => { const fn = () => \\"NOTE: This is warning\\"; fn.source = \\"NOTE: This is warning\\"; return fn; })(),
+      {
+        \\"named-waring\\": (() => { const fn = () => \\"this is {type} warining\\"; fn.source = \\"this is {type} warining\\"; return fn; })()
+      }
+    ]
+  }
+}"
+`;
+
+exports[`json5: map 1`] = `
+Object {
+  "mappings": ";QACC;;aAEE;;gBAEE;;YAEF;;WAGF;kBACA;WACA;aACA;oBACA;4BACA;yBACA;;IAEE;IAAa;;;;MAIX;;wBAEE",
+  "names": Array [],
+  "sources": Array [
+    "vue-i18n-loader.json",
+  ],
+  "sourcesContent": Array [
+    "{
+  hi: \\"hi there!\\",
+  nested: {
+    hello: \\"hello world!\\",
+    more: {
+      plural: \\"@.caml:{'no apples'} | {0} apple | {n} apples\\"
+    },
+    list: \\"hi, {0} !\\"
+  },
+  // comment
+  \\"こんにちは\\": \\"こんにちは！\\",
+  \\"single-quote\\": \\"I don't know!\\",
+  emoji: \\"😺\\",
+  unicode: \\"\\\\u0041\\",
+  \\"unicode-escape\\": \\"\\\\\\\\u0041\\",
+  \\"backslash-single-quote\\": \\"\\\\\\\\'\\",
+  \\"backslash-backslash\\": \\"\\\\\\\\\\\\\\\\\\",
+  errors: [
+    'ERROR1001', 'ERROR1002'
+  ],
+  complex: {
+    warnings: [
+      'NOTE: This is warning',
+      {
+        \\"named-waring\\": 'this is {type} warining'
+      }
+    ]
+  }
+}
+",
+  ],
+  "version": 3,
+}
+`;

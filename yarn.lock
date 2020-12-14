@@ -334,6 +334,25 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@intlify/message-compiler@^9.0.0-beta.11":
+  version "9.0.0-beta.11"
+  resolved "https://registry.yarnpkg.com/@intlify/message-compiler/-/message-compiler-9.0.0-beta.11.tgz#0bb19064243bd787667cd200a1daa6455783ceb2"
+  integrity sha512-KLzYxNbbh1s4aq2PAzBO9loXxXViS61zk07P/iElXUfCS3wed4q3X2FJVfhqblFewY18tepyyfxkk7x8EUMLMA==
+  dependencies:
+    "@intlify/message-resolver" "9.0.0-beta.11"
+    "@intlify/shared" "9.0.0-beta.11"
+    source-map "0.6.1"
+
+"@intlify/message-resolver@9.0.0-beta.11":
+  version "9.0.0-beta.11"
+  resolved "https://registry.yarnpkg.com/@intlify/message-resolver/-/message-resolver-9.0.0-beta.11.tgz#e4d3717235c46daf86f3037f8d0329f4e159aa54"
+  integrity sha512-j6ijgXsaKRt+kx9A5/GnlLD3cYGRWj4za7P/ZCVIsSWLF91cxs7rv+QGuexrPikmX0D2Ms8+lbf2rpjPDlru5w==
+
+"@intlify/shared@9.0.0-beta.11", "@intlify/shared@^9.0.0-beta.11":
+  version "9.0.0-beta.11"
+  resolved "https://registry.yarnpkg.com/@intlify/shared/-/shared-9.0.0-beta.11.tgz#a2e3b31274ab3f7637e3ad815e6699f70e501dc8"
+  integrity sha512-7HggeNO2OfU0/JKH1K+R5O0G8CoaPAN+i3NNuwlUZD7lPS9BT0j+UxHrRRhHZj1VflyXiE+BhMWg8+VYM2K4oA==
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
@@ -1245,7 +1264,7 @@ acorn-globals@^6.0.0:
     acorn "^7.1.1"
     acorn-walk "^7.1.1"
 
-acorn-jsx@^5.0.0, acorn-jsx@^5.2.0:
+acorn-jsx@^5.0.0, acorn-jsx@^5.2.0, acorn-jsx@^5.3.1:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.3.1.tgz#fc8661e11b7ac1539c47dbfea2e72b3af34d267b"
   integrity sha512-K0Ptm/47OKfQRpNQ2J/oIN/3QYiK6FwW+eJbILhsdxh2WTLdl+30o8aGdTbm5JbffpFFAg/g+zi1E+jvJha5ng==
@@ -3236,6 +3255,15 @@ espree@^4.1.0:
     acorn "^6.0.2"
     acorn-jsx "^5.0.0"
     eslint-visitor-keys "^1.0.0"
+
+"espree@^6.0.0 || ^7.2.0":
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/espree/-/espree-7.3.1.tgz#f2df330b752c6f55019f8bd89b7660039c1bbbb6"
+  integrity sha512-v3JCNCE64umkFpmkFGqzVKsOT0tN1Zr+ueqLZfpV1Ob8e+CEgPWa+OxCoGH3tnhimMKIaBm4m/vaRpJ/krRz2g==
+  dependencies:
+    acorn "^7.4.0"
+    acorn-jsx "^5.3.1"
+    eslint-visitor-keys "^1.3.0"
 
 espree@^7.3.0:
   version "7.3.0"
@@ -5460,6 +5488,14 @@ json5@^1.0.1:
   integrity sha512-aKS4WQjPenRxiQsC93MNfjx+nbF4PAdYzmd/1JIj8HYzqfbu86beTuNgXDzPknWk0n0uARlyewZo4s++ES36Ow==
   dependencies:
     minimist "^1.2.0"
+
+jsonc-eslint-parser@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/jsonc-eslint-parser/-/jsonc-eslint-parser-0.6.0.tgz#dc28df2a547312521cb34ab45bc731baa7359ef0"
+  integrity sha512-mpo+HBKs8nMxJSmcBksc+d7AEVfHjQHjYjRugSjDoAaesf/VHCevVsqHtlOakfsgHyCZ8s0tOxRsqGt/HVgelw==
+  dependencies:
+    eslint-visitor-keys "^1.3.0"
+    espree "^6.0.0 || ^7.2.0"
 
 jsonparse@^1.2.0:
   version "1.3.1"
