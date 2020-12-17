@@ -3,8 +3,9 @@ const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
   mode: 'development',
+  devtool: 'source-map',
   entry: {
-    composable: path.resolve(__dirname, './composable/main.js'),
+    composition: path.resolve(__dirname, './composition/main.js'),
     legacy: path.resolve(__dirname, './legacy/main.js'),
     global: path.resolve(__dirname, './global/main.js')
   },
@@ -19,7 +20,8 @@ module.exports = {
       // is a simple `export * from '@vue/runtime-dom`. However having this
       // extra re-export somehow causes webpack to always invalidate the module
       // on the first HMR update and causes the page to reload.
-      vue: '@vue/runtime-dom'
+      vue: '@vue/runtime-dom',
+      'vue-i18n': 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js'
     }
   },
   devServer: {
@@ -37,13 +39,28 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
+        test: /\.(json5?|ya?ml)$/, // target json, json5, yaml and yml files
+        type: 'javascript/auto',
+        // Use `Rule.include` to specify the files of locale messages to be pre-compiled
+        include: [path.resolve(__dirname, './')],
+        use: [
+          {
+            loader: path.resolve(__dirname, '../lib/index.js'),
+            options: {
+              // Whether pre-compile number and boolean literal as message functions that return the string value, default `false`
+              forceStringify: true
+            }
+          }
+        ]
+      },
+      {
         resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
         use: [
           {
             loader: path.resolve(__dirname, '../lib/index.js'),
             options: {
-              // preCompile: true
+              preCompile: true
             }
           }
         ]

@@ -7,11 +7,17 @@
     </select>
   </form>
   <p>{{ $t('hello') }}</p>
+  <Banana />
 </template>
 
 <script>
+import Banana from './Banana.vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Banana
+  }
 }
 </script>
 

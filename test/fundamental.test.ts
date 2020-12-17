@@ -1,5 +1,6 @@
-import { bundleAndRun } from './utils'
-import { MessageFunction, baseCompile } from 'vue-i18n'
+import { bundleAndRun, bundle } from './utils'
+import { baseCompile } from '@intlify/message-compiler'
+import { MessageFunction } from '@intlify/runtime'
 import prettier from 'prettier'
 
 test('basic', async () => {
@@ -49,7 +50,7 @@ test('json5', async () => {
 
 test('pre compile', async () => {
   const options: prettier.Options = { parser: 'babel' }
-  const { module } = await bundleAndRun('compile.vue', {
+  const { module } = await bundleAndRun('compile.vue', bundle, {
     preCompile: true
   })
   const { functions } = module.__i18n()

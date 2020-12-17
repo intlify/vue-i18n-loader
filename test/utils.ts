@@ -1,4 +1,5 @@
 import path from 'path'
+import { promises as fs } from 'fs'
 import webpack from 'webpack'
 import merge from 'webpack-merge'
 import memoryfs from 'memory-fs'
@@ -72,11 +73,70 @@ export function bundle(fixture: string, options = {}): Promise<BundleResolve> {
   })
 }
 
+export function bundleLocale(
+  fixture: string,
+  options = {}
+): Promise<BundleResolve> {
+  const baseConfig: webpack.Configuration = {
+    mode: 'development',
+    devtool: 'source-map',
+    entry: path.resolve(__dirname, './fixtures/locale.js'),
+    resolve: {
+      alias: {
+        '~target': path.resolve(__dirname, './fixtures/locales', fixture)
+      }
+    },
+    output: {
+      path: '/',
+      filename: 'bundle.js'
+    },
+    module: {
+      rules: [
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader'
+        },
+        {
+          test: /\.(json5?|ya?ml)$/,
+          type: 'javascript/auto',
+          include: [path.resolve(__dirname, './fixtures/locales')],
+          use: [
+            {
+              loader: path.resolve(__dirname, '../src/index.ts'),
+              options
+            }
+          ]
+        }
+      ]
+    },
+    plugins: [new VueLoaderPlugin()]
+  }
+
+  const config = merge({}, baseConfig)
+  const compiler = webpack(config)
+
+  const mfs = new memoryfs() // eslint-disable-line
+  compiler.outputFileSystem = mfs
+
+  return new Promise((resolve, reject) => {
+    compiler.run((err, stats) => {
+      if (err) {
+        return reject(err)
+      }
+      if (stats.hasErrors()) {
+        return reject(new Error(stats.toJson().errors.join(' | ')))
+      }
+      resolve({ code: mfs.readFileSync('/bundle.js').toString(), stats })
+    })
+  })
+}
+
 export async function bundleAndRun(
   fixture: string,
+  bundleFn = bundle,
   config = {}
 ): Promise<BundleResolveResolve> {
-  const { code, stats } = await bundle(fixture, config)
+  const { code, stats } = await bundleFn(fixture, config)
 
   let dom: JSDOM | null = null
   let jsdomError
@@ -112,4 +172,13 @@ export async function bundleAndRun(
     jsdomError,
     stats
   })
+}
+
+export async function readFile(
+  filepath: string,
+  encoding: BufferEncoding = 'utf-8'
+): Promise<{ filename: string; source: string }> {
+  const filename = path.resolve(__dirname, filepath)
+  const source = await fs.readFile(filename, { encoding })
+  return { filename, source }
 }

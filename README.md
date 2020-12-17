@@ -16,13 +16,13 @@
 <br/>
 
 ## :star: Features
+- i18n resource pre-compilation
 - `i18n` custom block
   - i18n resource definition
   - i18n resource importing
   - Locale of i18n resource definition
   - Locale of i18n resource definition for global scope
   - i18n resource formatting
-- i18n resource optimaization
 
 
 ## :cd: Installation
@@ -39,9 +39,84 @@ $ npm i --save-dev @intlify/vue-i18n-loader@next
 $ yarn add -D @intlify/vue-i18n-loader@next
 ```
 
+## :rocket: i18n resource pre-compilation
+
+### Why do we need to require the configuration?
+
+Since vue-i18n@v9.0, The locale messages are handled with message compiler, which converts them to javascript functions after compiling. After compiling, message compiler converts them into javascript functions, which can improve the performance of the application.
+
+However, with the message compiler, the javascript function conversion will not work in some environments (e.g. CSP). For this reason, vue-i18n@v9.0 and later offer a full version that includes compiler and runtime, and a runtime only version.
+
+If you are using the runtime version, you will need to compile before importing locale messages by managing them in a file such as `.json`.
+
+You can pre-commpile by configuring vue-i18n-loader as the webpack loader.
+
+### Webpack configration
+
+As an example, if your project has the locale messagess in `src/locales`, your webpack config will look like this:
+
+```
+├── dist
+├── index.html
+├── package.json
+├── src
+│   ├── App.vue
+│   ├── locales
+│   │   ├── en.json
+│   │   └── ja.json
+│   └── main.js
+└── webpack.config.js
+```
+
+```js
+import { createApp } from 'vue'
+import { createI18n } from 'vue-i18n' // import from runtime only
+import App from './App.vue'
+
+// import i18n resources
+import en from './locale/en.json'
+import ja from './locale/ja.json'
+
+const i18n = createI18n({
+  locale: 'ja',
+  messages: {
+    en,
+    ja
+  }
+})
+
+const app = createApp(App)
+app.use(i18n)
+app.mount('#app')
+```
+
+In the case of the above project, you can use vue-i18n with webpack configuration to the following for runtime only:
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      // ...
+      {
+        test: /\.(json5?|ya?ml)$/, // target json, json5, yaml and yml files
+        type: 'javascript/auto',
+        loader: '@intlify/vue-i18n-loader',
+        include: [ // Use `Rule.include` to specify the files of locale messages to be pre-compiled
+          path.resolve(__dirname, 'src/locales')
+        ]
+      },
+      // ...
+    ]
+  }
+}
+```
+
+The above uses webpack's `Rule.include` to specify the i18n resources to be precompiled. You can also use [`Rule.exclude`](https://webpack.js.org/configuration/module/#ruleexclude) to set the target.
+
+
 ## :rocket: `i18n` custom block
 
-the below example that`App.vue` have `i18n` custom block:
+The below example that`App.vue` have `i18n` custom block:
 
 ### i18n resource definition
 
@@ -89,7 +164,7 @@ The locale messages defined at `i18n` custom blocks are **json format default**.
 
 ### i18n resource importing
 
-you also can use `src` attribute:
+You also can use `src` attribute:
 
 ```vue
 <i18n src="./myLang.json"></i18n>
@@ -212,6 +287,36 @@ module.exports = {
         resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
         loader: '@intlify/vue-i18n-loader'
+      },
+      // ...
+    ]
+  }
+}
+```
+
+## :rocket: loader options
+
+### forceStringify
+
+Whether pre-compile number and boolean values as message functions that return the string value, default `false`
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      // ...
+      {
+        test: /\.(json5?|ya?ml)$/,
+        type: 'javascript/auto',
+        include: [path.resolve(__dirname, './src/locales')],
+        use: [
+          {
+            loader: '@intlify/vue-i18n-loader',
+            options: {
+              forceStringify: true
+            }
+          }
+        ]
       },
       // ...
     ]
