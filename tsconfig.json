@@ -46,7 +46,6 @@
     // "typeRoots": [],                       /* List of folders to include type definitions from. */
     "typeRoots": [
       "./@types",
-      "./node_modules/vue-i18n/dist",
       "./node_modules/@types"
     ],
     // "types": [],                           /* Type declaration files to be included in compilation. */

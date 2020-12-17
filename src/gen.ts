@@ -3,18 +3,11 @@ import JSON5 from 'json5'
 import yaml from 'js-yaml'
 import { flatten } from 'flat'
 import prettier from 'prettier'
-import {
-  baseCompile,
-  LocaleMessages,
-  Locale,
-  CompileOptions,
-  generateFormatCacheKey,
-  friendlyJSONstringify
-} from 'vue-i18n'
+import { baseCompile, CompileOptions } from '@intlify/message-compiler'
+import { friendlyJSONstringify, generateFormatCacheKey } from '@intlify/shared'
+import { Locale, LocaleMessages } from '@intlify/core-base'
 
-export type VueI18nLoaderOptions = {
-  preCompile?: boolean
-}
+import type { VueI18nLoaderOptions } from './options'
 
 export function generateCode(
   source: string | Buffer,

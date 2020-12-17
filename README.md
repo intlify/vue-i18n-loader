@@ -294,6 +294,36 @@ module.exports = {
 }
 ```
 
+## :rocket: loader options
+
+### forceStringify
+
+Whether pre-compile number and boolean values as message functions that return the string value, default `false`
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      // ...
+      {
+        test: /\.(json5?|ya?ml)$/,
+        type: 'javascript/auto',
+        include: [path.resolve(__dirname, './src/locales')],
+        use: [
+          {
+            loader: '@intlify/vue-i18n-loader',
+            options: {
+              forceStringify: true
+            }
+          }
+        ]
+      },
+      // ...
+    ]
+  }
+}
+```
+
 ## :rocket: i18n resource optimization
 
 You can optimize your localization performance with pre-compiling the i18n resources.

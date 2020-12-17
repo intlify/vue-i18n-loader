@@ -2,10 +2,16 @@ import { generateMessageFunction } from '../../src/generator/codegen'
 
 describe('generateMessageFunction', () => {
   test('development', () => {
-    expect(generateMessageFunction('hello', 'development')).toMatchSnapshot()
+    expect(
+      generateMessageFunction('hello', {
+        sourceMap: true
+      })
+    ).toMatchSnapshot()
   })
 
   test('production', () => {
-    expect(generateMessageFunction('hello', 'production')).toMatchSnapshot()
+    expect(
+      generateMessageFunction('hello', { env: 'production' })
+    ).toMatchSnapshot()
   })
 })

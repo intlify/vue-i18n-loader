@@ -1,11 +1,17 @@
-import { LocationStub } from '@intlify/message-compiler'
-import { SourceMapGenerator } from 'source-map'
+import {
+  LocationStub,
+  baseCompile,
+  CompileError,
+  ResourceNode,
+  CompileOptions
+} from '@intlify/message-compiler'
+import { SourceMapGenerator, SourceMapConsumer } from 'source-map'
 
 import type { RawSourceMap } from 'source-map'
 
 export type DevEnv = 'development' | 'production'
 
-interface Position {
+export interface Position {
   line: number
   column: number
   offset?: number
@@ -43,11 +49,19 @@ export interface CodeGenContext {
 
 export interface CodeGenerator {
   context(): CodeGenContext
-  push<Node extends SourceLocationable>(code: string, node?: Node): void
+  push<Node extends SourceLocationable>(
+    code: string,
+    node?: Node,
+    name?: string
+  ): void
   indent(withNewLine?: boolean): void
   deindent(withNewLine?: boolean): void
   newline(): void
-  pushline<Node extends SourceLocationable>(code: string, node?: Node): void
+  pushline<Node extends SourceLocationable>(
+    code: string,
+    node?: Node,
+    name?: string
+  ): void
 }
 
 export interface CodeGenResult<ASTNode> {
@@ -64,7 +78,6 @@ export function createCodeGenerator(
     forceStringify: false
   }
 ): CodeGenerator {
-  // console.log('createCodeGenerator', options)
   const { sourceMap, source, filename } = options
   const _context = Object.assign(
     {
@@ -82,13 +95,13 @@ export function createCodeGenerator(
 
   function push<Node extends SourceLocationable>(
     code: string,
-    node?: Node
+    node?: Node,
+    name?: string
   ): void {
     _context.code += code
-    // console.log('code', _context.code)
     if (_context.map) {
       if (node && node.loc && node.loc !== LocationStub) {
-        addMapping(node.loc.start)
+        addMapping(node.loc.start, name)
       }
       advancePositionWithSource(_context as Position, code)
     }
@@ -114,9 +127,10 @@ export function createCodeGenerator(
 
   function pushline<Node extends SourceLocationable>(
     code: string,
-    node?: Node
+    node?: Node,
+    name?: string
   ): void {
-    push(code, node)
+    push(code, node, name)
     newline()
   }
 
@@ -178,11 +192,77 @@ function advancePositionWithSource(
   return pos
 }
 
-export function generateMessageFunction(msg: string, env: DevEnv): string {
-  // TODO: implement compilation with @intlify/message-compiler
-  return env === 'development'
-    ? `(() => { const fn = () => ${JSON.stringify(
-        msg
-      )}; fn.source = ${JSON.stringify(msg)}; return fn; })()`
-    : `() => ${JSON.stringify(msg)}`
+export function generateMessageFunction(
+  msg: string,
+  options: CodeGenOptions
+): CodeGenResult<ResourceNode> {
+  const env = options.env != null ? options.env : 'development'
+  let occured = false
+  const newOptions = Object.assign(options, { mode: 'arrow' }) as CompileOptions
+  newOptions.onError = (err: CompileError): void => {
+    options.onError && options.onError(err.message)
+    occured = true
+  }
+  const { code, ast, map } = baseCompile(msg, newOptions)
+  const genCode = !occured
+    ? env === 'development'
+      ? `(()=>{const fn=${code};fn.source=${JSON.stringify(msg)};return fn})()`
+      : `${code}`
+    : msg
+  return { code: genCode, ast, map }
+}
+
+export function mapColumns(
+  resMap: RawSourceMap,
+  codeMaps: Map<string, RawSourceMap>
+): RawSourceMap | null {
+  if (!resMap) {
+    return null
+  }
+
+  const resMapConsumer = new SourceMapConsumer(resMap)
+  const mergedMapGenerator = new SourceMapGenerator()
+
+  resMapConsumer.eachMapping(res => {
+    if (res.originalLine == null) {
+      return
+    }
+
+    const map = codeMaps.get(res.name)
+    if (!map) {
+      return null
+    }
+
+    const mapConsumer = new SourceMapConsumer(map)
+    mapConsumer.eachMapping(m => {
+      mergedMapGenerator.addMapping({
+        original: {
+          line: res.originalLine,
+          column: res.originalColumn
+        },
+        generated: {
+          line: res.originalLine,
+          column: res.originalColumn + m.generatedColumn // map column with message format compilation code map
+        },
+        source: res.source,
+        name: m.name // message format compilation code
+      })
+    })
+  })
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const generator = mergedMapGenerator as any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ;(resMapConsumer as any).sources.forEach((sourceFile: string) => {
+    generator._sources.add(sourceFile)
+    const sourceContent = resMapConsumer.sourceContentFor(sourceFile)
+    if (sourceContent != null) {
+      mergedMapGenerator.setSourceContent(sourceFile, sourceContent)
+    }
+  })
+
+  generator._sourceRoot = resMap.sourceRoot
+  generator._file = resMap.file
+
+  return generator.toJSON()
 }
