@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic 1`] = `
+Array [
+  Object {
+    "content": Object {
+      "en": Object {
+        "hello": [Function],
+      },
+    },
+    "locale": "",
+  },
+]
+`;
+
+exports[`global 1`] = `
+Array [
+  Object {
+    "content": Object {
+      "en": Object {
+        "hello": [Function],
+      },
+    },
+    "locale": "",
+  },
+]
+`;
+
+exports[`global and local 1`] = `
+Array [
+  Object {
+    "content": Object {
+      "hello": [Function],
+    },
+    "locale": "ja",
+  },
+]
+`;
+
+exports[`global and local 2`] = `
+Array [
+  Object {
+    "content": Object {
+      "en": Object {
+        "hello": [Function],
+      },
+    },
+    "locale": "",
+  },
+]
+`;
+
+exports[`import 1`] = `
+Array [
+  Object {
+    "content": Object {
+      "en": Object {
+        "hello": [Function],
+      },
+    },
+    "locale": "",
+  },
+]
+`;
+
+exports[`json5 1`] = `
+Array [
+  Object {
+    "content": Object {
+      "en": Object {
+        "hello": [Function],
+      },
+    },
+    "locale": "",
+  },
+]
+`;
+
+exports[`locale attr 1`] = `
+Array [
+  Object {
+    "content": Object {
+      "hello": [Function],
+    },
+    "locale": "ja",
+  },
+]
+`;
+
+exports[`locale attr and basic 1`] = `
+Array [
+  Object {
+    "content": Object {
+      "en": Object {
+        "hello": [Function],
+      },
+    },
+    "locale": "",
+  },
+  Object {
+    "content": Object {
+      "hello": [Function],
+    },
+    "locale": "ja",
+  },
+]
+`;
+
+exports[`locale attr and import 1`] = `
+Array [
+  Object {
+    "content": Object {
+      "hello": [Function],
+    },
+    "locale": "en",
+  },
+]
+`;
+
+exports[`multiple 1`] = `
+Array [
+  Object {
+    "content": Object {
+      "en": Object {
+        "hello": [Function],
+      },
+    },
+    "locale": "",
+  },
+  Object {
+    "content": Object {
+      "ja": Object {
+        "hello": [Function],
+      },
+    },
+    "locale": "",
+  },
+]
+`;
+
+exports[`special characters 1`] = `
+Array [
+  Object {
+    "content": Object {
+      "en": Object {
+        "hello": [Function],
+      },
+    },
+    "locale": "",
+  },
+]
+`;
+
+exports[`yaml 1`] = `
+Array [
+  Object {
+    "content": Object {
+      "hello": [Function],
+    },
+    "locale": "en",
+  },
+  Object {
+    "content": Object {
+      "hello": [Function],
+    },
+    "locale": "ja",
+  },
+]
+`;

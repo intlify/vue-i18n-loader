@@ -48,7 +48,7 @@ module.exports = {
             loader: path.resolve(__dirname, '../lib/index.js'),
             options: {
               // Whether pre-compile number and boolean literal as message functions that return the string value, default `false`
-              forceStringify: true
+              // forceStringify: true
             }
           }
         ]
@@ -56,14 +56,7 @@ module.exports = {
       {
         resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
-        use: [
-          {
-            loader: path.resolve(__dirname, '../lib/index.js'),
-            options: {
-              preCompile: true
-            }
-          }
-        ]
+        loader: path.resolve(__dirname, '../lib/index.js')
       }
     ]
   },

@@ -324,35 +324,6 @@ module.exports = {
 }
 ```
 
-## :rocket: i18n resource optimization
-
-You can optimize your localization performance with pre-compiling the i18n resources.
-
-You need to specify the `preCompile: true` option in your webpack config as below:
-
-```javascript
-module.exports = {
-  module: {
-    rules: [
-      // ...
-      {
-        resourceQuery: /blockType=i18n/,
-        type: 'javascript/auto',
-        use: [
-          {
-            loader: '@intlify/vue-i18n-loader',
-            options: {
-              preCompile: true // you need to specify at here!
-            }
-          }
-        ]
-      },
-      // ...
-    ]
-  }
-}
-```
-
 ## :scroll: Changelog
 Details changes for each release are documented in the [CHANGELOG.md](https://github.com/intlify/vue-i18n-loader/blob/master/CHANGELOG.md).
 

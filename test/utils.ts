@@ -22,7 +22,7 @@ type BundleResolveResolve = BundleResolve & {
 export function bundle(fixture: string, options = {}): Promise<BundleResolve> {
   const baseConfig: webpack.Configuration = {
     mode: 'development',
-    devtool: false,
+    devtool: 'source-map',
     entry: path.resolve(__dirname, './fixtures/entry.js'),
     resolve: {
       alias: {

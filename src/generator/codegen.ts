@@ -5,7 +5,11 @@ import {
   ResourceNode,
   CompileOptions
 } from '@intlify/message-compiler'
-import { SourceMapGenerator, SourceMapConsumer } from 'source-map'
+import {
+  SourceMapGenerator,
+  SourceMapConsumer,
+  MappedPosition
+} from 'source-map'
 
 import type { RawSourceMap } from 'source-map'
 
@@ -25,9 +29,13 @@ export interface SourceLocationable {
 }
 
 export interface CodeGenOptions {
+  type?: 'plain' | 'sfc'
   source?: string
   sourceMap?: boolean
   filename?: string
+  inSourceMap?: RawSourceMap
+  isGlobal?: boolean
+  locale?: string
   env?: DevEnv
   forceStringify?: boolean
   onWarn?: (msg: string) => void
@@ -214,13 +222,15 @@ export function generateMessageFunction(
 
 export function mapColumns(
   resMap: RawSourceMap,
-  codeMaps: Map<string, RawSourceMap>
+  codeMaps: Map<string, RawSourceMap>,
+  inSourceMap?: RawSourceMap
 ): RawSourceMap | null {
   if (!resMap) {
     return null
   }
 
   const resMapConsumer = new SourceMapConsumer(resMap)
+  const inMapConsumer = inSourceMap ? new SourceMapConsumer(inSourceMap) : null
   const mergedMapGenerator = new SourceMapGenerator()
 
   resMapConsumer.eachMapping(res => {
@@ -233,18 +243,33 @@ export function mapColumns(
       return null
     }
 
+    let inMapOrigin: MappedPosition | null = null
+    if (inMapConsumer) {
+      inMapOrigin = inMapConsumer.originalPositionFor({
+        line: res.originalLine,
+        column: res.originalColumn - 1
+      })
+      if (inMapOrigin.source == null) {
+        inMapOrigin = null
+      }
+    }
+
     const mapConsumer = new SourceMapConsumer(map)
     mapConsumer.eachMapping(m => {
+      // console.log('message syntax map', m)
       mergedMapGenerator.addMapping({
         original: {
-          line: res.originalLine,
-          column: res.originalColumn
+          line: inMapOrigin != null ? inMapOrigin.line : res.originalLine,
+          column: inMapOrigin != null ? inMapOrigin.column : res.originalColumn
         },
         generated: {
-          line: res.originalLine,
-          column: res.originalColumn + m.generatedColumn // map column with message format compilation code map
+          line: inMapOrigin != null ? inMapOrigin.line : res.originalLine,
+          // map column with message format compilation code map
+          column:
+            (inMapOrigin != null ? inMapOrigin.column : res.originalColumn) +
+            m.generatedColumn
         },
-        source: res.source,
+        source: inMapOrigin != null ? inMapOrigin.source : res.source,
         name: m.name // message format compilation code
       })
     })
@@ -252,17 +277,20 @@ export function mapColumns(
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const generator = mergedMapGenerator as any
+  const targetConsumer = inMapConsumer || resMapConsumer
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ;(resMapConsumer as any).sources.forEach((sourceFile: string) => {
+  ;(targetConsumer as any).sources.forEach((sourceFile: string) => {
     generator._sources.add(sourceFile)
-    const sourceContent = resMapConsumer.sourceContentFor(sourceFile)
+    const sourceContent = targetConsumer.sourceContentFor(sourceFile)
     if (sourceContent != null) {
       mergedMapGenerator.setSourceContent(sourceFile, sourceContent)
     }
   })
 
-  generator._sourceRoot = resMap.sourceRoot
-  generator._file = resMap.file
+  generator._sourceRoot = inSourceMap
+    ? inSourceMap.sourceRoot
+    : resMap.sourceRoot
+  generator._file = inSourceMap ? inSourceMap.file : resMap.file
 
   return generator.toJSON()
 }
