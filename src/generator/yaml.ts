@@ -8,7 +8,7 @@ import {
   generateMessageFunction,
   mapColumns
 } from './codegen'
-import { parseYAML, traverseNodes } from './utils'
+import { parseYAML, traverseNodes } from 'yaml-eslint-parser'
 import { RawSourceMap } from 'source-map'
 
 import type { YAMLProgram, YAMLNode } from 'yaml-eslint-parser/lib/ast'
