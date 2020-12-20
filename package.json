@@ -33,7 +33,7 @@
     "jsonc-eslint-parser": "^0.6.0",
     "loader-utils": "^2.0.0",
     "prettier": "^2.2.1",
-    "yaml-eslint-parser": "^0.1.0"
+    "yaml-eslint-parser": "^0.2.0"
   },
   "devDependencies": {
     "@intlify/runtime": "^9.0.0-beta.14",
