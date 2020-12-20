@@ -7,7 +7,7 @@ import { isString } from '@intlify/shared'
 import {
   createCodeGenerator,
   generateMessageFunction,
-  mapColumns
+  mapLinesColumns
 } from './codegen'
 import { RawSourceMap } from 'source-map'
 
@@ -58,8 +58,9 @@ export function generate(
   //     console.log('sourcemap json', m)
   //   })
   // }
+  // prettier-ignore
   const newMap = map
-    ? mapColumns((map as any).toJSON(), codeMaps, inSourceMap) || null // eslint-disable-line @typescript-eslint/no-explicit-any
+    ? mapLinesColumns((map as any).toJSON(), codeMaps, inSourceMap) || null // eslint-disable-line @typescript-eslint/no-explicit-any
     : null
   return {
     ast,
@@ -97,8 +98,8 @@ function generateNode(
             )
             generator.push(`Component.${variableName}.push({`)
             generator.indent()
-            generator.pushline(`locale: ${JSON.stringify(localeName)},`)
-            generator.push(`content: `)
+            generator.pushline(`"locale": ${JSON.stringify(localeName)},`)
+            generator.push(`"content": `)
           }
           break
         case 'JSONObjectExpression':
@@ -192,7 +193,7 @@ function generateNode(
             generator.deindent()
             generator.push(`})`)
             generator.deindent()
-            generator.push(`}`)
+            generator.pushline(`}`)
           }
           break
         case 'JSONObjectExpression':

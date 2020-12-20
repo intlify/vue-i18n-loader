@@ -8,7 +8,8 @@ import {
 import {
   SourceMapGenerator,
   SourceMapConsumer,
-  MappedPosition
+  MappedPosition,
+  MappingItem
 } from 'source-map'
 
 import type { RawSourceMap } from 'source-map'
@@ -220,7 +221,7 @@ export function generateMessageFunction(
   return { code: genCode, ast, map }
 }
 
-export function mapColumns(
+export function mapLinesColumns(
   resMap: RawSourceMap,
   codeMaps: Map<string, RawSourceMap>,
   inSourceMap?: RawSourceMap
@@ -233,6 +234,16 @@ export function mapColumns(
   const inMapConsumer = inSourceMap ? new SourceMapConsumer(inSourceMap) : null
   const mergedMapGenerator = new SourceMapGenerator()
 
+  let inMapFirstItem: MappingItem | null = null
+  if (inMapConsumer) {
+    inMapConsumer.eachMapping(m => {
+      if (inMapFirstItem) {
+        return
+      }
+      inMapFirstItem = m
+    })
+  }
+
   resMapConsumer.eachMapping(res => {
     if (res.originalLine == null) {
       return
@@ -240,7 +251,7 @@ export function mapColumns(
 
     const map = codeMaps.get(res.name)
     if (!map) {
-      return null
+      return
     }
 
     let inMapOrigin: MappedPosition | null = null
@@ -251,25 +262,33 @@ export function mapColumns(
       })
       if (inMapOrigin.source == null) {
         inMapOrigin = null
+        return
       }
     }
 
     const mapConsumer = new SourceMapConsumer(map)
     mapConsumer.eachMapping(m => {
-      // console.log('message syntax map', m)
       mergedMapGenerator.addMapping({
         original: {
-          line: inMapOrigin != null ? inMapOrigin.line : res.originalLine,
-          column: inMapOrigin != null ? inMapOrigin.column : res.originalColumn
+          line: inMapFirstItem
+            ? inMapFirstItem.originalLine + res.originalLine - 2
+            : res.originalLine,
+          column: inMapFirstItem
+            ? inMapFirstItem.originalColumn + res.originalColumn
+            : res.originalColumn
         },
         generated: {
-          line: inMapOrigin != null ? inMapOrigin.line : res.originalLine,
+          line: inMapFirstItem
+            ? inMapFirstItem.generatedLine + res.originalLine - 2
+            : res.originalLine,
           // map column with message format compilation code map
-          column:
-            (inMapOrigin != null ? inMapOrigin.column : res.originalColumn) +
-            m.generatedColumn
+          column: inMapFirstItem
+            ? inMapFirstItem.generatedColumn +
+              res.originalColumn +
+              m.generatedColumn
+            : res.originalColumn + m.generatedColumn
         },
-        source: inMapOrigin != null ? inMapOrigin.source : res.source,
+        source: inMapOrigin ? inMapOrigin.source : res.source,
         name: m.name // message format compilation code
       })
     })
@@ -277,6 +296,7 @@ export function mapColumns(
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const generator = mergedMapGenerator as any
+  // const targetConsumer = inMapConsumer || resMapConsumer
   const targetConsumer = inMapConsumer || resMapConsumer
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ;(targetConsumer as any).sources.forEach((sourceFile: string) => {

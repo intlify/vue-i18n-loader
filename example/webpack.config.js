@@ -42,7 +42,10 @@ module.exports = {
         test: /\.(json5?|ya?ml)$/, // target json, json5, yaml and yml files
         type: 'javascript/auto',
         // Use `Rule.include` to specify the files of locale messages to be pre-compiled
-        include: [path.resolve(__dirname, './')],
+        include: [
+          path.resolve(__dirname, './composition/locales'),
+          path.resolve(__dirname, './legacy/locales')
+        ],
         use: [
           {
             loader: path.resolve(__dirname, '../lib/index.js'),
@@ -54,8 +57,8 @@ module.exports = {
         ]
       },
       {
-        resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
+        resourceQuery: /blockType=i18n/,
         loader: path.resolve(__dirname, '../lib/index.js')
       }
     ]

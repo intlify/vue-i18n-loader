@@ -6,7 +6,7 @@ import { isString } from '@intlify/shared'
 import {
   createCodeGenerator,
   generateMessageFunction,
-  mapColumns
+  mapLinesColumns
 } from './codegen'
 import { parseYAML, traverseNodes } from 'yaml-eslint-parser'
 import { RawSourceMap } from 'source-map'
@@ -48,8 +48,9 @@ export function generate(
   const codeMaps = generateNode(generator, ast, options)
 
   const { code, map } = generator.context()
+  // prettier-ignore
   const newMap = map
-    ? mapColumns((map as any).toJSON(), codeMaps, inSourceMap) || null // eslint-disable-line @typescript-eslint/no-explicit-any
+    ? mapLinesColumns((map as any).toJSON(), codeMaps, inSourceMap) || null // eslint-disable-line @typescript-eslint/no-explicit-any
     : null
   return {
     ast,

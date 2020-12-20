@@ -73,6 +73,74 @@ export function bundle(fixture: string, options = {}): Promise<BundleResolve> {
   })
 }
 
+export function bundleEx(
+  fixture: string,
+  options = {}
+): Promise<BundleResolve> {
+  const baseConfig: webpack.Configuration = {
+    mode: 'development',
+    devtool: 'source-map',
+    entry: path.resolve(__dirname, './fixtures/entry.js'),
+    resolve: {
+      alias: {
+        '~target': path.resolve(__dirname, './fixtures', fixture)
+      }
+    },
+    output: {
+      path: '/',
+      filename: 'bundle.js'
+    },
+    module: {
+      rules: [
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader'
+        },
+        {
+          test: /\.(json5?|ya?ml)$/,
+          type: 'javascript/auto',
+          include: [path.resolve(__dirname, './fixtures/locales')],
+          use: [
+            {
+              loader: path.resolve(__dirname, '../src/index.ts'),
+              options
+            }
+          ]
+        },
+        {
+          resourceQuery: /blockType=i18n/,
+          type: 'javascript/auto',
+          use: [
+            {
+              loader: path.resolve(__dirname, '../src/index.ts'),
+              options
+            }
+          ]
+        }
+      ]
+    },
+    plugins: [new VueLoaderPlugin()]
+  }
+
+  const config = merge({}, baseConfig)
+  const compiler = webpack(config)
+
+  const mfs = new memoryfs() // eslint-disable-line
+  compiler.outputFileSystem = mfs
+
+  return new Promise((resolve, reject) => {
+    compiler.run((err, stats) => {
+      if (err) {
+        return reject(err)
+      }
+      if (stats.hasErrors()) {
+        return reject(new Error(stats.toJson().errors.join(' | ')))
+      }
+      resolve({ code: mfs.readFileSync('/bundle.js').toString(), stats })
+    })
+  })
+}
+
 export function bundleLocale(
   fixture: string,
   options = {}

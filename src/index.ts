@@ -16,6 +16,7 @@ const loader: webpack.loader.Loader = function (
   const loaderContext = this // eslint-disable-line @typescript-eslint/no-this-alias
   const query = parse(loaderContext.resourceQuery)
   const options = getOptions(loaderContext, query, sourceMap) as CodeGenOptions
+  // console.log('query', this.resourcePath, this.resourceQuery, query, source)
   const langInfo = !isEmptyObject(query)
     ? isString(query.lang)
       ? query.lang
@@ -25,6 +26,9 @@ const loader: webpack.loader.Loader = function (
   try {
     this.cacheable && this.cacheable()
     // if (sourceMap) {
+    //   console.log('in map', sourceMap)
+    // }
+    // if (sourceMap) {
     //   const s = new SourceMapConsumer(sourceMap)
     //   console.log('sourcemap raw', sourceMap)
     //   s.eachMapping(m => {
@@ -33,7 +37,7 @@ const loader: webpack.loader.Loader = function (
     // }
     const generate = /json5?/.test(langInfo) ? generateJSON : generateYAML
     const { code, map } = generate(source, options)
-    // console.log(options.filename, code)
+    // console.log('code', code)
     this.callback(null, code, map)
   } catch (err) {
     this.emitError(`[vue-i18n-loader]: ${err.message}`)
