@@ -20,8 +20,7 @@ module.exports = {
       // is a simple `export * from '@vue/runtime-dom`. However having this
       // extra re-export somehow causes webpack to always invalidate the module
       // on the first HMR update and causes the page to reload.
-      vue: '@vue/runtime-dom',
-      'vue-i18n': 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js'
+      vue: '@vue/runtime-dom'
     }
   },
   devServer: {
@@ -42,28 +41,24 @@ module.exports = {
         test: /\.(json5?|ya?ml)$/, // target json, json5, yaml and yml files
         type: 'javascript/auto',
         // Use `Rule.include` to specify the files of locale messages to be pre-compiled
-        include: [path.resolve(__dirname, './')],
+        include: [
+          path.resolve(__dirname, './composition/locales'),
+          path.resolve(__dirname, './legacy/locales')
+        ],
         use: [
           {
             loader: path.resolve(__dirname, '../lib/index.js'),
             options: {
               // Whether pre-compile number and boolean literal as message functions that return the string value, default `false`
-              forceStringify: true
+              // forceStringify: true
             }
           }
         ]
       },
       {
-        resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
-        use: [
-          {
-            loader: path.resolve(__dirname, '../lib/index.js'),
-            options: {
-              preCompile: true
-            }
-          }
-        ]
+        resourceQuery: /blockType=i18n/,
+        loader: path.resolve(__dirname, '../lib/index.js')
       }
     ]
   },

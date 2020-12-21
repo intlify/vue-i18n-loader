@@ -5,7 +5,12 @@ import {
   ResourceNode,
   CompileOptions
 } from '@intlify/message-compiler'
-import { SourceMapGenerator, SourceMapConsumer } from 'source-map'
+import {
+  SourceMapGenerator,
+  SourceMapConsumer,
+  MappedPosition,
+  MappingItem
+} from 'source-map'
 
 import type { RawSourceMap } from 'source-map'
 
@@ -25,9 +30,13 @@ export interface SourceLocationable {
 }
 
 export interface CodeGenOptions {
+  type?: 'plain' | 'sfc'
   source?: string
   sourceMap?: boolean
   filename?: string
+  inSourceMap?: RawSourceMap
+  isGlobal?: boolean
+  locale?: string
   env?: DevEnv
   forceStringify?: boolean
   onWarn?: (msg: string) => void
@@ -206,22 +215,34 @@ export function generateMessageFunction(
   const { code, ast, map } = baseCompile(msg, newOptions)
   const genCode = !occured
     ? env === 'development'
-      ? `(()=>{const fn=${code};fn.source=${JSON.stringify(msg)};return fn})()`
+      ? `(()=>{const fn=${code};fn.source=${JSON.stringify(msg)};return fn;})()`
       : `${code}`
     : msg
   return { code: genCode, ast, map }
 }
 
-export function mapColumns(
+export function mapLinesColumns(
   resMap: RawSourceMap,
-  codeMaps: Map<string, RawSourceMap>
+  codeMaps: Map<string, RawSourceMap>,
+  inSourceMap?: RawSourceMap
 ): RawSourceMap | null {
   if (!resMap) {
     return null
   }
 
   const resMapConsumer = new SourceMapConsumer(resMap)
+  const inMapConsumer = inSourceMap ? new SourceMapConsumer(inSourceMap) : null
   const mergedMapGenerator = new SourceMapGenerator()
+
+  let inMapFirstItem: MappingItem | null = null
+  if (inMapConsumer) {
+    inMapConsumer.eachMapping(m => {
+      if (inMapFirstItem) {
+        return
+      }
+      inMapFirstItem = m
+    })
+  }
 
   resMapConsumer.eachMapping(res => {
     if (res.originalLine == null) {
@@ -230,21 +251,44 @@ export function mapColumns(
 
     const map = codeMaps.get(res.name)
     if (!map) {
-      return null
+      return
+    }
+
+    let inMapOrigin: MappedPosition | null = null
+    if (inMapConsumer) {
+      inMapOrigin = inMapConsumer.originalPositionFor({
+        line: res.originalLine,
+        column: res.originalColumn - 1
+      })
+      if (inMapOrigin.source == null) {
+        inMapOrigin = null
+        return
+      }
     }
 
     const mapConsumer = new SourceMapConsumer(map)
     mapConsumer.eachMapping(m => {
       mergedMapGenerator.addMapping({
         original: {
-          line: res.originalLine,
-          column: res.originalColumn
+          line: inMapFirstItem
+            ? inMapFirstItem.originalLine + res.originalLine - 2
+            : res.originalLine,
+          column: inMapFirstItem
+            ? inMapFirstItem.originalColumn + res.originalColumn
+            : res.originalColumn
         },
         generated: {
-          line: res.originalLine,
-          column: res.originalColumn + m.generatedColumn // map column with message format compilation code map
+          line: inMapFirstItem
+            ? inMapFirstItem.generatedLine + res.originalLine - 2
+            : res.originalLine,
+          // map column with message format compilation code map
+          column: inMapFirstItem
+            ? inMapFirstItem.generatedColumn +
+              res.originalColumn +
+              m.generatedColumn
+            : res.originalColumn + m.generatedColumn
         },
-        source: res.source,
+        source: inMapOrigin ? inMapOrigin.source : res.source,
         name: m.name // message format compilation code
       })
     })
@@ -252,17 +296,21 @@ export function mapColumns(
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const generator = mergedMapGenerator as any
+  // const targetConsumer = inMapConsumer || resMapConsumer
+  const targetConsumer = inMapConsumer || resMapConsumer
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ;(resMapConsumer as any).sources.forEach((sourceFile: string) => {
+  ;(targetConsumer as any).sources.forEach((sourceFile: string) => {
     generator._sources.add(sourceFile)
-    const sourceContent = resMapConsumer.sourceContentFor(sourceFile)
+    const sourceContent = targetConsumer.sourceContentFor(sourceFile)
     if (sourceContent != null) {
       mergedMapGenerator.setSourceContent(sourceFile, sourceContent)
     }
   })
 
-  generator._sourceRoot = resMap.sourceRoot
-  generator._file = resMap.file
+  generator._sourceRoot = inSourceMap
+    ? inSourceMap.sourceRoot
+    : resMap.sourceRoot
+  generator._file = inSourceMap ? inSourceMap.file : resMap.file
 
   return generator.toJSON()
 }

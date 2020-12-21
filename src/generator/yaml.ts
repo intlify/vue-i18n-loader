@@ -6,7 +6,7 @@ import { isString } from '@intlify/shared'
 import {
   createCodeGenerator,
   generateMessageFunction,
-  mapColumns
+  mapLinesColumns
 } from './codegen'
 import { parseYAML, traverseNodes } from 'yaml-eslint-parser'
 import { RawSourceMap } from 'source-map'
@@ -17,7 +17,11 @@ import type { CodeGenOptions, CodeGenerator, CodeGenResult } from './codegen'
 export function generate(
   targetSource: string | Buffer,
   {
+    type = 'plain',
     filename = 'vue-i18n-loader.yaml',
+    inSourceMap = undefined,
+    locale = '',
+    isGlobal = false,
     sourceMap = false,
     env = 'development',
     forceStringify = false
@@ -28,8 +32,12 @@ export function generate(
     : targetSource
 
   const options = {
+    type,
     source: value,
     sourceMap,
+    locale,
+    isGlobal,
+    inSourceMap,
     env,
     filename,
     forceStringify
@@ -40,8 +48,9 @@ export function generate(
   const codeMaps = generateNode(generator, ast, options)
 
   const { code, map } = generator.context()
+  // prettier-ignore
   const newMap = map
-    ? mapColumns((map as any).toJSON(), codeMaps) || null // eslint-disable-line @typescript-eslint/no-explicit-any
+    ? mapLinesColumns((map as any).toJSON(), codeMaps, inSourceMap) || null // eslint-disable-line @typescript-eslint/no-explicit-any
     : null
   return {
     ast,
@@ -59,12 +68,29 @@ function generateNode(
   const itemsCountStack = [] as number[]
   const { forceStringify } = generator.context()
   const codeMaps = new Map<string, RawSourceMap>()
+  const { type, sourceMap, isGlobal, locale } = options
 
   traverseNodes(node, {
     enterNode(node: YAMLNode, parent: YAMLNode) {
       switch (node.type) {
         case 'Program':
-          generator.push(`export default `)
+          if (type === 'plain') {
+            generator.push(`export default `)
+          } else {
+            const variableName =
+              type === 'sfc' ? (!isGlobal ? '__i18n' : '__i18nGlobal') : ''
+            const localeName =
+              type === 'sfc' ? (locale != null ? locale : `""`) : ''
+            generator.push(`export default function (Component) {`)
+            generator.indent()
+            generator.pushline(
+              `Component.${variableName} = Component.${variableName} || []`
+            )
+            generator.push(`Component.${variableName}.push({`)
+            generator.indent()
+            generator.pushline(`"locale": ${JSON.stringify(localeName)},`)
+            generator.push(`"resource": `)
+          }
           break
         case 'YAMLMapping':
           generator.push(`{`)
@@ -87,14 +113,14 @@ function generateNode(
             if (isString(value)) {
               generator.push(`${JSON.stringify(name)}: `)
               const { code, map } = generateMessageFunction(value, options)
-              options.sourceMap && map != null && codeMaps.set(value, map)
+              sourceMap && map != null && codeMaps.set(value, map)
               generator.push(`${code}`, node.value, value)
             } else {
               if (forceStringify) {
                 const strValue = JSON.stringify(value)
                 generator.push(`${JSON.stringify(name)}: `)
                 const { code, map } = generateMessageFunction(strValue, options)
-                options.sourceMap && map != null && codeMaps.set(strValue, map)
+                sourceMap && map != null && codeMaps.set(strValue, map)
                 generator.push(`${code}`, node.value, strValue)
               } else {
                 generator.push(
@@ -126,7 +152,7 @@ function generateNode(
               const value = node.value
               if (isString(value)) {
                 const { code, map } = generateMessageFunction(value, options)
-                options.sourceMap && map != null && codeMaps.set(value, map)
+                sourceMap && map != null && codeMaps.set(value, map)
                 generator.push(`${code}`, node, value)
               } else {
                 if (forceStringify) {
@@ -135,9 +161,7 @@ function generateNode(
                     strValue,
                     options
                   )
-                  options.sourceMap &&
-                    map != null &&
-                    codeMaps.set(strValue, map)
+                  sourceMap && map != null && codeMaps.set(strValue, map)
                   generator.push(`${code}`, node, strValue)
                 } else {
                   generator.push(`${JSON.stringify(value)}`)
@@ -154,6 +178,14 @@ function generateNode(
     },
     leaveNode(node: YAMLNode, parent: YAMLNode) {
       switch (node.type) {
+        case 'Program':
+          if (type === 'sfc') {
+            generator.deindent()
+            generator.push(`})`)
+            generator.deindent()
+            generator.push(`}`)
+          }
+          break
         case 'YAMLMapping':
           if (propsCountStack[propsCountStack.length - 1] === 0) {
             propsCountStack.pop()
