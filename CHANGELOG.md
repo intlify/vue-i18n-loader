@@ -1,4 +1,17 @@
 
+## v2.0.0-beta.3 (2020-12-21)
+
+#### :star: Features
+* [#141](https://github.com/intlify/vue-i18n-loader/pull/141) feat: i18n resource fully pre-compilation ([@kazupon](https://github.com/kazupon))
+
+#### :zap: Improvement Features
+* [#146](https://github.com/intlify/vue-i18n-loader/pull/146) imporovement: custom block fully pre-compilation ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 2
+- Yosuke Ota ([@ota-meshi](https://github.com/ota-meshi))
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v2.0.0-beta.2 (2020-12-04)
 
 #### :star: Features
