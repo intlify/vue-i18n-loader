@@ -69,9 +69,6 @@ function generateNode(
   const { forceStringify } = generator.context()
   const codeMaps = new Map<string, RawSourceMap>()
   const { type, sourceMap, isGlobal, locale } = options
-  const variableName =
-    type === 'sfc' ? (!isGlobal ? '__i18n' : '__i18nGlobal') : ''
-  const localeName = type === 'sfc' ? (locale != null ? locale : `""`) : ''
 
   traverseNodes(node, {
     enterNode(node: YAMLNode, parent: YAMLNode) {
@@ -80,7 +77,10 @@ function generateNode(
           if (type === 'plain') {
             generator.push(`export default `)
           } else {
-            // for 'sfc'
+            const variableName =
+              type === 'sfc' ? (!isGlobal ? '__i18n' : '__i18nGlobal') : ''
+            const localeName =
+              type === 'sfc' ? (locale != null ? locale : `""`) : ''
             generator.push(`export default function (Component) {`)
             generator.indent()
             generator.pushline(
@@ -88,8 +88,8 @@ function generateNode(
             )
             generator.push(`Component.${variableName}.push({`)
             generator.indent()
-            generator.pushline(`locale: ${JSON.stringify(localeName)},`)
-            generator.push(`content: `)
+            generator.pushline(`"locale": ${JSON.stringify(localeName)},`)
+            generator.push(`"resource": `)
           }
           break
         case 'YAMLMapping':

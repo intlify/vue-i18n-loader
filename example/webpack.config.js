@@ -20,8 +20,7 @@ module.exports = {
       // is a simple `export * from '@vue/runtime-dom`. However having this
       // extra re-export somehow causes webpack to always invalidate the module
       // on the first HMR update and causes the page to reload.
-      vue: '@vue/runtime-dom',
-      'vue-i18n': 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js'
+      vue: '@vue/runtime-dom'
     }
   },
   devServer: {

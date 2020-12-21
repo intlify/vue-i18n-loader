@@ -60,7 +60,7 @@ Object {
     "start": 0,
     "type": 0,
   },
-  "code": "(()=>{const fn=(ctx) => {const { normalize: _normalize } = ctx;return _normalize([\\"hello\\"])};fn.source=\\"hello\\";return fn})()",
+  "code": "(()=>{const fn=(ctx) => {const { normalize: _normalize } = ctx;return _normalize([\\"hello\\"])};fn.source=\\"hello\\";return fn;})()",
   "map": Object {
     "mappings": "mEAAAA",
     "names": Array [

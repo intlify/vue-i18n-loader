@@ -215,7 +215,7 @@ export function generateMessageFunction(
   const { code, ast, map } = baseCompile(msg, newOptions)
   const genCode = !occured
     ? env === 'development'
-      ? `(()=>{const fn=${code};fn.source=${JSON.stringify(msg)};return fn})()`
+      ? `(()=>{const fn=${code};fn.source=${JSON.stringify(msg)};return fn;})()`
       : `${code}`
     : msg
   return { code: genCode, ast, map }

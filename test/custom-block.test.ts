@@ -6,7 +6,7 @@ test('basic', async () => {
   expect(module.__i18n).toMatchSnapshot()
   const i18n = module.__i18n.pop()
   expect(i18n.locale).toEqual('')
-  expect(i18n.content.en.hello(createMessageContext())).toEqual('hello world!')
+  expect(i18n.resource.en.hello(createMessageContext())).toEqual('hello world!')
 })
 
 test('special characters', async () => {
@@ -14,7 +14,7 @@ test('special characters', async () => {
   expect(module.__i18n).toMatchSnapshot()
   const i18n = module.__i18n.pop()
   expect(i18n.locale).toEqual('')
-  expect(i18n.content.en.hello(createMessageContext())).toEqual(
+  expect(i18n.resource.en.hello(createMessageContext())).toEqual(
     'hello\ngreat\t"world"'
   )
 })
@@ -25,12 +25,12 @@ test('multiple', async () => {
   expect(module.__i18n.length).toEqual(2)
   let i18n = module.__i18n.pop()
   expect(i18n.locale).toEqual('')
-  expect(i18n.content.ja.hello(createMessageContext())).toEqual(
+  expect(i18n.resource.ja.hello(createMessageContext())).toEqual(
     'こんにちは、世界！'
   )
   i18n = module.__i18n.pop()
   expect(i18n.locale).toEqual('')
-  expect(i18n.content.en.hello(createMessageContext())).toEqual('hello world!')
+  expect(i18n.resource.en.hello(createMessageContext())).toEqual('hello world!')
 })
 
 test('import', async () => {
@@ -38,7 +38,7 @@ test('import', async () => {
   expect(module.__i18n).toMatchSnapshot()
   const i18n = module.__i18n.pop()
   expect(i18n.locale).toEqual('')
-  expect(i18n.content.en.hello(createMessageContext())).toEqual('hello world!')
+  expect(i18n.resource.en.hello(createMessageContext())).toEqual('hello world!')
 })
 
 test('locale attr', async () => {
@@ -46,7 +46,7 @@ test('locale attr', async () => {
   expect(module.__i18n).toMatchSnapshot()
   const i18n = module.__i18n.pop()
   expect(i18n.locale).toEqual('ja')
-  expect(i18n.content.hello(createMessageContext())).toEqual(
+  expect(i18n.resource.hello(createMessageContext())).toEqual(
     'こんにちは、世界！'
   )
 })
@@ -56,12 +56,12 @@ test('locale attr and basic', async () => {
   expect(module.__i18n).toMatchSnapshot()
   let i18n = module.__i18n.pop()
   expect(i18n.locale).toEqual('ja')
-  expect(i18n.content.hello(createMessageContext())).toEqual(
+  expect(i18n.resource.hello(createMessageContext())).toEqual(
     'こんにちは、世界！'
   )
   i18n = module.__i18n.pop()
   expect(i18n.locale).toEqual('')
-  expect(i18n.content.en.hello(createMessageContext())).toEqual('hello world!')
+  expect(i18n.resource.en.hello(createMessageContext())).toEqual('hello world!')
 })
 
 test('locale attr and import', async () => {
@@ -69,7 +69,7 @@ test('locale attr and import', async () => {
   expect(module.__i18n).toMatchSnapshot()
   const i18n = module.__i18n.pop()
   expect(i18n.locale).toEqual('en')
-  expect(i18n.content.hello(createMessageContext())).toEqual('hello world!')
+  expect(i18n.resource.hello(createMessageContext())).toEqual('hello world!')
 })
 
 test('yaml', async () => {
@@ -77,12 +77,12 @@ test('yaml', async () => {
   expect(module.__i18n).toMatchSnapshot()
   let i18n = module.__i18n.pop()
   expect(i18n.locale).toEqual('ja')
-  expect(i18n.content.hello(createMessageContext())).toEqual(
+  expect(i18n.resource.hello(createMessageContext())).toEqual(
     'こんにちは、世界！'
   )
   i18n = module.__i18n.pop()
   expect(i18n.locale).toEqual('en')
-  expect(i18n.content.hello(createMessageContext())).toEqual('hello world!')
+  expect(i18n.resource.hello(createMessageContext())).toEqual('hello world!')
 })
 
 test('json5', async () => {
@@ -90,7 +90,7 @@ test('json5', async () => {
   expect(module.__i18n).toMatchSnapshot()
   const i18n = module.__i18n.pop()
   expect(i18n.locale).toEqual('')
-  expect(i18n.content.en.hello(createMessageContext())).toEqual('hello world!')
+  expect(i18n.resource.en.hello(createMessageContext())).toEqual('hello world!')
 })
 
 test('global', async () => {
@@ -99,7 +99,9 @@ test('global', async () => {
   expect(module.__i18nGlobal).toMatchSnapshot()
   const i18n = module.__i18nGlobal.pop()
   expect(i18n.locale).toEqual('')
-  expect(i18n.content.en.hello(createMessageContext())).toEqual('hello global!')
+  expect(i18n.resource.en.hello(createMessageContext())).toEqual(
+    'hello global!'
+  )
 })
 
 test('global and local', async () => {
@@ -108,8 +110,8 @@ test('global and local', async () => {
   expect(module.__i18nGlobal).toMatchSnapshot()
   const l = module.__i18n.pop()
   expect(l.locale).toEqual('ja')
-  expect(l.content.hello(createMessageContext())).toEqual('hello local!')
+  expect(l.resource.hello(createMessageContext())).toEqual('hello local!')
   const g = module.__i18nGlobal.pop()
   expect(g.locale).toEqual('')
-  expect(g.content.en.hello(createMessageContext())).toEqual('hello global!')
+  expect(g.resource.en.hello(createMessageContext())).toEqual('hello global!')
 })

@@ -3,12 +3,12 @@
 exports[`basic 1`] = `
 Array [
   Object {
-    "content": Object {
+    "locale": "",
+    "resource": Object {
       "en": Object {
         "hello": [Function],
       },
     },
-    "locale": "",
   },
 ]
 `;
@@ -16,12 +16,12 @@ Array [
 exports[`global 1`] = `
 Array [
   Object {
-    "content": Object {
+    "locale": "",
+    "resource": Object {
       "en": Object {
         "hello": [Function],
       },
     },
-    "locale": "",
   },
 ]
 `;
@@ -29,10 +29,10 @@ Array [
 exports[`global and local 1`] = `
 Array [
   Object {
-    "content": Object {
+    "locale": "ja",
+    "resource": Object {
       "hello": [Function],
     },
-    "locale": "ja",
   },
 ]
 `;
@@ -40,12 +40,12 @@ Array [
 exports[`global and local 2`] = `
 Array [
   Object {
-    "content": Object {
+    "locale": "",
+    "resource": Object {
       "en": Object {
         "hello": [Function],
       },
     },
-    "locale": "",
   },
 ]
 `;
@@ -53,12 +53,12 @@ Array [
 exports[`import 1`] = `
 Array [
   Object {
-    "content": Object {
+    "locale": "",
+    "resource": Object {
       "en": Object {
         "hello": [Function],
       },
     },
-    "locale": "",
   },
 ]
 `;
@@ -66,12 +66,12 @@ Array [
 exports[`json5 1`] = `
 Array [
   Object {
-    "content": Object {
+    "locale": "",
+    "resource": Object {
       "en": Object {
         "hello": [Function],
       },
     },
-    "locale": "",
   },
 ]
 `;
@@ -79,10 +79,10 @@ Array [
 exports[`locale attr 1`] = `
 Array [
   Object {
-    "content": Object {
+    "locale": "ja",
+    "resource": Object {
       "hello": [Function],
     },
-    "locale": "ja",
   },
 ]
 `;
@@ -90,18 +90,18 @@ Array [
 exports[`locale attr and basic 1`] = `
 Array [
   Object {
-    "content": Object {
+    "locale": "",
+    "resource": Object {
       "en": Object {
         "hello": [Function],
       },
     },
-    "locale": "",
   },
   Object {
-    "content": Object {
+    "locale": "ja",
+    "resource": Object {
       "hello": [Function],
     },
-    "locale": "ja",
   },
 ]
 `;
@@ -109,10 +109,10 @@ Array [
 exports[`locale attr and import 1`] = `
 Array [
   Object {
-    "content": Object {
+    "locale": "en",
+    "resource": Object {
       "hello": [Function],
     },
-    "locale": "en",
   },
 ]
 `;
@@ -120,20 +120,20 @@ Array [
 exports[`multiple 1`] = `
 Array [
   Object {
-    "content": Object {
+    "locale": "",
+    "resource": Object {
       "en": Object {
         "hello": [Function],
       },
     },
-    "locale": "",
   },
   Object {
-    "content": Object {
+    "locale": "",
+    "resource": Object {
       "ja": Object {
         "hello": [Function],
       },
     },
-    "locale": "",
   },
 ]
 `;
@@ -141,12 +141,12 @@ Array [
 exports[`special characters 1`] = `
 Array [
   Object {
-    "content": Object {
+    "locale": "",
+    "resource": Object {
       "en": Object {
         "hello": [Function],
       },
     },
-    "locale": "",
   },
 ]
 `;
@@ -154,16 +154,16 @@ Array [
 exports[`yaml 1`] = `
 Array [
   Object {
-    "content": Object {
+    "locale": "en",
+    "resource": Object {
       "hello": [Function],
     },
-    "locale": "en",
   },
   Object {
-    "content": Object {
+    "locale": "ja",
+    "resource": Object {
       "hello": [Function],
     },
-    "locale": "ja",
   },
 ]
 `;
