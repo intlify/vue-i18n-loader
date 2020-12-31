@@ -1,4 +1,4 @@
-describe.skip(`global`, () => {
+describe(`global`, () => {
   beforeAll(async () => {
     await page.goto(`http://localhost:8080/global/`)
   })

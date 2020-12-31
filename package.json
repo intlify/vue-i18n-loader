@@ -24,6 +24,7 @@
     }
   },
   "dependencies": {
+    "@intlify/cli": "^0.1.2",
     "@intlify/core-base": "^9.0.0-beta.15",
     "@intlify/message-compiler": "^9.0.0-beta.15",
     "@intlify/shared": "^9.0.0-beta.15",

@@ -6,5 +6,8 @@
   "eslint.packageManager": "yarn",
   "eslint.enable": true,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "i18n-ally.localesPaths": []
+  "i18n-ally.localesPaths": [
+    "example/composition/locales",
+    "example/legacy/locales"
+  ]
 }
