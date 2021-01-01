@@ -349,7 +349,7 @@
     yaml-eslint-parser "^0.2.0"
     yargs "^16.2.0"
 
-"@intlify/core-base@9.0.0-beta.15", "@intlify/core-base@^9.0.0-beta.15":
+"@intlify/core-base@9.0.0-beta.15":
   version "9.0.0-beta.15"
   resolved "https://registry.yarnpkg.com/@intlify/core-base/-/core-base-9.0.0-beta.15.tgz#038939c58daf1e71ff1653f9aa942013c60f80a7"
   integrity sha512-afH2Cf+DvBs3FtJ5iHs7idP+1sHcZ4jsWhRzJu/BG6fLmthfMi13TUIItr1bdHBsB22M/syv3yq5gP305LCZ2A==
@@ -386,7 +386,7 @@
   dependencies:
     "@intlify/core-base" "9.0.0-beta.16"
 
-"@intlify/message-compiler@9.0.0-beta.15", "@intlify/message-compiler@^9.0.0-beta.15":
+"@intlify/message-compiler@9.0.0-beta.15":
   version "9.0.0-beta.15"
   resolved "https://registry.yarnpkg.com/@intlify/message-compiler/-/message-compiler-9.0.0-beta.15.tgz#8529070003a19036c45c2dce239afbac2e61f07b"
   integrity sha512-N1bh5dxLIrBNGM99O1/Uxvyb1IYmHl+sYcae88BKB2T5pvOSDC18Oa52pLjM0PMDFpKbQN+m/SGgiRPPRkp0nQ==

@@ -25,12 +25,8 @@
   },
   "dependencies": {
     "@intlify/cli": "^0.1.2",
-    "@intlify/core-base": "^9.0.0-beta.15",
-    "@intlify/message-compiler": "^9.0.0-beta.15",
     "@intlify/shared": "^9.0.0-beta.15",
-    "jsonc-eslint-parser": "^0.6.0",
-    "loader-utils": "^2.0.0",
-    "yaml-eslint-parser": "^0.2.0"
+    "loader-utils": "^2.0.0"
   },
   "devDependencies": {
     "@intlify/runtime": "^9.0.0-beta.15",
