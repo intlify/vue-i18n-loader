@@ -11,13 +11,15 @@
 
 **NOTE:** :warning: This `next` branch is development branch for Vue 3! The stable version is now in [`master`](https://github.com/intlify/vue-i18n-loader/tree/master) branch!
 
+
 ## Status: Beta ![Test](https://github.com/intlify/vue-i18n-loader/workflows/Test/badge.svg)
 
 <br/>
 
+
 ## :star: Features
 - i18n resource pre-compilation
-- `i18n` custom block
+- i18n custom block
   - i18n resource definition
   - i18n resource importing
   - Locale of i18n resource definition
@@ -39,6 +41,7 @@ $ npm i --save-dev @intlify/vue-i18n-loader@next
 $ yarn add -D @intlify/vue-i18n-loader@next
 ```
 
+
 ## :rocket: i18n resource pre-compilation
 
 ### Why do we need to require the configuration?
@@ -51,7 +54,7 @@ If you are using the runtime version, you will need to compile before importing 
 
 You can pre-commpile by configuring vue-i18n-loader as the webpack loader.
 
-### Webpack configration
+### webpack configration
 
 As an example, if your project has the locale messagess in `src/locales`, your webpack config will look like this:
 
@@ -114,9 +117,9 @@ module.exports = {
 The above uses webpack's `Rule.include` to specify the i18n resources to be precompiled. You can also use [`Rule.exclude`](https://webpack.js.org/configuration/module/#ruleexclude) to set the target.
 
 
-## :rocket: `i18n` custom block
+## :rocket: i18n custom block
 
-The below example that`App.vue` have `i18n` custom block:
+The below example that `App.vue` have i18n custom block:
 
 ### i18n resource definition
 
@@ -160,7 +163,7 @@ export default {
 </i18n>
 ```
 
-The locale messages defined at `i18n` custom blocks are **json format default**.
+The locale messages defined at i18n custom blocks are **json format default**.
 
 ### i18n resource importing
 
@@ -274,7 +277,7 @@ app.use(i18n)
 app.mount('#app')
 ```
 
-### Webpack Config
+### webpack Config
 
 `vue-loader` (`next` version):
 
@@ -294,35 +297,63 @@ module.exports = {
 }
 ```
 
-## :rocket: loader options
 
-### forceStringify
+## :wrench: Options
 
-Whether pre-compile number and boolean values as message functions that return the string value, default `false`
+### `forceStringify`
 
-```javascript
-module.exports = {
-  module: {
-    rules: [
-      // ...
-      {
-        test: /\.(json5?|ya?ml)$/,
-        type: 'javascript/auto',
-        include: [path.resolve(__dirname, './src/locales')],
-        use: [
-          {
-            loader: '@intlify/vue-i18n-loader',
-            options: {
-              forceStringify: true
-            }
-          }
-        ]
-      },
-      // ...
-    ]
+- **Type:** `boolean`
+- **Default:** `false`
+
+  Whether pre-compile number and boolean values as message functions that return the string value.
+
+  for example, the following json resources:
+
+  ```json
+  {
+    "trueValue": true,
+    "falseValue": false,
+    "nullValue": null,
+    "numberValue": 1
   }
-}
-```
+  ```
+
+  after pre-compiled (development):
+
+  ```js
+  export default {
+    "trueValue": (()=>{const fn=(ctx) => {const { normalize: _normalize } = ctx;return _normalize(["true"])};fn.source="true";return fn;})(),
+    "falseValue": (()=>{const fn=(ctx) => {const { normalize: _normalize } = ctx;return _normalize(["false"])};fn.source="false";return fn;})(),
+    "nullValue": (()=>{const fn=(ctx) => {const { normalize: _normalize } = ctx;return _normalize(["null"])};fn.source="null";return fn;})(),
+    "numberValue": (()=>{const fn=(ctx) => {const { normalize: _normalize } = ctx;return _normalize(["1"])};fn.source="1";return fn;})()
+  }
+  ```
+
+  webpack configration:
+
+  ```javascript
+  module.exports = {
+    module: {
+      rules: [
+        // ...
+        {
+          test: /\.(json5?|ya?ml)$/,
+          type: 'javascript/auto',
+          include: [path.resolve(__dirname, './src/locales')],
+          use: [
+            {
+              loader: '@intlify/vue-i18n-loader',
+              options: {
+                forceStringify: true
+              }
+            }
+          ]
+        },
+        // ...
+      ]
+    }
+  }
+  ```
 
 ## :scroll: Changelog
 Details changes for each release are documented in the [CHANGELOG.md](https://github.com/intlify/vue-i18n-loader/blob/master/CHANGELOG.md).
