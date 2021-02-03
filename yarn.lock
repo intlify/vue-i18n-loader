@@ -333,10 +333,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@intlify/cli@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@intlify/cli/-/cli-0.1.2.tgz#28097f12451491ec8797d2c09390293000c9eddb"
-  integrity sha512-MMi/wUEoTE0oBtTkaospJ2TGPMl0TPKmuN4L6KFhLkBM9Yw0tCN0pDHknlX78tyiI55wYbutddbxkEVHZT1RIw==
+"@intlify/cli@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@intlify/cli/-/cli-0.2.0.tgz#631f4ab2e97cfe2848e2e96aa38e6681316265ed"
+  integrity sha512-KIB6KggamrUoQJXa2CZad9D0dIH6FijPpRv020VtXvPFphprJKipG19GHndPgKRPK70t6Aj7zsJEqt5GvljKXg==
   dependencies:
     "@intlify/core" "^9.0.0-beta.16"
     "@intlify/core-base" "^9.0.0-beta.16"
