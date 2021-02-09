@@ -12,7 +12,7 @@
 **NOTE:** :warning: This `next` branch is development branch for Vue 3! The stable version is now in [`master`](https://github.com/intlify/vue-i18n-loader/tree/master) branch!
 
 
-## Status: Beta ![Test](https://github.com/intlify/vue-i18n-loader/workflows/Test/badge.svg)
+## Status: RC ![Test](https://github.com/intlify/vue-i18n-loader/workflows/Test/badge.svg)
 
 <br/>
 
