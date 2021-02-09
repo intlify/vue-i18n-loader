@@ -1,7 +1,6 @@
+## v2.0.0-rc.1 (2021-02-09)
 
-
-
-
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
 
 ## v2.0.0-beta.3 (2020-12-21)
 
