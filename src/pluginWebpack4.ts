@@ -5,7 +5,6 @@ import webpack from 'webpack'
 import { ReplaceSource } from 'webpack-sources'
 import { isFunction, isObject, isRegExp, isString } from '@intlify/shared'
 const Dependency = require('webpack/lib/Dependency') // eslint-disable-line @typescript-eslint/no-var-requires
-// const Template = require('webpack/lib/Template') // eslint-disable-line @typescript-eslint/no-var-requires
 
 const PLUGIN_ID = 'IntlifyVuePlugin'
 
@@ -63,23 +62,6 @@ class VueComponentDependency extends Dependency {
   }
 }
 
-/*
-function getRequestAndIndex(
-  script: NormalModule,
-  template: NormalModule
-): [string, number] {
-  if (script && template) {
-    return [script.userRequest!, 1]
-  } else if (script && !template) {
-    return [script.userRequest!, 0]
-  } else if (!script && template) {
-    return [template.userRequest!, 0]
-  } else {
-    return ['', -1]
-  }
-}
-*/
-
 function stringifyObj(obj: Record<string, any>): string {
   return `Object({${Object.keys(obj)
     .map(key => {
@@ -118,15 +100,6 @@ function toCode(code: any): string {
 }
 
 function generateCode(dep: VueComponentDependency, importVar: string): string {
-  // const [request, index] = getRequestAndIndex(dep.script!, dep.template!)
-  // if (!require) {
-  //   return ''
-  // }
-
-  // const importVar = `${Template.toIdentifier(
-  //   `${request}`
-  // )}__WEBPACK_IMPORTED_MODULE_${index.toString()}__["default"]`
-
   const injectionCodes = ['']
   Object.keys(dep.values).forEach(key => {
     const code = dep.values[key]
@@ -152,7 +125,6 @@ class VueComponentDependencyTemplate {
 
     const code = generateCode(dep, orgReplace.content)
     // console.log('generateCode', code, dep.statement, orgReplace)
-    // source.insert(dep.statement.declaration.range[0], code)
     source.replace(orgReplace.start, orgReplace.end, code)
   }
 }
@@ -192,7 +164,6 @@ function toVueComponentDependency(parser: any, values: InjectionValues) {
       values,
       statement
     )
-    // dep.loc = expr.loc
     parser.state.current.addDependency(dep)
     return true
   }
@@ -223,19 +194,29 @@ export default class IntlifyVuePlugin implements webpack.Plugin {
           new VueComponentDependency.Template()
         )
 
+        const handler = (
+          parser: webpack.compilation.normalModuleFactory.Parser
+        ) => {
+          parser.hooks.exportExpression.tap(
+            PLUGIN_ID,
+            (statement, declaration) => {
+              if (declaration.name === 'script') {
+                // console.log('exportExpression', statement, declaration)
+                return toVueComponentDependency(parser, injections)(statement)
+              }
+            }
+          )
+        }
+
         normalModuleFactory.hooks.parser
           .for('javascript/auto')
-          .tap(PLUGIN_ID, parser => {
-            parser.hooks.exportExpression.tap(
-              PLUGIN_ID,
-              (statement, declaration) => {
-                if (declaration.name === 'script') {
-                  // console.log('exportExpression', statement, declaration)
-                  return toVueComponentDependency(parser, injections)(statement)
-                }
-              }
-            )
-          })
+          .tap(PLUGIN_ID, handler)
+        normalModuleFactory.hooks.parser
+          .for('javascript/dynamic')
+          .tap(PLUGIN_ID, handler)
+        normalModuleFactory.hooks.parser
+          .for('javascript/esm')
+          .tap(PLUGIN_ID, handler)
       }
     )
   }

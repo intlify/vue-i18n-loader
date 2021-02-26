@@ -9,7 +9,7 @@ declare class IntlifyVuePlugin implements webpack.Plugin {
 let Plugin: typeof IntlifyVuePlugin
 
 console.warn(
-  `[@intlify/vue-i18n-loader] IntlifyVuePlugin is experimental! This plugin is used for Intlify tools. Don't use this plugin to enhancement Component options.`
+  `[@intlify/vue-i18n-loader] IntlifyVuePlugin is experimental! This plugin is used for Intlify tools. Don't use this plugin to enhancement Component options of your application.`
 )
 
 if (webpack.version && webpack.version[0] > '4') {
