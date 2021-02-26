@@ -8,6 +8,10 @@ declare class IntlifyVuePlugin implements webpack.Plugin {
 
 let Plugin: typeof IntlifyVuePlugin
 
+console.warn(
+  `[@intlify/vue-i18n-loader] IntlifyVuePlugin is experimental! This plugin is used for Intlify tools. Don't use this plugin to enhancement Component options.`
+)
+
 if (webpack.version && webpack.version[0] > '4') {
   // webpack5 and upper
   Plugin = require('./pluginWebpack5').default // eslint-disable-line @typescript-eslint/no-var-requires
