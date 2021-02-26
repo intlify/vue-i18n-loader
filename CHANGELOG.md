@@ -1,3 +1,12 @@
+
+## v2.0.0-rc.2 (2021-02-26)
+
+#### :star: Features
+* [#159](https://github.com/intlify/vue-i18n-loader/pull/159) experimental: component options injection plugin ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v2.0.0-rc.1 (2021-02-09)
 
 - kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
