@@ -1,4 +1,13 @@
 
+## v2.0.0-rc.3 (2021-02-26)
+
+#### :zap: Improvement Features
+* [#161](https://github.com/intlify/vue-i18n-loader/pull/161) improvement: intlify vue plugin ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v2.0.0-rc.2 (2021-02-26)
 
 #### :star: Features
