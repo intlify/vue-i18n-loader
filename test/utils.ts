@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import path from 'path'
 import { promises as fs } from 'fs'
 import webpack from 'webpack'
@@ -5,6 +7,7 @@ import merge from 'webpack-merge'
 import memoryfs from 'memory-fs'
 import { JSDOM, VirtualConsole, DOMWindow } from 'jsdom'
 import { VueLoaderPlugin } from 'vue-loader'
+import IntlifyVuePlugin from '../src/plugin'
 
 type BundleResolve = {
   code: string
@@ -12,14 +15,17 @@ type BundleResolve = {
 }
 
 type BundleResolveResolve = BundleResolve & {
-  jsdomError: any // eslint-disable-line @typescript-eslint/no-explicit-any
-  instance: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  jsdomError: any
+  instance: any
   window: DOMWindow
-  module: any // eslint-disable-line @typescript-eslint/no-explicit-any
-  exports: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  module: any
+  exports: any
 }
 
-export function bundle(fixture: string, options = {}): Promise<BundleResolve> {
+export function bundle(
+  fixture: string,
+  options: Record<string, any> = {}
+): Promise<BundleResolve> {
   const baseConfig: webpack.Configuration = {
     mode: 'development',
     devtool: 'source-map',
@@ -75,7 +81,7 @@ export function bundle(fixture: string, options = {}): Promise<BundleResolve> {
 
 export function bundleEx(
   fixture: string,
-  options = {}
+  options: Record<string, any> = {}
 ): Promise<BundleResolve> {
   const baseConfig: webpack.Configuration = {
     mode: 'development',
@@ -119,7 +125,7 @@ export function bundleEx(
         }
       ]
     },
-    plugins: [new VueLoaderPlugin()]
+    plugins: [new VueLoaderPlugin(), new IntlifyVuePlugin(options.intlify)]
   }
 
   const config = merge({}, baseConfig)
@@ -143,7 +149,7 @@ export function bundleEx(
 
 export function bundleLocale(
   fixture: string,
-  options = {}
+  options: Record<string, any> = {}
 ): Promise<BundleResolve> {
   const baseConfig: webpack.Configuration = {
     mode: 'development',
@@ -205,6 +211,7 @@ export async function bundleAndRun(
   config = {}
 ): Promise<BundleResolveResolve> {
   const { code, stats } = await bundleFn(fixture, config)
+  // console.log('code', code)
 
   let dom: JSDOM | null = null
   let jsdomError
@@ -250,3 +257,5 @@ export async function readFile(
   const source = await fs.readFile(filename, { encoding })
   return { filename, source }
 }
+
+/* eslint-enable @typescript-eslint/no-explicit-any */

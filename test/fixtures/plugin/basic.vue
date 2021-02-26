@@ -8,10 +8,8 @@ export default {
 }
 </script>
 
-<i18n global>
+<i18n>
 {
-  "en": {
-    "hello": "hello global!"
-  }
+  "ja": "hello"
 }
 </i18n>
