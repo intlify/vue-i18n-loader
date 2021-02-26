@@ -1,0 +1,19 @@
+import webpack from 'webpack'
+
+declare class IntlifyVuePlugin implements webpack.Plugin {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  constructor(optoins: Record<string, any>)
+  apply(compiler: webpack.Compiler): void
+}
+
+let Plugin: typeof IntlifyVuePlugin
+
+if (webpack.version && webpack.version[0] > '4') {
+  // webpack5 and upper
+  Plugin = require('./pluginWebpack5').default // eslint-disable-line @typescript-eslint/no-var-requires
+} else {
+  // webpack4 and lower
+  Plugin = require('./pluginWebpack4').default // eslint-disable-line @typescript-eslint/no-var-requires
+}
+
+export default Plugin
