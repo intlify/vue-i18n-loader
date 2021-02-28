@@ -1,4 +1,7 @@
+## v2.0.0 (2021-03-01)
 
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
 
 
 ## v2.0.0-rc.3 (2021-02-26)
