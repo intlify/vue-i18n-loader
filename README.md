@@ -9,10 +9,10 @@
 
 <p align="center">vue-i18n loader for custom blocks</p>
 
-**NOTE:** :warning: This `next` branch is development branch for Vue 3! The stable version is now in [`master`](https://github.com/intlify/vue-i18n-loader/tree/master) branch!
+**NOTE:** :warning: This `next` branch is development branch for Vue 3! The version for Vue 2 is now in [`master`](https://github.com/intlify/vue-i18n-loader/tree/master) branch!
 
 
-## Status: RC ![Test](https://github.com/intlify/vue-i18n-loader/workflows/Test/badge.svg)
+## Status: ![Test](https://github.com/intlify/vue-i18n-loader/workflows/Test/badge.svg)
 
 <br/>
 
