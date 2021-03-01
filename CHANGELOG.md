@@ -1,4 +1,13 @@
 
+## v2.0.2 (2021-03-01)
+
+#### :bug: Bug Fixes
+* [#168](https://github.com/intlify/vue-i18n-loader/pull/168) fix: export default warning ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v2.0.1 (2021-03-01)
 
 #### :zap: Improvement Features
