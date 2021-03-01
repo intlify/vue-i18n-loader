@@ -1,3 +1,12 @@
+
+## v2.0.1 (2021-03-01)
+
+#### :zap: Improvement Features
+* [#165](https://github.com/intlify/vue-i18n-loader/pull/165) upgrade deps ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v2.0.0 (2021-03-01)
 
 #### Committers: 1
