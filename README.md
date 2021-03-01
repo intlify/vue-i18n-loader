@@ -4,6 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/intlify/vue-i18n-loader/actions?query=workflow%3ATest"><img src="https://github.com/intlify/vue-i18n-loader/workflows/Test/badge.svg" alt="Build Status"></a>
+  <a href="https://www.npmjs.com/package/@intlify/vue-i18n-loader"><img src="https://img.shields.io/npm/v/@intlify/vue-i18n-loader/next.svg" alt="npm"></a>
   <a href="https://www.npmjs.com/package/@intlify/vue-i18n-loader"><img src="https://img.shields.io/npm/v/@intlify/vue-i18n-loader.svg" alt="npm"></a>
 </p>
 
@@ -11,8 +12,6 @@
 
 **NOTE:** :warning: This `next` branch is development branch for Vue 3! The version for Vue 2 is now in [`master`](https://github.com/intlify/vue-i18n-loader/tree/master) branch!
 
-
-## Status: ![Test](https://github.com/intlify/vue-i18n-loader/workflows/Test/badge.svg)
 
 <br/>
 
