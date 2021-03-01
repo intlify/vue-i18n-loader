@@ -5,6 +5,7 @@ import webpack from 'webpack'
 import { ReplaceSource } from 'webpack-sources'
 import { isFunction, isObject, isRegExp, isString } from '@intlify/shared'
 const Dependency = require('webpack/lib/Dependency') // eslint-disable-line @typescript-eslint/no-var-requires
+const NullFactory = require('webpack/lib/NullFactory') // eslint-disable-line @typescript-eslint/no-var-requires
 
 const PLUGIN_ID = 'IntlifyVuePlugin'
 
@@ -44,6 +45,17 @@ class VueComponentDependency extends Dependency {
     this.statement = statement
   }
 
+  get type() {
+    return 'harmony export expression'
+  }
+
+  getExports() {
+    return {
+      exports: ['default'],
+      dependencies: undefined
+    }
+  }
+
   updateHash(hash: any) {
     super.updateHash(hash)
     const scriptModule = this.script
@@ -52,7 +64,7 @@ class VueComponentDependency extends Dependency {
         (!scriptModule.buildMeta || scriptModule.buildMeta.exportsType)) + ''
     )
     hash.update((scriptModule && scriptModule.id) + '')
-    const templateModule = this.templa
+    const templateModule = this.template
     hash.update(
       (templateModule &&
         (!templateModule.buildMeta || templateModule.buildMeta.exportsType)) +
@@ -164,6 +176,7 @@ function toVueComponentDependency(parser: any, values: InjectionValues) {
       values,
       statement
     )
+    // dep.loc = statement.loc
     parser.state.current.addDependency(dep)
     return true
   }
@@ -182,11 +195,11 @@ export default class IntlifyVuePlugin implements webpack.Plugin {
     compiler.hooks.compilation.tap(
       PLUGIN_ID,
       (compilation, { normalModuleFactory }) => {
-        // compilation.dependencyFactories.set(
-        //   // @ts-ignore
-        //   VueComponentDependency,
-        //   new NullFactory()
-        // )
+        compilation.dependencyFactories.set(
+          // @ts-ignore
+          VueComponentDependency,
+          new NullFactory()
+        )
         compilation.dependencyTemplates.set(
           // @ts-ignore
           VueComponentDependency,
@@ -200,7 +213,10 @@ export default class IntlifyVuePlugin implements webpack.Plugin {
           parser.hooks.exportExpression.tap(
             PLUGIN_ID,
             (statement, declaration) => {
-              if (declaration.name === 'script') {
+              if (
+                (parser as any).state.module.resource.endsWith('.vue') &&
+                declaration.name === 'script'
+              ) {
                 // console.log('exportExpression', statement, declaration)
                 return toVueComponentDependency(parser, injections)(statement)
               }
