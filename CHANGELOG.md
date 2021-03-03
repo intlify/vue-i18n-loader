@@ -1,4 +1,13 @@
 
+## v1.1.0 (2021-03-03)
+
+#### :star: Features
+* [#173](https://github.com/intlify/vue-i18n-loader/pull/173) feat: intlify vue plugin for v1 ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v1.0.0 (2020-04-07)
 
 #### :pencil: Documentation
