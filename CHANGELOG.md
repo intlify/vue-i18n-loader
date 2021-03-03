@@ -1,4 +1,13 @@
 
+## v2.0.3 (2021-03-03)
+
+#### :zap: Improvement Features
+* [#171](https://github.com/intlify/vue-i18n-loader/pull/171) feat: intlify vue plugin for webpack5 ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v2.0.2 (2021-03-01)
 
 #### :bug: Bug Fixes
