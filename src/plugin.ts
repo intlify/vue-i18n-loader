@@ -1,6 +1,16 @@
+;(async () => {
+  try {
+    await import('vue-i18n')
+  } catch (e) {
+    throw new Error(
+      '@intlify/vue-i18n-loader requires vue-i18n to be present in the dependency tree.'
+    )
+  }
+})()
+
 import webpack from 'webpack'
 
-declare class IntlifyVuePlugin implements webpack.Plugin {
+declare class IntlifyVuePlugin {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(optoins: Record<string, any>)
   apply(compiler: webpack.Compiler): void
@@ -11,6 +21,7 @@ let Plugin: typeof IntlifyVuePlugin
 console.warn(
   `[@intlify/vue-i18n-loader] IntlifyVuePlugin is experimental! This plugin is used for Intlify tools. Don't use this plugin to enhancement Component options of your application.`
 )
+// console.log('[@intlify/vue-i18n-loader] webpack version:', webpack.version)
 
 if (webpack.version && webpack.version[0] > '4') {
   // webpack5 and upper

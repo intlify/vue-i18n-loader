@@ -28,7 +28,7 @@ type InjectionValues = Record<string, any>
 class VueComponentDependency extends Dependency {
   static Template: VueComponentDependencyTemplate
   script?: NormalModule
-  templa?: NormalModule
+  template?: NormalModule
   values: InjectionValues
   statement: any
 
