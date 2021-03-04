@@ -40,6 +40,8 @@ $ npm i --save-dev @intlify/vue-i18n-loader@next
 $ yarn add -D @intlify/vue-i18n-loader@next
 ```
 
+**NOTE:** :warning: `@intlify/vue-i18n-loader@next` is for Vue I18n v9 or later, if you want to use Vue I18n v8.x, you need to install `@intlify/vue-i18n-loader`.
+
 
 ## :rocket: i18n resource pre-compilation
 
