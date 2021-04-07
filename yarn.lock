@@ -332,20 +332,21 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@intlify/cli@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@intlify/cli/-/cli-0.3.0.tgz#5ec7500e57d3bf8e233e53921f2b6f0a4ed54652"
-  integrity sha512-WPas/0XFDGx/xp09gpOgLx7z+X7UtihhoI9qfj6lOiwmyFt/GvRmcP3oXKwsIpYYnEspWUeJLIhYO5pnhsleDg==
+"@intlify/cli@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@intlify/cli/-/cli-0.4.0.tgz#4370ddab24a295c89925f3abd447bbeda09bb0e7"
+  integrity sha512-kJxJaLb2DgOmaqQxy26Ick1GTBLFrO8CEdbmtDiOeO82JR2dmyDvCOz2iLP9zELzl0WHTJ958IMHbSC5c6xN2g==
   dependencies:
-    "@intlify/core" "^9.0.0-beta.16"
-    "@intlify/core-base" "^9.0.0-beta.16"
-    "@intlify/message-compiler" "^9.0.0-beta.16"
-    "@intlify/shared" "^9.0.0-beta.16"
+    "@intlify/core" "^9.1.0"
+    "@intlify/core-base" "^9.1.0"
+    "@intlify/message-compiler" "^9.1.0"
+    "@intlify/shared" "^9.1.0"
     chalk "^4.1.0"
     debug "^4.3.1"
     glob "^7.1.6"
-    jsonc-eslint-parser "^0.6.0"
-    yaml-eslint-parser "^0.2.0"
+    jsonc-eslint-parser "^1.0.1"
+    source-map "^0.6.1"
+    yaml-eslint-parser "^0.3.2"
     yargs "^16.2.0"
 
 "@intlify/core-base@9.0.0":
@@ -358,32 +359,31 @@
     "@intlify/runtime" "9.0.0"
     "@intlify/shared" "9.0.0"
 
-"@intlify/core-base@9.0.0-beta.16":
-  version "9.0.0-beta.16"
-  resolved "https://registry.yarnpkg.com/@intlify/core-base/-/core-base-9.0.0-beta.16.tgz#ab35802b982f52db20d4758d020c2dcd1724e7f9"
-  integrity sha512-PJLDVYy3x8Mf9+XtWljEfk4Lo6mudopYlRvB89NQR3TkR+Tqkbcsegj09XdXpTKBYiq+yQrlZKZ0KEHb7l5Zuw==
+"@intlify/core-base@9.1.0", "@intlify/core-base@^9.1.0":
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@intlify/core-base/-/core-base-9.1.0.tgz#59503c10874cbfe6d6e30d55d71a56b6d8a08d31"
+  integrity sha512-87wHPLJrHJ8i+n3Hn8zOHe00sA+HYyIJZgFi35lP4OPnT5gZ0RLOofkk/20UMeVDSKIWn5Fl9paOSR1mqJaX1A==
   dependencies:
-    "@intlify/message-compiler" "9.0.0-beta.16"
-    "@intlify/message-resolver" "9.0.0-beta.16"
-    "@intlify/runtime" "9.0.0-beta.16"
-    "@intlify/shared" "9.0.0-beta.16"
+    "@intlify/devtools-if" "9.1.0"
+    "@intlify/message-compiler" "9.1.0"
+    "@intlify/message-resolver" "9.1.0"
+    "@intlify/runtime" "9.1.0"
+    "@intlify/shared" "9.1.0"
+    "@intlify/vue-devtools" "9.1.0"
 
-"@intlify/core-base@^9.0.0-beta.16":
-  version "9.0.0-beta.17"
-  resolved "https://registry.yarnpkg.com/@intlify/core-base/-/core-base-9.0.0-beta.17.tgz#524b362863708f853cd29a29ad5408a3b2c2fbd2"
-  integrity sha512-DPaTbyVMI3q4s6CQW73jzR42vuIAVhfnm4LlPnkcE4rRrobjXZR5ivf4pyxZI9cXTmL5CXOEE+Scd7wKrWil3A==
+"@intlify/core@^9.1.0":
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@intlify/core/-/core-9.1.0.tgz#1b2ef994ff30e22a8acc2764e9f6c8da2b98d76e"
+  integrity sha512-uaiAAAhaELaTMsF7+fvA0T63V3+WS79jgWTEXg+Wj0FUdkEYcF05A01+lrb+noazvVVF2XIQZj8RI3GeTjDNlg==
   dependencies:
-    "@intlify/message-compiler" "9.0.0-beta.17"
-    "@intlify/message-resolver" "9.0.0-beta.17"
-    "@intlify/runtime" "9.0.0-beta.17"
-    "@intlify/shared" "9.0.0-beta.17"
+    "@intlify/core-base" "9.1.0"
 
-"@intlify/core@^9.0.0-beta.16":
-  version "9.0.0-beta.16"
-  resolved "https://registry.yarnpkg.com/@intlify/core/-/core-9.0.0-beta.16.tgz#d74d4678868b37b641bdf999552b237d84dacb88"
-  integrity sha512-tPXf9rr+ZzG1zXgdLo8rCO2jws6eIXzJSaTvgnanZpfyyMKE+T8Ra5vVu3f/Sm0J7flT+z/Q3kLfnbpOMQ1UiQ==
+"@intlify/devtools-if@9.1.0":
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@intlify/devtools-if/-/devtools-if-9.1.0.tgz#81a3ede49810e3f0960dc2379551a990623280db"
+  integrity sha512-jIMOWWj663UAiwJbISUbl1pkABWVYTogyOxCH4z2uIOOE/DdkNrqdTI/W4/tm3X8YCwHU8woeGen4DwbI5siJg==
   dependencies:
-    "@intlify/core-base" "9.0.0-beta.16"
+    "@intlify/shared" "9.1.0"
 
 "@intlify/message-compiler@9.0.0":
   version "9.0.0"
@@ -394,22 +394,13 @@
     "@intlify/shared" "9.0.0"
     source-map "0.6.1"
 
-"@intlify/message-compiler@9.0.0-beta.16":
-  version "9.0.0-beta.16"
-  resolved "https://registry.yarnpkg.com/@intlify/message-compiler/-/message-compiler-9.0.0-beta.16.tgz#359993251a303f148b3a325eca055cdbaf0cd95f"
-  integrity sha512-dE4UZsbVl5TKogYdfrJ6nQKdin1R4XMKVBVa9dE1A8HVvVHBSLy6iQiYpcw8TwcEHIa+rFjuuHuh+IdN3eCw+g==
+"@intlify/message-compiler@9.1.0", "@intlify/message-compiler@^9.1.0":
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@intlify/message-compiler/-/message-compiler-9.1.0.tgz#23cb7459e4345f9d35d3f928ff5b45a179a531af"
+  integrity sha512-bsleKiSA2lzEpPyPX3lIHBFXm1xvpDo92WBF/+qmCBV8lWnM92F+EbO8eW6HfnqxJ9V0D5LfqJohWzNt2Kg60Q==
   dependencies:
-    "@intlify/message-resolver" "9.0.0-beta.16"
-    "@intlify/shared" "9.0.0-beta.16"
-    source-map "0.6.1"
-
-"@intlify/message-compiler@9.0.0-beta.17", "@intlify/message-compiler@^9.0.0-beta.16":
-  version "9.0.0-beta.17"
-  resolved "https://registry.yarnpkg.com/@intlify/message-compiler/-/message-compiler-9.0.0-beta.17.tgz#2aa05a372114caf63a0c5d846a774160ca92cf9f"
-  integrity sha512-jzPrinnwfJ1xuOfs8ccjiRAQ+DwOsr6BdOuzfMapmWkKQ99RZHg1YYGo3cS6mfHfjtk1wUEImAM6IYX0lFb47Q==
-  dependencies:
-    "@intlify/message-resolver" "9.0.0-beta.17"
-    "@intlify/shared" "9.0.0-beta.17"
+    "@intlify/message-resolver" "9.1.0"
+    "@intlify/shared" "9.1.0"
     source-map "0.6.1"
 
 "@intlify/message-resolver@9.0.0":
@@ -417,15 +408,10 @@
   resolved "https://registry.yarnpkg.com/@intlify/message-resolver/-/message-resolver-9.0.0.tgz#0077ec24606b6486d238bdef9044e27729f4782c"
   integrity sha512-LVK4cwu1l33yvBy0UQkEdXm6pZUcbbiparobruJXz+U8jRTmYHBprN59j59YKXEKcV43cHfzNveaQIm84bgxvQ==
 
-"@intlify/message-resolver@9.0.0-beta.16":
-  version "9.0.0-beta.16"
-  resolved "https://registry.yarnpkg.com/@intlify/message-resolver/-/message-resolver-9.0.0-beta.16.tgz#f8960344201050d17560f8d01f63e3cd0b9bf59c"
-  integrity sha512-xwjsFuDDYEv7g1KE5QZRbrPgfsrNsDhYLtNYR7Tn4inzbmB6ipak2UlDzDcQGLieSFbe1WwAoNL0IXy4sUKboQ==
-
-"@intlify/message-resolver@9.0.0-beta.17":
-  version "9.0.0-beta.17"
-  resolved "https://registry.yarnpkg.com/@intlify/message-resolver/-/message-resolver-9.0.0-beta.17.tgz#58f156ab0b4993cf61a5f8d15d193fc87b80611a"
-  integrity sha512-xbh6YWRMooWMCkhnMFt5Vc3bIPhk40zm6AhYqkkin/zTsljG02sjCUCJae/3Os5PjqHgAVeBa3Ykja6AhXAJZQ==
+"@intlify/message-resolver@9.1.0":
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@intlify/message-resolver/-/message-resolver-9.1.0.tgz#101a9abd4d49f51c5dd59ab0fbbd7314c50deecb"
+  integrity sha512-VXnmmUZKre6dNEDD3/J+kZyeLJK9ScyjzZZWYkY9dIo03tpbsn9HKTDpap2WQrEeSlReH4Lx0VeEhi8FyjNwFw==
 
 "@intlify/runtime@9.0.0", "@intlify/runtime@^9.0.0":
   version "9.0.0"
@@ -436,38 +422,33 @@
     "@intlify/message-resolver" "9.0.0"
     "@intlify/shared" "9.0.0"
 
-"@intlify/runtime@9.0.0-beta.16":
-  version "9.0.0-beta.16"
-  resolved "https://registry.yarnpkg.com/@intlify/runtime/-/runtime-9.0.0-beta.16.tgz#6a210a5b0984f9e295025e3dde5262108e0e69d9"
-  integrity sha512-py+stHrbkBoEB2OsBB+rySevR+54uhybF54LToGjErr740R/AVuOVTJEKRS/LF9VvinGZZTu/WVOXcPpMfqt8Q==
+"@intlify/runtime@9.1.0":
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@intlify/runtime/-/runtime-9.1.0.tgz#46cf8afe4b84109cf46dd16afef5918ec90c5e13"
+  integrity sha512-zgTmZeGlPzO/oPdlZalOKX++E+OGG3YGTPDQEYsJE65HYdSbYnVF1PduXfP/CGq85V9jutWb/dLCpssKL6Avjw==
   dependencies:
-    "@intlify/message-compiler" "9.0.0-beta.16"
-    "@intlify/message-resolver" "9.0.0-beta.16"
-    "@intlify/shared" "9.0.0-beta.16"
-
-"@intlify/runtime@9.0.0-beta.17":
-  version "9.0.0-beta.17"
-  resolved "https://registry.yarnpkg.com/@intlify/runtime/-/runtime-9.0.0-beta.17.tgz#7604dad17c9081bf35c5862d0f06d98fcd2fed33"
-  integrity sha512-WREqQQYI4Isfp6I2qZW+up9n128t1GtUg98BLZrWXtEtUufmbb0t9xtqhxb9YnWulVyNrbsvJBF08WsRvsG/1w==
-  dependencies:
-    "@intlify/message-compiler" "9.0.0-beta.17"
-    "@intlify/message-resolver" "9.0.0-beta.17"
-    "@intlify/shared" "9.0.0-beta.17"
+    "@intlify/message-compiler" "9.1.0"
+    "@intlify/message-resolver" "9.1.0"
+    "@intlify/shared" "9.1.0"
 
 "@intlify/shared@9.0.0", "@intlify/shared@^9.0.0":
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/@intlify/shared/-/shared-9.0.0.tgz#d85b3b5f9033f377c5cf2202cf2459aa49948f36"
   integrity sha512-0r4v7dnY8g/Jfx2swUWy2GyfH/WvIpWvkU4OIupvxDTWiE8RhcpbOCVvqpVh/xGi0proHQ/r2Dhc0QSItUsfDQ==
 
-"@intlify/shared@9.0.0-beta.16":
-  version "9.0.0-beta.16"
-  resolved "https://registry.yarnpkg.com/@intlify/shared/-/shared-9.0.0-beta.16.tgz#51a80ca4705c93cb14c8f06398dfc550df09d67d"
-  integrity sha512-A7GSOovcZn/NMoAmDc8FG9uRcFv6iygriK8+C6HFeOnMQ9X+T9f5A9bPtXhCOCiRpQm9SUtGqXedxO5Y8rz9/A==
+"@intlify/shared@9.1.0", "@intlify/shared@^9.1.0":
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@intlify/shared/-/shared-9.1.0.tgz#664c4c322e80130666d5ef653dba2e7a0133937e"
+  integrity sha512-1dNA4eE0tbXUvB7kgPovtY4hhcit40hWshqkZYa3dNsL+mL+kU+Y9+SqLKa9Ign4SwXUZxEYCfE9la7/7YV2Ag==
 
-"@intlify/shared@9.0.0-beta.17", "@intlify/shared@^9.0.0-beta.16":
-  version "9.0.0-beta.17"
-  resolved "https://registry.yarnpkg.com/@intlify/shared/-/shared-9.0.0-beta.17.tgz#4438dd32a6ef21eb534f9e9e141335d6493f60f7"
-  integrity sha512-xXKO9aWEQbj2xj+7Sc0pSG+ux+bEnAtvm7J33aZoGK3P2bNV5CIGKPrs6VuC9UdNRs5AjyLlh1xk7M6nMpoQOg==
+"@intlify/vue-devtools@9.1.0":
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@intlify/vue-devtools/-/vue-devtools-9.1.0.tgz#908a51fab8c0cf3c8aa0eff43ebcb262c8d7aa31"
+  integrity sha512-CriuOYRyedj4SIUaoJSSNuFELPVVAgxE9FVqioiAGTydtIWuQD+pSdFOCtM64n7l3bxy+l98r4sIGi+FOk8r+w==
+  dependencies:
+    "@intlify/message-resolver" "9.1.0"
+    "@intlify/runtime" "9.1.0"
+    "@intlify/shared" "9.1.0"
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
@@ -5674,12 +5655,13 @@ json5@^1.0.1:
   dependencies:
     minimist "^1.2.0"
 
-jsonc-eslint-parser@^0.6.0:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/jsonc-eslint-parser/-/jsonc-eslint-parser-0.6.1.tgz#006bb056b769ca3efa4c4ad298c7b9e3662356a9"
-  integrity sha512-aHGEgzh301uxxsYS+KizDvEw7cjIuLyTHnw+IvhCDniJQYnM9DrZS0DbG6QLlIr682jNsmO5d9+JvoagfVuZvw==
+jsonc-eslint-parser@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/jsonc-eslint-parser/-/jsonc-eslint-parser-1.0.1.tgz#fbbedad0875c79e1e15d0ed6877ebe43f18a52e3"
+  integrity sha512-mh5LY5byThmc692EqJS3Ss9sViNoNeCLNG5VQUgJLoAFFM3FzdIetd99qEiiQ+NXBVAIUgX5sWeK9leniS8RbQ==
   dependencies:
-    eslint-visitor-keys "^1.3.0"
+    eslint-utils "^2.1.0"
+    eslint-visitor-keys "^2.0.0"
     espree "^6.0.0 || ^7.2.0"
 
 jsonparse@^1.2.0:
@@ -9586,22 +9568,13 @@ yallist@^4.0.0:
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
-yaml-eslint-parser@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/yaml-eslint-parser/-/yaml-eslint-parser-0.2.0.tgz#76bfe1645caf39adcd9b274c32752b3f6da90882"
-  integrity sha512-ZIqeTBi4K1eXzqYp9CqfN5Gr0RIA4q1T7+jiv0XoUV1ti05FL31iH7Yfw5aY0GpIJv/A003yEjvVTDb3XLH31A==
+yaml-eslint-parser@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/yaml-eslint-parser/-/yaml-eslint-parser-0.3.2.tgz#c7f5f3904f1c06ad55dc7131a731b018426b4898"
+  integrity sha512-32kYO6kJUuZzqte82t4M/gB6/+11WAuHiEnK7FreMo20xsCKPeFH5tDBU7iWxR7zeJpNnMXfJyXwne48D0hGrg==
   dependencies:
     eslint-visitor-keys "^1.3.0"
-    yaml "^1.10.0"
-    yaml-unist-parser "^1.2.1"
-
-yaml-unist-parser@^1.2.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/yaml-unist-parser/-/yaml-unist-parser-1.3.1.tgz#4305a54d8f8750dfff782bb998ff93d0da538d1a"
-  integrity sha512-4aHBMpYcnByF8l2OKj5hlBJlxSYIMON8Z1Hm57ymbBL4omXMlGgY+pEf4Di6h2qNT8ZG8seTVvAQYNOa7CZ9eA==
-  dependencies:
-    lines-and-columns "^1.1.6"
-    tslib "^1.10.0"
+    lodash "^4.17.20"
     yaml "^1.10.0"
 
 yaml@^1.10.0:

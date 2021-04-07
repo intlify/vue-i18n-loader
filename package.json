@@ -24,7 +24,7 @@
     }
   },
   "dependencies": {
-    "@intlify/cli": "^0.3.0",
+    "@intlify/cli": "^0.4.0",
     "@intlify/shared": "^9.0.0",
     "loader-utils": "^2.0.0"
   },
