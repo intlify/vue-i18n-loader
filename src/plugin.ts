@@ -19,7 +19,7 @@ declare class IntlifyVuePlugin {
 let Plugin: typeof IntlifyVuePlugin
 
 console.warn(
-  `[@intlify/vue-i18n-loader] IntlifyVuePlugin is experimental! This plugin is used for Intlify tools. Don't use this plugin to enhancement Component options of your application.`
+  `[@intlify/vue-i18n-loader] IntlifyVuePlugin is experimental! This plugin is used for Intlify Devtools. Don't use this plugin to enhancement Component options of your application.`
 )
 // console.log('[@intlify/vue-i18n-loader] webpack version:', webpack.version)
 
