@@ -192,6 +192,7 @@ export default class IntlifyVuePlugin {
 
     compiler.hooks.compilation.tap(
       PLUGIN_ID,
+      // @ts-ignore
       (compilation, { normalModuleFactory }) => {
         compilation.dependencyFactories.set(
           // @ts-ignore

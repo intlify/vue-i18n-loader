@@ -194,6 +194,7 @@ export default class IntlifyVuePlugin implements webpack.Plugin {
 
     compiler.hooks.compilation.tap(
       PLUGIN_ID,
+      // @ts-ignore
       (compilation, { normalModuleFactory }) => {
         compilation.dependencyFactories.set(
           // @ts-ignore
@@ -212,6 +213,7 @@ export default class IntlifyVuePlugin implements webpack.Plugin {
         ) => {
           parser.hooks.exportExpression.tap(
             PLUGIN_ID,
+            // @ts-ignore
             (statement, declaration) => {
               if (
                 (parser as any).state.module.resource.endsWith('.vue') &&
