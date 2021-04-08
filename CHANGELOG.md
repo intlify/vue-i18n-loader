@@ -1,4 +1,13 @@
 
+## v2.1.0 (2021-04-08)
+
+#### :zap: Improvement Features
+* [#180](https://github.com/intlify/vue-i18n-loader/pull/180) feat: support vue-i18n v9.1 ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
+
 ## v2.0.3 (2021-03-03)
 
 #### :zap: Improvement Features
