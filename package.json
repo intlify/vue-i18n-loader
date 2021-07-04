@@ -1,6 +1,6 @@
 {
   "name": "@intlify/vue-i18n-loader",
-  "description": "vue-i18n loader for custom blocks",
+  "description": "webpack loader for Vue I18n",
   "version": "1.1.0",
   "author": {
     "name": "kazuya kawaguchi",

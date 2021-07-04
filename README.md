@@ -5,12 +5,18 @@
 <p align="center">
   <a href="https://github.com/intlify/vue-i18n-loader/actions?query=workflow%3ATest"><img src="https://github.com/intlify/vue-i18n-loader/workflows/Test/badge.svg" alt="Build Status"></a>
   <a href="https://www.npmjs.com/package/@intlify/vue-i18n-loader"><img src="https://img.shields.io/npm/v/@intlify/vue-i18n-loader.svg" alt="npm"></a>
-  <a href="https://devtoken.rocks/package/@intlify/vue-i18n-loader"><img src="https://badge.devtoken.rocks/@intlify/vue-i18n-loader" alt="@intlify/vue-i18n-loader Dev Token"/></a>
 </p>
 
-<p align="center">vue-i18n loader for custom blocks</p>
+<p align="center">webpack loader for Vue I18n</p>
 
 <br/>
+
+## :warning: Notice
+
+This package is maintained for Vue I18n v8 (Vue 2).
+
+If you want to use Vue I18n v9 (Vue 3) or later, See the [`@intlify/bundle-tools`](https://github.com/intlify/bundle-tools) repo.
+
 
 ## :cd: Installation
 
