@@ -47,7 +47,7 @@
     "jest": "^26.6.3",
     "jest-puppeteer": "^4.4.0",
     "jest-watch-typeahead": "^0.6.0",
-    "jsdom": "^16.4.0",
+    "jsdom": "^19.0.0",
     "lerna-changelog": "^1.0.1",
     "memory-fs": "^0.5.0",
     "opener": "^1.5.2",
