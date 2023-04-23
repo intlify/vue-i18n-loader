@@ -12,7 +12,7 @@ jobs:
     runs-on: Ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
           registry-url: "https://registry.npmjs.org"
       - run: git switch master
