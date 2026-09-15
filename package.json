@@ -32,7 +32,7 @@
     "@types/jest": "^26.0.16",
     "@types/js-yaml": "^3.12.1",
     "@types/jsdom": "^16.2.5",
-    "@types/json5": "^0.0.30",
+    "@types/json5": "^2.0.0",
     "@types/memory-fs": "^0.3.2",
     "@types/node": "^14.14.10",
     "@types/webpack": "^4.41.26",
