@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.16",
-    "@types/js-yaml": "^3.12.1",
+    "@types/js-yaml": "^4.0.0",
     "@types/jsdom": "^16.2.5",
     "@types/json5": "^0.0.30",
     "@types/memory-fs": "^0.3.2",
