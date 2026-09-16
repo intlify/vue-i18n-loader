@@ -24,7 +24,7 @@
     }
   },
   "dependencies": {
-    "@intlify/shared": "^9.0.0",
+    "@intlify/shared": "^11.0.0",
     "js-yaml": "^3.13.1",
     "json5": "^2.1.1"
   },
