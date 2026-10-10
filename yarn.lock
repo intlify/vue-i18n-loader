@@ -360,10 +360,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@intlify/shared@^9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@intlify/shared/-/shared-9.0.0.tgz#d85b3b5f9033f377c5cf2202cf2459aa49948f36"
-  integrity sha512-0r4v7dnY8g/Jfx2swUWy2GyfH/WvIpWvkU4OIupvxDTWiE8RhcpbOCVvqpVh/xGi0proHQ/r2Dhc0QSItUsfDQ==
+"@intlify/shared@^11.0.0":
+  version "11.4.14"
+  resolved "https://registry.yarnpkg.com/@intlify/shared/-/shared-11.4.14.tgz#3383bf240c6a1cb7c885bd837867455163a2c689"
+  integrity sha512-f8zSlPs4+Yd9za3CPQfW9OHxAJBOeRQzB/hhOhkbGA7hlqWk0W0bUtSV/LmyrGNwdl8JriBnFtJqZyF140bjGg==
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
